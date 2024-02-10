@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.icon {
+    @apply h-4 inline-block mr-1 mb-1;
+}

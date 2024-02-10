@@ -21,8 +21,8 @@ const NavBar = () => {
             </a>
             {
                 nav ? (
-                    <div className="absolute top-4 right-4 z-[99] w-full h-screen bg-white/90 flex flex-col items-center md:hidden">
-                        <a href="#main" className="w-[75%] flex justify-center items-center rounded-lg bg-gray-100 m-2 p-2 shadow-lg hover:scale-110 ease-in duration-200">
+                    <div className="absolute top-0 right-0 z-[99] w-full h-screen bg-white/90 flex flex-col items-center md:hidden">
+                        <a href="#main" className="w-[75%] flex justify-center items-center rounded-lg bg-gray-100 m-2 mt-5 p-2 shadow-lg hover:scale-110 ease-in duration-200">
                             <AiOutlineHome/>
                             <span className="pl-2">Home</span>
                         </a>
