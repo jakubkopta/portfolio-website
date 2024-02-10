@@ -1,15 +1,15 @@
-import NavBar from "./components/NavBar.tsx";
+import NavBar from "./components/navbar/NavBar.tsx";
 import Main from "./components/Main.tsx";
 import './App.css'
-import Projects from "./components/Projects.tsx";
+import Projects from "./components/project/Projects.tsx";
 
 function App() {
 
   return (
     <div>
         <Main/>
-        <NavBar/>
         <Projects/>
+        <NavBar/>
     </div>
   )
 }
