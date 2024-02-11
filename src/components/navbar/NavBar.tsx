@@ -17,12 +17,12 @@ const NavBar = () => {
             icon: <AiOutlineHome/>
         },
         {
-            name: "Projects",
-            icon: <AiOutlineFundProjectionScreen/>
-        },
-        {
             name: "Skills",
             icon: <AiOutlineAim/>
+        },
+        {
+            name: "Projects",
+            icon: <AiOutlineFundProjectionScreen/>
         },
         {
             name: "Interests",
@@ -42,14 +42,14 @@ const NavBar = () => {
 
     return (
         <div>
-            <a onClick={handleNav} className="absolute top-4 right-4 z-[100] md:hidden bg-gray-200 p-2 m-2 shadow-lg rounded-lg hover:scale-125 ease-in duration-200 cursor-pointer">
+            <a onClick={handleNav} className="fixed top-4 right-4 z-[100] md:hidden bg-gray-200 p-2 m-2 shadow-lg rounded-lg hover:scale-125 ease-in duration-200 cursor-pointer">
                 <AiOutlineUnorderedList/>
             </a>
             {
                 nav ? (
-                    <div className="absolute top-0 right-0 z-[99] w-full h-screen bg-white/90 flex flex-col items-center md:hidden">
+                    <div className="fixed top-0 right-0 z-[99] w-full h-screen bg-white/90 flex flex-col items-center md:hidden animate-fadeIn">
                         {data.map((item, idx) => (
-                            <NavBarItems key={idx} name={item.name} icon={item.icon}/>
+                            <div onClick={handleNav} className="w-[75%]"><NavBarItems key={idx} name={item.name} icon={item.icon}/></div>
                         ))}
                     </div>
                 ) : (

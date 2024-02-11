@@ -2,7 +2,7 @@ import {TypeAnimation} from "react-type-animation";
 
 const Main = () => {
     return (
-        <div className="w-full h-screen bg-gradient-to-t from-gray-50 to-gray-500">
+        <div id="Home" className="w-full h-screen bg-gradient-to-t from-gray-50 to-gray-500">
             {/*<img className="w-full h-screen object-cover" src="src/images/bg.jpg" alt="background"/>*/}
             <div className="w-full h-screen absolute top-0 left-0 bg-white/85">
                 {/*<img className="w-100 rounded-full" src="src/images/Profile1.jpg"/>*/}

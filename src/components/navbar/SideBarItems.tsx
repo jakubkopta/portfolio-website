@@ -11,7 +11,7 @@ const SideBarItems = ({icon, name}: Props) => {
     return (
         <>
             <a
-                href="#main"
+                href={`#${name}`}
                 className="relative bg-gray-200 p-4 ml-4 mt-4 shadow-lg hover:scale-125 ease-in duration-200"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}

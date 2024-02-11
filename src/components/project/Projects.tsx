@@ -37,8 +37,8 @@ const Projects = () => {
     ]
 
     return (
-        <div>
-            <h1 className="text-5xl text-gray-800 text-center">
+        <div id="Projects" className="w-full bg-gray-200">
+            <h1 className="text-5xl text-gray-800 text-center font-bold p-10">
                 Projects
             </h1>
             <p className="text-gray-800 text-center m-28">
