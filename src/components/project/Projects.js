@@ -1,0 +1,54 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Project_tsx_1 = require("./Project.tsx");
+var fa_1 = require("react-icons/fa");
+var Projects = function () {
+    var data = [
+        {
+            name: "Calculator",
+            imagePath: "src/images/calculator.gif",
+            language: "JavaFX",
+            icon: <fa_1.FaJava className="icon"/>
+        },
+        {
+            name: "Snake",
+            imagePath: "src/images/snake.gif",
+            language: "JavaFX",
+            icon: <fa_1.FaJava className="icon"/>
+        },
+        {
+            name: "Order completing",
+            imagePath: "src/images/orders.gif",
+            language: "Java",
+            icon: <fa_1.FaJava className="icon"/>
+        },
+        {
+            name: "To Do List",
+            imagePath: "src/images/todo.gif",
+            language: "React",
+            icon: <fa_1.FaReact className="icon"/>
+        },
+        {
+            name: "Fleet Manager",
+            imagePath: "src/images/fm.gif",
+            language: "Java",
+            icon: <fa_1.FaJava className="icon"/>
+        }
+    ];
+    return (<div id="Projects" className="w-full bg-gray-200 pb-10">
+            <h1 className="text-5xl text-gray-800 text-center font-bold p-10">
+                Projects
+            </h1>
+            <p className="text-gray-800 text-center m-28">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </p>
+            <div className="ml-28 mr-28 grid lg:grid-cols-3 gap-12">
+                {data.map(function (item, idx) { return (<Project_tsx_1.default key={idx} name={item.name} imagePath={item.imagePath} language={item.language} icon={item.icon}/>); })}
+            </div>
+        </div>);
+};
+exports.default = Projects;
