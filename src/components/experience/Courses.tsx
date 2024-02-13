@@ -1,10 +1,10 @@
 import WorkItem from "./WorkItems.tsx";
 
-const Work = () => {
+const Courses = () => {
 
     const data = [
         {
-            company: "Coders Lab",
+            company: "Coders La11b",
             title: "Java Developer",
             duration: "16.07.2022 - 19.02.2023",
             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
@@ -13,7 +13,7 @@ const Work = () => {
                 "                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
                 "                deserunt mollit anim id est laborum."
         },{
-            company: "Coders Lab",
+            company: "Coders Lab1",
             title: "Scrum Lab",
             duration: "16.07.2022 - 19.02.2023",
             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
@@ -22,7 +22,7 @@ const Work = () => {
                 "                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
                 "                deserunt mollit anim id est laborum."
         },{
-            company: "Coders Lab",
+            company: "Cod1ers Lab",
             title: "Basics of HTML & CSS",
             duration: "16.07.2022 - 19.02.2023",
             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
@@ -31,7 +31,7 @@ const Work = () => {
                 "                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
                 "                deserunt mollit anim id est laborum."
         },{
-            company: "Coders Lab",
+            company: "Coder1s Lab",
             title: "FullStack Developer",
             duration: "16.07.2022 - 19.02.2023",
             details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
@@ -44,7 +44,6 @@ const Work = () => {
 
     return (
         <div id="Skills" className="w-full bg-gray-200 p-6">
-            <h1 className="text-5xl text-gray-800 text-center font-bold p-10">Work</h1>
             <div className="ml-28 mr-28">
                 {data.map((item, idx) => (
                     <WorkItem key={idx} company={item.company} title={item.title} duration={item.duration}
@@ -55,4 +54,4 @@ const Work = () => {
     )
 }
 
-export default Work;
+export default Courses;
