@@ -15,7 +15,7 @@ const Experience = () => {
                 <h1 className="text-5xl text-gray-800 font-bold bg-gray-200 pt-10">Experience</h1>
                 <div onClick={handleToggle} className="flex w-40 h-10 bg-gray-800 border-2 border-black m-10 rounded-full cursor-pointer relative">
                     <span className="absolute left-0 top-1/2 transform -translate-y-1/2 ml-5 text-gray-800 font-bold">Work</span>
-                    <span className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-3 text-gray-800 font-bold">Courses</span>
+                    <span className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 text-gray-800 font-bold">Courses</span>
                     <span className={`h-9 w-20 bg-gray-200 rounded-full ${isToggled ? "ml-20" : ""} transition-all duration-300`}/>
                 </div>
             </div>
