@@ -6,31 +6,31 @@ const Projects = () => {
     const data = [
         {
             name: "Calculator",
-            imagePath: "src/images/calculator.gif",
+            imagePath: "./images/calculator.gif",
             language: "JavaFX",
             icon: <FaJava className="icon"/>
         },
         {
             name: "Snake",
-            imagePath: "src/images/snake.gif",
+            imagePath: "./images/snake.gif",
             language: "JavaFX",
             icon: <FaJava className="icon"/>
         },
         {
             name: "Order completing",
-            imagePath: "src/images/orders.gif",
+            imagePath: "./images/orders.gif",
             language: "Java",
             icon: <FaJava className="icon"/>
         },
         {
             name: "To Do List",
-            imagePath: "src/images/todo.gif",
+            imagePath: "./images/todo.gif",
             language: "React",
             icon: <FaReact className="icon"/>
         },
         {
             name: "Fleet Manager",
-            imagePath: "src/images/fm.gif",
+            imagePath: "./images/fm.gif",
             language: "Java",
             icon: <FaJava className="icon"/>
         }

@@ -9,7 +9,7 @@ const Interests = () => {
                     <div
                         className="lg:h-full lg:w-1/3 cursor-pointer lg:hover:w-2/3 ease-in duration-500 relative flex flex-col justify-center items-center group">
                         <img className="h-full object-cover opacity-40 group-hover:opacity-100 rounded-xl"
-                             src="src/images/mtb.jpg" alt="img"/>
+                             src="./images/mtb.jpg" alt="img"/>
                         <span
                             className="mix-blend-screen absolute font-bold text-6xl lg:text-8xl lg:-rotate-90 transform top-1/2 -translate-y-1/2">MTB</span>
                         <p className="absolute inset-x-0 bottom-0 opacity-0 group-hover:opacity-100 lg:delay-500 p-10 text-white font-bold text-center">Lorem
@@ -26,7 +26,7 @@ const Interests = () => {
                     <div
                         className="lg:h-full lg:w-1/3 cursor-pointer lg:hover:w-2/3 ease-in duration-500 relative flex flex-col justify-center items-center group">
                         <img className="h-full object-cover opacity-40 group-hover:opacity-100 rounded-xl"
-                             src="src/images/sailing.jpg" alt="img"/>
+                             src="./images/sailing.jpg" alt="img"/>
                         <span
                             className="mix-blend-screen absolute font-bold text-6xl lg:text-8xl lg:-rotate-90 transform top-1/2 -translate-y-1/2">Sailing</span>
                         <p className="absolute inset-x-0 opacity-0 group-hover:opacity-100 lg:delay-500 p-10 text-white font-bold text-center">Lorem
@@ -45,7 +45,7 @@ const Interests = () => {
                     <div
                         className="lg:h-full lg:w-1/3 cursor-pointer lg:hover:w-2/3 ease-in duration-500 relative flex flex-col justify-center items-center group">
                         <img className="h-full object-cover opacity-40 group-hover:opacity-100 rounded-xl"
-                             src="src/images/snowboard.jpg" alt="img"/>
+                             src="./images/snowboard.jpg" alt="img"/>
                         <span
                             className="mix-blend-screen absolute font-bold text-6xl lg:text-8xl lg:-rotate-90 transform top-1/2 -translate-y-1/2">Snowboard</span>
                         <p className="absolute inset-x-0 top-0 opacity-0 group-hover:opacity-100 lg:delay-500 p-10 text-white font-bold text-center">Lorem
