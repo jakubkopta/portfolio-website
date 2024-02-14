@@ -19,7 +19,7 @@ const Work = () => {
                         />
                     ))
                 ) : (
-                    <p>No experience yet</p>
+                    <p className="text-center font-bold">Nothing there but cannot wait to get some!</p>
                 )}
             </div>
         </div>

@@ -17,7 +17,7 @@ const NavBar = () => {
             icon: <AiOutlineHome/>
         },
         {
-            name: "Skills",
+            name: "Experience",
             icon: <AiOutlineAim/>
         },
         {

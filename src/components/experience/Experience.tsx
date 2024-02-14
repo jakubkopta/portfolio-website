@@ -4,25 +4,28 @@ import Courses from "./Courses.tsx";
 
 const Experience = () => {
 
-    const [action, setAction] = useState("Courses");
-
-    const toggle = () => {
-        setAction(prevAction => prevAction === "Courses" ? "Work" : "Courses");
-    };
+    const [isToggled, setisToggled] = useState(false);
+    const handleToggle = () => {
+        setisToggled(!isToggled);
+    }
 
     return (
-        <div id="Skills" className="">
-            <div className="flex justify-center gap-5 bg-gray-100 p-10">
-                <div className={`bg-blue-500 rounded-full cursor-pointer p-2 ${action === "Work" && 'text-white'}`} onClick={toggle}>Work</div>
-                <div className={`bg-blue-500 rounded-full cursor-pointer p-2 ${action === "Work" && 'text-white'}`} onClick={toggle}>Courses</div>
+        <div id="Experience" className="bg-gray-200 min-h-screen">
+            <div className="flex flex-col justify-center items-center">
+                <h1 className="text-5xl text-gray-800 font-bold bg-gray-200 pt-10">Experience</h1>
+                <div onClick={handleToggle} className="flex w-40 h-10 bg-gray-800 border-2 border-black m-10 rounded-full cursor-pointer relative">
+                    <span className="absolute left-0 top-1/2 transform -translate-y-1/2 ml-5 text-gray-800 font-bold">Work</span>
+                    <span className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-3 text-gray-800 font-bold">Courses</span>
+                    <span className={`h-9 w-20 bg-gray-200 rounded-full ${isToggled ? "ml-20" : ""} transition-all duration-300`}/>
+                </div>
             </div>
             <div className="flex">
-                <div className="border-2 border-black w-full">
-                    <h1 className="text-5xl text-gray-800 text-center font-bold p-10">{action === "Courses" ? "Courses" : "Work"}</h1>
-                    {action === "Courses" ? (
-                        <Courses /> // Render Course component if action is "Courses"
+                <div className="w-full">
+                    <h1 className="text-5xl text-gray-800 text-center font-bold p-10">{isToggled ? "Courses" : "Work"}</h1>
+                    {isToggled ? (
+                        <Courses />
                     ) : (
-                        <Work/> // Render Work component with different props for Work 1
+                        <Work/>
                     )}
                 </div>
             </div>
