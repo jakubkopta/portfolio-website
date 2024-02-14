@@ -63,7 +63,7 @@ const Contact = () => {
                         </a>
                     </div>
                     <div className="bg-gray-800 h-52 w-52 rounded-tl-3xl rounded-br-3xl relative shadow-xl">
-                        <a href="src/images/JakubKoptaEngCV.pdf">
+                        <a href="./images/JakubKoptaEngCV.pdf">
                             <div
                                 className="flex flex-col justify-center items-center absolute h-52 w-52 -left-1 -top-1 hover:-left-2 hover:-top-2 ease-in duration-300 bg-gray-400 rounded-tl-3xl rounded-br-3xl cursor-pointer">
                                 <LuFileSpreadsheet size={30} className="mb-5"/>
