@@ -5,8 +5,8 @@ const Main = () => {
     return (
         <div id="Home" className="w-full h-screen bg-gradient-to-t from-gray-50 to-gray-200 flex justify-center items-center">
             <div className="flex flex-col justify-center items-center w-[90%] h-[70%] md:w-[70%] md:h-[60%] lg:w-1/2 lg:h-1/2 rounded-3xl border-2 border-gray-200 relative">
-                    <img className="rounded-3xl absolute -top-40 w-60 h-72" src="./images/me1.jpg" alt="profile pic"/>
-                <div className="absolute top-40">
+                    <img className="rounded-3xl absolute -top-32 w-72 h-72" src="./images/default.png" alt="profile pic"/>
+                <div className="absolute top-10 md:top-40 backdrop-blur-sm pb-10">
                     <h1 className="text-5xl text-gray-800 text-center">I am <span className="font-bold text-black">Jakub Kopta</span>
                     </h1>
                     <h2 className="text-sm text-gray-800 m-4 text-center">

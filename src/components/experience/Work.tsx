@@ -7,7 +7,7 @@ const Work = () => {
 
     return (
         <div id="Skills" className="w-full bg-gray-200 p-6">
-            <div className="ml-28 mr-28">
+            <div className="ml-5 mr-5 md:ml-28 md:mr-28">
                 {data.length > 0 ? (
                     data.map((item, idx) => (
                         <WorkItem

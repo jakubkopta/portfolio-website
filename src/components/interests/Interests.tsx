@@ -36,10 +36,10 @@ const Interests = () => {
     ]
 
     return (
-        <div id="Interests">
-            <div className=" flex flex-col items-center justify-center">
+        <div id="Interests" className="">
+            <div className="flex flex-col items-center justify-center">
                 <h1 className="text-5xl text-gray-800 text-center font-bold p-10">Interests</h1>
-                <div className="flex gap-10 pb-40 lg:h-screen w-2/3 flex-col lg:flex-row">
+                <div className="flex gap-10 pb-40 lg:h-screen flex-col lg:flex-row md:w-2/3 p-10">
                     {data.map((item, idx) => (
                         <Interest key={idx} name={item.name} imagePath={item.imagePath} description={item.description} position={item.position}/>
                     ))}

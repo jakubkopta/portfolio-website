@@ -57,7 +57,7 @@ const Contact = () => {
                         </ol>
                     </div>
                 </div>
-                <div className="flex flex-row-reverse gap-10">
+                <div className="flex flex-col md:flex-row-reverse gap-10">
                     <div className="bg-gray-800 h-52 w-52 rounded-tl-3xl rounded-br-3xl relative shadow-xl">
                         <a href="mailto:jakubkopta@gmail.com">
                             <div
@@ -68,7 +68,7 @@ const Contact = () => {
                         </a>
                     </div>
                     <div className="bg-gray-800 h-52 w-52 rounded-tl-3xl rounded-br-3xl relative shadow-xl">
-                        <a href="./images/JakubKoptaEngCV.pdf">
+                        <a href="./images/JakubKoptaCV.pdf">
                             <div
                                 className="flex flex-col justify-center items-center absolute h-52 w-52 -left-1 -top-1 hover:-left-2 hover:-top-2 ease-in duration-300 bg-gray-400 rounded-tl-3xl rounded-br-3xl cursor-pointer text-gray-200">
                                 <LuFileSpreadsheet size={40} className="mb-5"/>
