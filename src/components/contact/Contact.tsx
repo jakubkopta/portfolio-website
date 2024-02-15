@@ -7,11 +7,15 @@ const Contact = () => {
     return (
 
         <div id="Contact" className="border-t-2 border-gray-800">
-            <div className="flex justify-center items-center text-xl text-gray-600 font-bold p-5 bg-gray-200">
-                <a href={"#Home"} className="pr-5 hover:underline">Home</a>
-                <a href={"#Experience"} className="pr-5 hover:underline">Experience</a>
-                <a href={"#Projects"} className="pr-5 hover:underline">Projects</a>
-                <a href={"#Interests"} className="pr-5 hover:underline">Interests</a>
+            <div className="flex justify-center items-center gap-10 text-xl text-gray-600 font-bold p-5 bg-gray-200">
+                <div className="flex flex-col md:flex-row text-center">
+                    <a href={"#Home"} className="md:pr-10 hover:underline">Home</a>
+                    <a href={"#Experience"} className="hover:underline">Experience</a>
+                </div>
+                <div  className="flex flex-col md:flex-row text-center">
+                    <a href={"#Projects"} className="md:pr-10 hover:underline">Projects</a>
+                    <a href={"#Interests"} className="hover:underline">Interests</a>
+                </div>
             </div>
             <div className="flex flex-col lg:flex-row justify-around items-center gap-10 relative p-20">
                 <div className="bg-gray-600 absolute inset-0 z-[-1]"></div>

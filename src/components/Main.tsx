@@ -4,12 +4,12 @@ const Main = () => {
 
     return (
         <div id="Home" className="w-full h-screen bg-gradient-to-t from-gray-50 to-gray-200 flex justify-center items-center">
-            <div className="flex flex-col justify-center items-center w-[90%] h-[70%] md:w-[70%] md:h-[60%] lg:w-1/2 lg:h-1/2 rounded-3xl border-2 border-gray-200 relative">
-                    <img className="rounded-3xl absolute -top-32 w-72 h-72" src="./images/default.png" alt="profile pic"/>
-                <div className="absolute top-10 md:top-40 backdrop-blur-sm pb-10">
+            <div className="flex flex-col justify-center items-center md:w-[70%] md:h-[60%] lg:w-1/2 lg:h-1/2 rounded-3xl md:border-2 border-gray-200 relative">
+                <img className="rounded-3xl md:absolute w-52 h-52 lg:-top-40 lg:w-72 lg:h-72 m-10 md:m-0" src="./images/default.png" alt="profile pic"/>
+                <div className="md:absolute md:top-40">
                     <h1 className="text-5xl text-gray-800 text-center">I am <span className="font-bold text-black">Jakub Kopta</span>
                     </h1>
-                    <h2 className="text-sm text-gray-800 m-4 text-center">
+                    <h2 className="hidden md:block text-sm text-gray-800 m-4 text-center">
                         <TypeAnimation
                             sequence={[
                                 '<h1>Hello World<h1>',
@@ -28,8 +28,8 @@ const Main = () => {
                         />
                     </h2>
                 </div>
-                <div className="flex justify-center items-center absolute bottom-3">
-                    <p className="m-10 p-4 text-center border-2 border-gray-200 rounded-lg shadow-lg">
+                <div className="justify-center items-center md:absolute md:bottom-3 m-10">
+                    <p className=" p-4 text-center border-2 border-gray-200 rounded-lg shadow-lg">
                         I am a third-year student of Automatics and Robotics at AGH University of Science and Technology in Cracow. I am open to new experience and enjoy learning new things. As someone taking their first steps in the IT industry, I would like to develop my skills in this area.
                     </p>
                 </div>
