@@ -8,10 +8,10 @@ const Contact = () => {
 
         <div id="Contact" className="border-t-2 border-gray-800">
             <div className="flex justify-center items-center text-xl text-gray-600 font-bold p-5 bg-gray-200">
-                <a href={"#Home"} className="pr-5">Home</a>
-                <a href={"#Experience"} className="pr-5">Experience</a>
-                <a href={"#Projects"} className="pr-5">Projects</a>
-                <a href={"#Interests"} className="pr-5">Interests</a>
+                <a href={"#Home"} className="pr-5 hover:underline">Home</a>
+                <a href={"#Experience"} className="pr-5 hover:underline">Experience</a>
+                <a href={"#Projects"} className="pr-5 hover:underline">Projects</a>
+                <a href={"#Interests"} className="pr-5 hover:underline">Interests</a>
             </div>
             <div className="flex flex-col lg:flex-row justify-around items-center gap-10 relative p-20">
                 <div className="bg-gray-600 absolute inset-0 z-[-1]"></div>
@@ -61,8 +61,8 @@ const Contact = () => {
                     <div className="bg-gray-800 h-52 w-52 rounded-tl-3xl rounded-br-3xl relative shadow-xl">
                         <a href="mailto:jakubkopta@gmail.com">
                             <div
-                                className="flex flex-col justify-center items-center absolute h-52 w-52 -left-1 -top-1 hover:-left-2 hover:-top-2 ease-in duration-300 bg-gray-400 rounded-tl-3xl rounded-br-3xl cursor-pointer">
-                                <AiOutlineMail size={30} className="mb-5"/>
+                                className="flex flex-col justify-center items-center absolute h-52 w-52 -left-1 -top-1 hover:-left-2 hover:-top-2 ease-in duration-300 bg-gray-400 rounded-tl-3xl rounded-br-3xl cursor-pointer text-gray-200">
+                                <AiOutlineMail size={40} className="mb-5"/>
                                 <span className="italic font-bold">jakubkopta@gmail.com</span>
                             </div>
                         </a>
@@ -70,8 +70,8 @@ const Contact = () => {
                     <div className="bg-gray-800 h-52 w-52 rounded-tl-3xl rounded-br-3xl relative shadow-xl">
                         <a href="./images/JakubKoptaEngCV.pdf">
                             <div
-                                className="flex flex-col justify-center items-center absolute h-52 w-52 -left-1 -top-1 hover:-left-2 hover:-top-2 ease-in duration-300 bg-gray-400 rounded-tl-3xl rounded-br-3xl cursor-pointer">
-                                <LuFileSpreadsheet size={30} className="mb-5"/>
+                                className="flex flex-col justify-center items-center absolute h-52 w-52 -left-1 -top-1 hover:-left-2 hover:-top-2 ease-in duration-300 bg-gray-400 rounded-tl-3xl rounded-br-3xl cursor-pointer text-gray-200">
+                                <LuFileSpreadsheet size={40} className="mb-5"/>
                                 <span className="italic font-bold">CV</span>
                             </div>
                         </a>
