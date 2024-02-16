@@ -6,32 +6,24 @@ const Interests = () => {
         {
             name: "MTB",
             imagePath: "./images/mtb.jpg",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
-                "                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip\n" +
-                "                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu\n" +
-                "                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
-                "                deserunt mollit anim id est laborum.",
+            description: "In the middle school i was missing some adrenaline during summer. That's when I discovered mountain biking. " +
+                "This is a little bit dangerous sport but it's the thrill of pushing boundaries that makes it so exciting",
             position: "lg:inset-x-0 lg:bottom-0"
         },
         {
             name: "Sailing",
             imagePath: "./images/sailing.jpg",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
-                "                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip\n" +
-                "                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu\n" +
-                "                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
-                "                deserunt mollit anim id est laborum.",
-            position: "lg:inset-x-0 lg:bottom-1/2"
+            description: "In my first job I met amazing people who shared their love for sailing with me." +
+                "Now, I believe it's the best way to spend summer surrounded by nature",
+            position: "lg:inset-x-0 lg:bottom-0"
         },
         {
             name: "Snowboard",
             imagePath: "./images/snowboard.jpg",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et\n" +
-                "                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip\n" +
-                "                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu\n" +
-                "                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia\n" +
-                "                deserunt mollit anim id est laborum.",
-            position: "lg:inset-x-0 lg:bottom-1/2"
+            description: "My dad learned me skiing when i was 3 years old. Science then every winter I am on the slopes shredding. " +
+                "At 10, I swapped skis for a snowboard and never looked back. Learning new tricks and going off-road," +
+                " each winter is a thrilling adventure in the mountains.",
+            position: "lg:inset-x-0 lg:top-[10%]"
         }
     ]
 
