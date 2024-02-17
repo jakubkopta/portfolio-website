@@ -19,15 +19,15 @@ const Experience = () => {
                 <h1 className="text-6xl font-bold pt-10">Experience</h1>
                 <div className="flex m-10 bg-dark-mode rounded-full border-2 border-black relative">
                     <div onClick={() => handleToggle(0)}
-                         className={`flex justify-center items-center w-20 h-10 ${toggleState === 0 ? "text-dark-mode" : "text-gray-200"} rounded-full cursor-pointer duration-300 z-[100]`}>
+                         className={`flex justify-center items-center w-20 h-10 ${toggleState === 0 ? "text-dark-mode" : "text-gray-200"} rounded-full cursor-pointer duration-300 z-[98]`}>
                         <span className="font-bold">Courses</span>
                     </div>
                     <div onClick={() => handleToggle(1)}
-                         className={`flex justify-center items-center w-20 h-10 ${toggleState === 1 ? "text-dark-mode" : "text-gray-200"} rounded-full cursor-pointer duration-300 z-[100]`}>
+                         className={`flex justify-center items-center w-20 h-10 ${toggleState === 1 ? "text-dark-mode" : "text-gray-200"} rounded-full cursor-pointer duration-300 z-[98]`}>
                         <span className="font-bold">Education</span>
                     </div>
                     <div onClick={() => handleToggle(2)}
-                         className={`flex justify-center items-center w-20 h-10 ${toggleState === 2 ? "text-dark-mode" : "text-gray-200"} rounded-full cursor-pointer duration-300 z-[100]`}>
+                         className={`flex justify-center items-center w-20 h-10 ${toggleState === 2 ? "text-dark-mode" : "text-gray-200"} rounded-full cursor-pointer duration-300 z-[98]`}>
                         <span className="font-bold">Work</span>
                     </div>
                     <div
