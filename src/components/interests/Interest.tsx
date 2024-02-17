@@ -17,10 +17,10 @@ const Interest = ({name, imagePath, description, position}: Props) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <img className="h-full object-cover opacity-40 group-hover:opacity-100 rounded-xl"
+            <img className="h-full object-cover opacity-30 group-hover:opacity-100 rounded-xl"
                  src={imagePath} alt="img"/>
             <span
-                className="mix-blend-screen absolute font-bold text-6xl lg:text-8xl lg:-rotate-90 transform top-1/2 -translate-y-1/2">{name}</span>
+                className="absolute font-bold text-6xl lg:text-8xl lg:-rotate-90 group-hover:rotate-0 group-hover:top-10 group-hover:text-6xl ease-in duration-500 transform top-1/2 -translate-y-1/2">{name}</span>
             <div className={`opacity-0 group-hover:opacity-100 lg:delay-500 absolute ${position}`}>
                 {isHovered && (
                     <p className="p-10 text-white font-bold text-center">{description}</p>

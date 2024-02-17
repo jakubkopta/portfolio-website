@@ -49,11 +49,11 @@ const Projects = () => {
     ]
 
     return (
-        <div id="Projects" className="w-full bg-gray-200 pb-10">
-            <h1 className="text-5xl text-gray-800 text-center font-bold p-10">
+        <div id="Projects" className="w-full pb-10">
+            <h1 className="text-5xl text-center font-bold p-10">
                 Projects
             </h1>
-            <p className="text-gray-800 text-center m-10 md:m-28">
+            <p className="text-center m-10 md:m-28">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
