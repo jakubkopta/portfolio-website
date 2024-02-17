@@ -8,13 +8,25 @@ const Contact = () => {
 
         <div id="Contact" className="border-t-2 border-gray-800">
             <div className="flex justify-center items-center gap-10 text-xl text-gray-600 font-bold p-5 bg-gray-200">
-                <div className="flex flex-col md:flex-row text-center">
-                    <a href={"#Home"} className="md:pr-10 hover:underline">Home</a>
-                    <a href={"#Experience"} className="hover:underline">Experience</a>
+                <div className="flex flex-col md:flex-row md:gap-10 text-center">
+                    <a href={"#Home"} className="relative group">
+                        Home
+                        <span className="absolute inset-x-0 bottom-0 bg-gray-600 h-[3px] w-[0%] group-hover:w-[100%] duration-300 rounded-xl"></span>
+                    </a>
+                    <a href={"#Experience"} className="relative group">
+                        Experience
+                        <span className="absolute inset-x-0 bottom-0 bg-gray-600 h-[3px] w-[0%] group-hover:w-[100%] duration-300 rounded-xl"></span>
+                    </a>
                 </div>
-                <div  className="flex flex-col md:flex-row text-center">
-                    <a href={"#Projects"} className="md:pr-10 hover:underline">Projects</a>
-                    <a href={"#Interests"} className="hover:underline">Interests</a>
+                <div className="flex flex-col md:flex-row md:gap-10 text-center">
+                    <a href={"#Projects"} className="relative group">
+                        Projects
+                        <span className="absolute inset-x-0 bottom-0 bg-gray-600 h-[3px] w-[0%] group-hover:w-[100%] duration-300 rounded-xl"></span>
+                    </a>
+                    <a href={"#Interests"} className="relative group">
+                        Interests
+                        <span className="absolute inset-x-0 bottom-0 bg-gray-600 h-[3px] w-[0%] group-hover:w-[100%] duration-300 rounded-xl"></span>
+                    </a>
                 </div>
             </div>
             <div className="flex flex-col lg:flex-row justify-around items-center gap-10 relative p-20">

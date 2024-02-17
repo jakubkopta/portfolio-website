@@ -10,7 +10,7 @@ interface Props {
 const Home = ({toggleDarkMode, isDarkMode}:Props) => {
 
     return (
-        <div id="Home" className="w-full lg:h-screen p-5">
+        <div id="Home" className="w-full md:h-screen p-5">
             <div onClick={toggleDarkMode}
                  className={`flex w-20 h-10 ${isDarkMode ? "bg-gray-200" : "bg-dark-mode"} border-2 border-black rounded-full cursor-pointer relative`}>
                     <span
@@ -24,8 +24,8 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
             </div>
             <div className="w-full flex justify-center items-center mt-10">
                 <div
-                    className="flex flex-col justify-center items-center mt-28 min-h-[28rem] md:w-[70%] md:h-[60%] lg:w-1/2 lg:h-1/2 rounded-3xl md:border-2 border-gray-400 relative">
-                    <img className="rounded-3xl md:absolute w-52 h-52 lg:-top-40 lg:w-72 lg:h-72 m-10 md:m-0"
+                    className="flex flex-col justify-center items-center md:mt-28 min-h-[32rem] md:w-[70%] lg:w-[60%] rounded-3xl md:border-2 border-gray-400 relative">
+                    <img className="rounded-3xl md:absolute w-52 h-52 md:-top-40 md:w-72 md:h-72 m-10 md:m-0"
                          src="./images/default.png" alt="profile pic"/>
                     <div className="md:absolute md:top-40">
                         <h1 className="text-5xl text-center">I am <span className="font-bold">Jakub Kopta</span>
@@ -49,8 +49,8 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
                             />
                         </h2>
                     </div>
-                    <div className="justify-center items-center md:absolute md:bottom-3 m-5">
-                        <p className=" p-4 text-center border-2 border-gray-200 rounded-lg shadow-lg">
+                    <div className="justify-center items-center md:absolute md:bottom-3 m-10 lg:mb-14">
+                        <p className="p-5 text-center lg:text-xl font-bold border-2 border-gray-200 rounded-lg shadow-2xl">
                             I am a third-year student of Automatics and Robotics at AGH University of Science and
                             Technology
                             in Cracow. I am open to new experience and enjoy learning new things. As someone taking

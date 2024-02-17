@@ -13,7 +13,7 @@ const Interests = () => {
         {
             name: "Sailing",
             imagePath: "./images/sailing.jpg",
-            description: "In my first job I met amazing people who shared their love for sailing with me." +
+            description: "In my first job I met amazing people who shared their love for sailing with me. " +
                 "Now, I believe it's the best way to spend summer surrounded by nature",
             position: "lg:inset-x-0 lg:bottom-0"
         },
@@ -28,9 +28,9 @@ const Interests = () => {
     ]
 
     return (
-        <div id="Interests" className="">
+        <div id="Interests">
             <div className="flex flex-col items-center justify-center">
-                <h1 className="text-5xl text-gray-800 text-center font-bold p-10">Interests</h1>
+                <h1 className="text-5xl text-center font-bold p-10">Interests</h1>
                 <div className="flex gap-10 pb-40 lg:h-screen flex-col lg:flex-row md:w-2/3 p-10">
                     {data.map((item, idx) => (
                         <Interest key={idx} name={item.name} imagePath={item.imagePath} description={item.description} position={item.position}/>

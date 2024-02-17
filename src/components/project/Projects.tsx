@@ -53,12 +53,11 @@ const Projects = () => {
             <h1 className="text-5xl text-center font-bold p-10">
                 Projects
             </h1>
-            <p className="text-center m-10 md:m-28">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
+            <p className="text-center text-xl m-10 md:m-28">
+                I'm passionate about expanding my programming skills and creating various projects in my free time.
+                With a focus on Java and React, I dive into the world of software development to create innovative solutions and explore new possibilities.
+                From building dynamic web applications with React to crafting robust backend systems with Java, I enjoy every aspect of the development process.
+                Feel free to explore the projects below.
             </p>
             <div className="ml-10 mr-10 md:ml-28 md:mr-28 grid lg:grid-cols-3 gap-12">
                 {data.map((item, idx) => (
