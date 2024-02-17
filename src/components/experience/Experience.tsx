@@ -1,32 +1,44 @@
-import Work from "./Work.tsx";
+import ExperienceSite from "./ExperienceSite.tsx";
 import {useState} from "react";
-import Courses from "./Courses.tsx";
 
 const Experience = () => {
 
-    const [isToggled, setisToggled] = useState(false);
-    const handleToggle = () => {
-        setisToggled(!isToggled);
-    }
+    const [toggleState, setToggleState] = useState<number>(0);
+
+    const handleToggle = (index: number) => {
+        if (index === toggleState) {
+            return;
+        } else {
+            setToggleState(index);
+        }
+    };
 
     return (
         <div id="Experience" className="min-h-screen">
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-6xl font-bold pt-10">Experience</h1>
-                <div onClick={handleToggle} className="flex w-40 h-10 bg-dark-mode border-2 border-black m-10 rounded-full cursor-pointer relative">
-                    <span className="absolute left-0 top-1/2 transform -translate-y-1/2 ml-2 text-dark-mode font-bold">Courses</span>
-                    <span className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-5 text-dark-mode font-bold">Work</span>
-                    <span className={`h-9 w-20 bg-gray-200 rounded-full ${isToggled ? "ml-20" : ""} transition-all duration-300`}/>
+                <div className="flex m-10 bg-dark-mode rounded-full border-2 border-black relative">
+                    <div onClick={() => handleToggle(0)}
+                         className={`flex justify-center items-center w-20 h-10 ${toggleState === 0 ? "text-dark-mode" : "text-gray-200"} rounded-full cursor-pointer duration-300 z-[100]`}>
+                        <span className="font-bold">Courses</span>
+                    </div>
+                    <div onClick={() => handleToggle(1)}
+                         className={`flex justify-center items-center w-20 h-10 ${toggleState === 1 ? "text-dark-mode" : "text-gray-200"} rounded-full cursor-pointer duration-300 z-[100]`}>
+                        <span className="font-bold">Education</span>
+                    </div>
+                    <div onClick={() => handleToggle(2)}
+                         className={`flex justify-center items-center w-20 h-10 ${toggleState === 2 ? "text-dark-mode" : "text-gray-200"} rounded-full cursor-pointer duration-300 z-[100]`}>
+                        <span className="font-bold">Work</span>
+                    </div>
+                    <div
+                        className="absolute top-0 left-0 w-20 h-10 bg-gray-200 text-dark-mode rounded-full duration-300"
+                        style={{transform: `translateX(${toggleState * 100}%)`}}></div>
                 </div>
             </div>
             <div className="flex">
                 <div className="w-full">
-                    <h1 className="text-5xl text-center font-bold p-10">{isToggled ? "Work" : "Courses"}</h1>
-                    {isToggled ? (
-                        <Work />
-                    ) : (
-                        <Courses/>
-                    )}
+                    <h1 className="text-5xl text-center font-bold p-10">{toggleState === 0 ? "Courses" : (toggleState == 1 ? "Education" : "Work")}</h1>
+                    <ExperienceSite toggleState={toggleState}/>
                 </div>
             </div>
         </div>
