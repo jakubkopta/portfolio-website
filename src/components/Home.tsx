@@ -12,7 +12,7 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
     return (
         <div id="Home" className="w-full md:h-screen p-5">
             <div onClick={toggleDarkMode}
-                 className={`flex w-20 h-10 ${isDarkMode ? "bg-gray-200" : "bg-dark-mode"} border-2 border-black rounded-full cursor-pointer relative`}>
+                 className={`flex w-20 h-10 ${isDarkMode ? "bg-gray-200 border-gray-200" : "bg-dark-mode border-dark-mode"} border-2 rounded-full cursor-pointer relative`}>
                     <span
                         className={`absolute left-0 top-1/2 transform -translate-y-1/2 ml-2 ${isDarkMode ? "text-gray-200" : "text-dark-mode"} font-bold`}><GoSun
                         size={20}/></span>

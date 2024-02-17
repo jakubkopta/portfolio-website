@@ -47,13 +47,14 @@ const NavBar = () => {
             </a>
             {
                 nav ? (
-                    <div className="fixed top-0 right-0 z-[99] w-full h-screen bg-white/90 flex flex-col items-center md:hidden animate-fadeIn">
+                    <div className="fixed pt-14 top-0 z-[99] w-full h-screen bg-white/90 flex flex-col items-center md:hidden slide-down duration-300">
                         {data.map((item, idx) => (
                             <div onClick={handleNav} className="w-[75%]"><NavBarItems key={idx} name={item.name} icon={item.icon}/></div>
                         ))}
                     </div>
                 ) : (
-                    ''
+                    <div className="fixed top-0 z-[99] w-full h-screen bg-white/90 slide-up duration-300">
+                    </div>
                 )
             }
             <div className="md:block hidden fixed top-[25%]">
