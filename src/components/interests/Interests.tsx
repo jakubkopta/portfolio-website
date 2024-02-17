@@ -28,9 +28,9 @@ const Interests = () => {
     ]
 
     return (
-        <div id="Interests">
+        <div id="Interests" className="min-h-screen">
             <div className="flex flex-col items-center justify-center">
-                <h1 className="text-5xl text-center font-bold p-10">Interests</h1>
+                <h1 className="text-6xl text-center font-bold p-10">Interests</h1>
                 <div className="flex gap-10 pb-40 lg:h-screen flex-col lg:flex-row md:w-2/3 p-10">
                     {data.map((item, idx) => (
                         <Interest key={idx} name={item.name} imagePath={item.imagePath} description={item.description} position={item.position}/>

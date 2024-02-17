@@ -49,8 +49,8 @@ const Projects = () => {
     ]
 
     return (
-        <div id="Projects" className="w-full pb-10">
-            <h1 className="text-5xl text-center font-bold p-10">
+        <div id="Projects" className="min-h-screen pb-10">
+            <h1 className="text-6xl text-center font-bold p-10">
                 Projects
             </h1>
             <p className="text-center text-xl m-10 md:m-28">

@@ -12,7 +12,7 @@ const Experience = () => {
     return (
         <div id="Experience" className="min-h-screen">
             <div className="flex flex-col justify-center items-center">
-                <h1 className="text-5xl font-bold pt-10">Experience</h1>
+                <h1 className="text-6xl font-bold pt-10">Experience</h1>
                 <div onClick={handleToggle} className="flex w-40 h-10 bg-dark-mode border-2 border-black m-10 rounded-full cursor-pointer relative">
                     <span className="absolute left-0 top-1/2 transform -translate-y-1/2 ml-2 text-dark-mode font-bold">Courses</span>
                     <span className="absolute right-0 top-1/2 transform -translate-y-1/2 mr-5 text-dark-mode font-bold">Work</span>
