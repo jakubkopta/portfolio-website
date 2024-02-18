@@ -63,7 +63,6 @@ const Contact = () => {
                             </a>
                             <a href="https://github.com/jakubkopta">
                                 <li className="relative flex justify-center items-center text-white p-4 bg-gray-800 rounded-full cursor-pointer group hover:text-blue-200">
-                                    <a href="https://github.com/jakubkopta"></a>
                                     <div
                                         className="absolute top-0 left-0 bg-blue-200 h-full w-full rounded-full z-[-1] transition scale-90 group-hover:scale-125 group-hover:shadow-blue-200 group-hover:blur-sm">
                                     </div>
