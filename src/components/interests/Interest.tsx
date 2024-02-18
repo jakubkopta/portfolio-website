@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {TbFileDescription} from "react-icons/tb";
 
 interface Props {
     name: string;
@@ -10,6 +11,7 @@ interface Props {
 const Interest = ({name, imagePath, description, position}: Props) => {
 
     const [isHovered, setIsHovered] = useState(false);
+    const [textButton, setTextButton] = useState(false);
 
     return (
         <div
@@ -21,9 +23,17 @@ const Interest = ({name, imagePath, description, position}: Props) => {
                  src={imagePath} alt="img"/>
             <span
                 className="opacity-80 group-hover:opacity-100 absolute font-bold text-6xl lg:text-8xl group-hover:text-5xl lg:-rotate-90 group-hover:rotate-0 group-hover:-top-10 ease-in duration-500 transform top-1/2 -translate-y-1/2">{name}</span>
-            <div className={`opacity-0 group-hover:opacity-100 lg:delay-500 absolute ${position}`}>
+            <div className={`w-full h-full md:w-auto md:h-auto opacity-0 group-hover:opacity-100 lg:delay-500 absolute ${position}`}>
                 {isHovered && (
-                    <p className="p-10 text-white font-bold text-center">{description}</p>
+                    <div>
+                        <div className="md:hidden">
+                            {textButton ? <p className="p-10 font-bold text-center text-white backdrop-blur-sm">{description}</p> : ""}
+                            <button
+                                className="absolute top-0 right-0 bg-gray-200 rounded-bl-full text-black p-2 pl-4 pb-4 hover:scale-125 ease-in duration-200 cursor-pointer"
+                                onClick={() => setTextButton(!textButton)}><TbFileDescription/></button>
+                        </div>
+                        <p className="hidden md:block p-10 font-bold text-center text-white">{description}</p>
+                    </div>
                 )}
             </div>
         </div>
