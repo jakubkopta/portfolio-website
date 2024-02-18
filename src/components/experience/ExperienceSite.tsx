@@ -17,8 +17,8 @@ const ExperienceSite = ({toggleState}: Props) => {
     }
 
     return (
-        <div id="Skills" className="w-full p-6">
-            <div className="ml-5 mr-5 md:ml-28 md:mr-28">
+        <div id="Skills" className="w-full flex justify-center items-center">
+            <div className="w-2/3">
                 {data === null ? (
                     <p className="text-center font-bold">Nothing there but cannot wait to gain some!</p>
                 ) : (
