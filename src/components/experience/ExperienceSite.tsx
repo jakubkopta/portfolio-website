@@ -1,6 +1,6 @@
-import {TfiFaceSad} from "react-icons/tfi";
 import WorkItem from "./ExperienceInfo.tsx";
 import { workData, coursesData, educationData } from "./ExperienceData.tsx";
+import {FaRegSmileBeam} from "react-icons/fa";
 
 interface Props {
     toggleState: number;
@@ -23,7 +23,7 @@ const ExperienceSite = ({toggleState}: Props) => {
                 {data === null ? (
                     <div className="flex flex-col justify-center items-center gap-10 p-10">
                         <p className="font-bold text-xl">Nothing there but cannot wait to gain some!</p>
-                        <TfiFaceSad size={50}/>
+                        <FaRegSmileBeam  size={50}/>
                     </div>
                 ) : (
                     data.map((item, idx) => (
