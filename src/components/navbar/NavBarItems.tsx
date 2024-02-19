@@ -9,7 +9,7 @@ const NavBarItems = ({name, icon}: Props) => {
     return (
         <>
             <a href={`#${name}`}
-               className="flex justify-center items-center rounded-lg bg-gray-100 mt-5 p-2 shadow-lg hover:scale-110 ease-in duration-200">
+               className="flex justify-center items-center bg-gray-100 rounded-lg shadow-lg mt-5 p-2 hover:scale-110 ease-in duration-200">
                 {icon}
                 <span className="pl-2">{name}</span>
             </a>

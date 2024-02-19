@@ -1,6 +1,6 @@
+import {TfiFaceSad} from "react-icons/tfi";
 import WorkItem from "./ExperienceInfo.tsx";
 import { workData, coursesData, educationData } from "./ExperienceData.tsx";
-import {TfiFaceSad} from "react-icons/tfi";
 
 interface Props {
     toggleState: number;
@@ -18,7 +18,7 @@ const ExperienceSite = ({toggleState}: Props) => {
     }
 
     return (
-        <div id="Skills" className="w-full flex justify-center items-center">
+        <div id="Skills" className="flex justify-center items-center w-full">
             <div className="w-2/3">
                 {data === null ? (
                     <div className="flex flex-col justify-center items-center gap-10 p-10">

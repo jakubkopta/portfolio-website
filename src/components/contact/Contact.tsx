@@ -1,96 +1,38 @@
-import {FaFacebookF, FaGithub, FaInstagram, FaLinkedin} from "react-icons/fa";
-import {AiOutlineMail} from "react-icons/ai";
-import {LuFileSpreadsheet} from "react-icons/lu";
+import {contactData, footerNavBarData, socialsData} from "./ContactData.tsx";
+import SocialsItems from "./SocialsItems.tsx";
+import ContactItems from "./ContactItems.tsx";
+import FooterNavBar from "./FooterNavBar.tsx";
 
 const Contact = () => {
 
     return (
 
-        <div id="Contact" className="">
-            <div className="flex justify-center items-center gap-10 text-xl text-gray-600 font-bold p-5 bg-gray-600 border-t-2 border-b-2 border-gray-200">
-                <div className="flex flex-col md:flex-row md:gap-10 text-center">
-                    <a href={"#Home"} className="relative group text-gray-200">
-                        Home
-                        <span className="absolute inset-x-0 bottom-0 bg-gray-200 h-[3px] w-[0%] group-hover:w-[100%] duration-300 rounded-xl"></span>
-                    </a>
-                    <a href={"#Experience"} className="relative group text-gray-200">
-                        Experience
-                        <span className="absolute inset-x-0 bottom-0 bg-gray-200 h-[3px] w-[0%] group-hover:w-[100%] duration-300 rounded-xl"></span>
-                    </a>
-                </div>
-                <div className="flex flex-col md:flex-row md:gap-10 text-center">
-                    <a href={"#Projects"} className="relative group text-gray-200">
-                        Projects
-                        <span className="absolute inset-x-0 bottom-0 bg-gray-200 h-[3px] w-[0%] group-hover:w-[100%] duration-300 rounded-xl"></span>
-                    </a>
-                    <a href={"#Interests"} className="relative group text-gray-200">
-                        Interests
-                        <span className="absolute inset-x-0 bottom-0 bg-gray-200 h-[3px] w-[0%] group-hover:w-[100%] duration-300 rounded-xl"></span>
-                    </a>
+        <div id="Contact">
+            <div className="flex justify-center items-center gap-10 text-xl text-gray-600 font-bold bg-gray-600 border-t-2 border-b-2 border-gray-200 p-5">
+                <div className="grid grid-cols-2 gap-x-5 gap-y-2 text-center md:flex md:flex-row md:gap-10">
+                    {footerNavBarData.map((item, idx) => (
+                        <FooterNavBar key={idx} name={item.name} link={item.link}/>
+                    ))}
                 </div>
             </div>
-            <div className="flex flex-col lg:flex-row justify-around items-center gap-10 relative p-20">
+            <div className="flex flex-col justify-around items-center gap-10 p-20 relative lg:flex-row">
                 <div className="bg-gray-600 absolute inset-0 z-[-1]"></div>
                 <div className="flex flex-col items-center justify-between">
-                    <p className="text-5xl text-gray-200 font-bold mb-10 italic">
+                    <p className="text-5xl text-gray-200 font-bold italic mb-10">
                         Get in Touch
                     </p>
                     <div>
                         <ol className="flex gap-5 relative">
-                            <a href="https://www.facebook.com/jakub.kopta">
-                                <li className="relative flex justify-center items-center text-white p-4 bg-gray-800 rounded-full cursor-pointer group hover:text-blue-200">
-                                    <div
-                                        className="absolute top-0 left-0 bg-blue-200 h-full w-full rounded-full z-[-1] transition scale-90 group-hover:scale-125 group-hover:shadow-blue-200 group-hover:blur-sm">
-                                    </div>
-                                    <FaFacebookF size={30}/>
-                                </li>
-                            </a>
-                            <a href="https://www.instagram.com/jakubkopta?igsh=MWhnN3BtbnJkNHBpeA%3D%3D&utm_source=qr">
-                                <li className="relative flex justify-center items-center text-white p-4 bg-gray-800 rounded-full cursor-pointer group hover:text-blue-200">
-                                    <div
-                                        className="absolute top-0 left-0 bg-blue-200 h-full w-full rounded-full z-[-1] transition scale-90 group-hover:scale-125 group-hover:shadow-blue-200 group-hover:blur-sm">
-                                    </div>
-                                    <FaInstagram size={30}/>
-                                </li>
-                            </a>
-                            <a href="https://www.linkedin.com/in/jakub-kopta-01109026b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
-                                <li className="relative flex justify-center items-center text-white p-4 bg-gray-800 rounded-full cursor-pointer group hover:text-blue-200">
-                                    <div
-                                        className="absolute top-0 left-0 bg-blue-200 h-full w-full rounded-full z-[-1] transition scale-90 group-hover:scale-125 group-hover:shadow-blue-200 group-hover:blur-sm">
-                                    </div>
-                                    <FaLinkedin size={30}/>
-                                </li>
-                            </a>
-                            <a href="https://github.com/jakubkopta">
-                                <li className="relative flex justify-center items-center text-white p-4 bg-gray-800 rounded-full cursor-pointer group hover:text-blue-200">
-                                    <div
-                                        className="absolute top-0 left-0 bg-blue-200 h-full w-full rounded-full z-[-1] transition scale-90 group-hover:scale-125 group-hover:shadow-blue-200 group-hover:blur-sm">
-                                    </div>
-                                    <FaGithub size={30}/>
-                                </li>
-                            </a>
+                            {socialsData.map((item, idx) => (
+                                <SocialsItems key={idx} link={item.link} icon={item.icon}/>
+                            ))}
                         </ol>
                     </div>
                 </div>
-                <div className="flex flex-col md:flex-row-reverse gap-10">
-                    <div className="bg-gray-800 h-52 w-52 rounded-tl-3xl rounded-br-3xl relative shadow-xl">
-                        <a href="mailto:jakubkopta@gmail.com">
-                            <div
-                                className="flex flex-col justify-center items-center absolute h-52 w-52 -left-1 -top-1 hover:-left-2 hover:-top-2 ease-in duration-300 bg-gray-400 rounded-tl-3xl rounded-br-3xl cursor-pointer text-gray-200">
-                                <AiOutlineMail size={40} className="mb-5"/>
-                                <span className="italic font-bold">jakubkopta@gmail.com</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div className="bg-gray-800 h-52 w-52 rounded-tl-3xl rounded-br-3xl relative shadow-xl">
-                        <a href="./images/JakubKoptaCV.pdf">
-                            <div
-                                className="flex flex-col justify-center items-center absolute h-52 w-52 -left-1 -top-1 hover:-left-2 hover:-top-2 ease-in duration-300 bg-gray-400 rounded-tl-3xl rounded-br-3xl cursor-pointer text-gray-200">
-                                <LuFileSpreadsheet size={40} className="mb-5"/>
-                                <span className="italic font-bold">CV</span>
-                            </div>
-                        </a>
-                    </div>
+                <div className="flex flex-col gap-10 md:flex-row-reverse">
+                    {contactData.map((item, idx) => (
+                        <ContactItems key={idx} name={item.name} link={item.link} icon={item.icon}/>
+                    ))}
                 </div>
             </div>
         </div>

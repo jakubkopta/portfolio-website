@@ -1,52 +1,8 @@
 import Project from "./Project.tsx";
-import {FaJava, FaReact} from "react-icons/fa";
+import {projectData} from "./ProjectData.tsx";
 
 const Projects = () => {
 
-    const data = [
-        {
-            name: "Calculator",
-            imagePath: "./images/calculator.gif",
-            language: "JavaFX",
-            icon: <FaJava className="icon"/>,
-            githubName: "CalculatorJavaFX"
-        },
-        {
-            name: "Snake",
-            imagePath: "./images/snake.gif",
-            language: "JavaFX",
-            icon: <FaJava className="icon"/>,
-            githubName: "Snake"
-        },
-        {
-            name: "Order completing",
-            imagePath: "./images/orders.gif",
-            language: "Java",
-            icon: <FaJava className="icon"/>,
-            githubName: "InStoreFulfillment"
-        },
-        {
-            name: "To Do List",
-            imagePath: "./images/todo.gif",
-            language: "React",
-            icon: <FaReact className="icon"/>,
-            githubName: "toDo"
-        },
-        {
-            name: "Fleet Manager",
-            imagePath: "./images/fm.gif",
-            language: "Java",
-            icon: <FaJava className="icon"/>,
-            githubName: "fleet-manager-springboot"
-        },
-        {
-            name: "Valentines",
-            imagePath: "./images/valentines.gif",
-            language: "React",
-            icon: <FaReact className="icon"/>,
-            githubName: "valentines"
-        }
-    ]
 
     return (
         <div id="Projects" className="min-h-screen pb-10">
@@ -59,8 +15,8 @@ const Projects = () => {
                 From building dynamic web applications with React to crafting robust backend systems with Java, I enjoy every aspect of the development process.
                 Feel free to explore the projects below.
             </p>
-            <div className="ml-10 mr-10 md:ml-28 md:mr-28 grid lg:grid-cols-3 gap-12">
-                {data.map((item, idx) => (
+            <div className="grid gap-12 ml-10 mr-10 md:ml-28 md:mr-28 lg:grid-cols-3">
+                {projectData.map((item, idx) => (
                     <Project key={idx} name={item.name} imagePath={item.imagePath} language={item.language} icon={item.icon} githubName={item.githubName}/>
                 ))}
             </div>
