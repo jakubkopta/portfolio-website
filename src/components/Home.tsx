@@ -1,13 +1,32 @@
 import {GoSun} from "react-icons/go";
 import {MdOutlineDarkMode} from "react-icons/md";
 import {TypeAnimation} from "react-type-animation";
+import {useEffect, useState} from "react";
 
 interface Props {
     toggleDarkMode: () => void;
     isDarkMode: boolean;
 }
 
+const imagePaths = [
+    "./images/profile.jpg",
+    "./images/profile1.jpg",
+    "./images/me.jpg"
+]
+
+
 const Home = ({toggleDarkMode, isDarkMode}:Props) => {
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const totalImages = imagePaths.length;
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [totalImages]);
 
     return (
         <div id="Home" className="w-full p-5 md:min-h-screen">
@@ -22,11 +41,19 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
                 <span
                     className={`h-9 w-10 ${isDarkMode ? "bg-dark-mode ml-10 " : "bg-gray-200"} rounded-full transition-all duration-300`}/>
             </div>
-            <div className="flex justify-center items-center w-full  mt-10">
-                <div
-                    className="flex flex-col justify-center items-center min-h-[32rem] rounded-3xl relative md:w-[70%] lg:w-[60%] md:border-2 border-gray-400 md:mt-28">
-                    <img className="w-52 h-52 rounded-3xl md:w-72 md:h-72 m-10 md:m-0 md:absolute md:-top-40 object-cover"
-                         src="./images/profile.jpg" alt="profile pic"/>
+            <div className="flex justify-center items-center w-full mt-10">
+                <div className="flex flex-col justify-center items-center min-h-[32rem] rounded-3xl relative md:w-[70%] lg:w-[60%] md:border-2 border-gray-400 md:mt-28 group">
+                    <div className="m-10 md:m-0 md:absolute md:-top-40 w-52 h-52 rounded-3xl md:w-96 md:h-72 overflow-hidden">
+                        {imagePaths.map((path, index) => (
+                            <img
+                                key={index}
+                                className={`w-52 h-52 rounded-3xl absolute -translate-x-1/2
+                                ${currentIndex === index ? 'z-[3] opacity-100 md:w-72 md:h-72' : 'z-[1] opacity-20 md:w-64 md:h-64 md:top-4'} left-[50%] md:left-${currentIndex === index ? '[50%]' : (currentIndex === (index > totalImages-2 ? 0 : index+1) ? "[60%]" : "[40%]")} object-cover duration-1000`}
+                                src={path}
+                                alt="profile pic"
+                            />
+                        ))}
+                    </div>
                     <div className="md:absolute md:top-40">
                         <h1 className="text-5xl text-center">I am <span className="font-bold">Jakub Kopta</span>
                         </h1>
