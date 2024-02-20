@@ -47,8 +47,9 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
                         {imagePaths.map((path, index) => (
                             <img
                                 key={index}
-                                className={`w-52 h-52 rounded-3xl absolute -translate-x-1/2
-                                ${currentIndex === index ? 'z-[3] opacity-100 md:w-72 md:h-72' : 'z-[1] opacity-20 md:w-64 md:h-64 md:top-4'} left-[50%] md:left-${currentIndex === index ? '[50%]' : (currentIndex === (index > totalImages-2 ? 0 : index+1) ? "[60%]" : "[40%]")} object-cover duration-1000`}
+                                className={`w-52 h-52 md:w-64 md:h-64 md:top-4 rounded-3xl absolute left-[50%] -translate-x-1/2 object-cover duration-1000
+                                ${currentIndex === index ? 'z-[3] opacity-100 md:scale-110' : 'z-[1] opacity-20'}
+                                ${currentIndex === index ? 'md:left-[50%]' : (currentIndex === (index > totalImages-2 ? 0 : index+1) ? "md:left-[60%]" : "md:left-[40%]")}`}
                                 src={path}
                                 alt="profile pic"
                             />
