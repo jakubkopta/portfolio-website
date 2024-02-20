@@ -10,7 +10,7 @@ interface Props {
 const Home = ({toggleDarkMode, isDarkMode}:Props) => {
 
     return (
-        <div id="Home" className="w-full p-5 md:h-screen">
+        <div id="Home" className="w-full p-5 md:min-h-screen">
             <div onClick={toggleDarkMode}
                  className={`flex w-20 h-10 ${isDarkMode ? "bg-gray-200 border-gray-200" : "bg-dark-mode border-dark-mode"} border-2 rounded-full cursor-pointer relative`}>
                     <span
