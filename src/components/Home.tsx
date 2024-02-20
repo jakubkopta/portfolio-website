@@ -10,7 +10,7 @@ interface Props {
 const Home = ({toggleDarkMode, isDarkMode}:Props) => {
 
     return (
-        <div id="Home" className="w-full p-5 md:h-screen">
+        <div id="Home" className="w-full p-5 md:min-h-screen">
             <div onClick={toggleDarkMode}
                  className={`flex w-20 h-10 ${isDarkMode ? "bg-gray-200 border-gray-200" : "bg-dark-mode border-dark-mode"} border-2 rounded-full cursor-pointer relative`}>
                     <span
@@ -25,8 +25,8 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
             <div className="flex justify-center items-center w-full  mt-10">
                 <div
                     className="flex flex-col justify-center items-center min-h-[32rem] rounded-3xl relative md:w-[70%] lg:w-[60%] md:border-2 border-gray-400 md:mt-28">
-                    <img className="w-52 h-52 rounded-3xl md:w-72 md:h-72 m-10 md:m-0 md:absolute md:-top-40"
-                         src="./images/default.png" alt="profile pic"/>
+                    <img className="w-52 h-52 rounded-3xl md:w-72 md:h-72 m-10 md:m-0 md:absolute md:-top-40 object-cover"
+                         src="./images/profile.jpg" alt="profile pic"/>
                     <div className="md:absolute md:top-40">
                         <h1 className="text-5xl text-center">I am <span className="font-bold">Jakub Kopta</span>
                         </h1>
