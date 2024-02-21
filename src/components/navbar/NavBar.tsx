@@ -25,7 +25,7 @@ const NavBar = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="w-full h-screen bg-white/90 fixed top-0 z-[99] slide-up duration-300">
+                    <div className="w-full h-screen bg-white/90 fixed top-0 z-[99] slide-up duration-300 md:hidden">
                     </div>
                 )
             }

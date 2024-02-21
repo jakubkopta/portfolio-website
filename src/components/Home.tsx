@@ -77,7 +77,7 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
                             />
                         </h2>
                     </div>
-                    <div className="m-10 lg:mb-14 md:absolute md:bottom-3">
+                    <div className="m-10 md:absolute md:bottom-3">
                         <p className="text-center font-bold border-2 border-gray-200 rounded-lg shadow-2xl p-5 lg:text-xl">
                             I am a third-year student of Automatics and Robotics at AGH University of Science and
                             Technology

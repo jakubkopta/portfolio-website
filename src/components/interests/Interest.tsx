@@ -24,7 +24,8 @@ const Interest = ({name, imagePath, description, position}: Props) => {
         >
             <img className="h-[50vh] rounded-xl opacity-30 object-cover md:h-[70vh] lg:h-full group-hover:opacity-100 duration-300"
                  src={imagePath} alt="img"/>
-            <span className="font-bold text-[7vw] lg:text-[10vh] opacity-80 absolute transform top-1/2 -translate-y-1/2 lg:-rotate-90 group-hover:opacity-100 group-hover:text-5xl group-hover:rotate-0 group-hover:-top-10 ease-in duration-500">
+            <span className="font-bold text-[7vw] lg:text-[10vh] opacity-80 absolute transform top-1/2 -translate-y-1/2 lg:-rotate-90
+            group-hover:opacity-100 group-hover:text-5xl group-hover:rotate-0 group-hover:-top-10 ease-in duration-500">
                 {name}
             </span>
             <div className={`w-full h-full opacity-0 absolute ${position} md:w-auto md:h-auto lg:delay-500 group-hover:opacity-100`}>
