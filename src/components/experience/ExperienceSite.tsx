@@ -22,7 +22,7 @@ const ExperienceSite = ({toggleState}: Props) => {
             <div className="w-2/3">
                 {data === null ? (
                     <div className="flex flex-col justify-center items-center gap-10 p-10">
-                        <p className="font-bold text-xl">Nothing there but cannot wait to gain some!</p>
+                        <p className="font-bold text-xl text-center">Nothing there but cannot wait to gain some!</p>
                         <FaRegSmileBeam  size={50}/>
                     </div>
                 ) : (
