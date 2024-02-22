@@ -4,8 +4,11 @@ import NavBarItems from "./NavBarItems.tsx";
 import SideBarItems from "./SideBarItems.tsx";
 import {navBarData} from "./NavBarData.tsx";
 
+interface Props {
+    isDarkMode: boolean;
+}
 
-const NavBar = () => {
+const NavBar = ({isDarkMode}:Props) => {
 
     const [nav, setNav] = useState(false);
     const handleNav = () => {
@@ -20,13 +23,13 @@ const NavBar = () => {
             </a>
             {
                 nav ? (
-                    <div className="flex flex-col items-center w-full h-screen bg-white/90 fixed pt-14 top-0 z-[99] md:hidden slide-down duration-300">
+                    <div className={`flex flex-col items-center w-full h-screen ${isDarkMode ? "bg-dark-mode/90" : "bg-white/90"} fixed pt-14 top-0 z-[99] md:hidden slide-down duration-300`}>
                         {navBarData.map((item, idx) => (
                             <div onClick={handleNav} className="w-[75%]"><NavBarItems key={idx} name={item.name} icon={item.icon}/></div>
                         ))}
                     </div>
                 ) : (
-                    <div className="w-full h-screen bg-white/90 fixed top-0 z-[99] slide-up duration-300 md:hidden">
+                    <div className={`w-full h-screen ${isDarkMode ? "bg-dark-mode/90" : "bg-white/90"} fixed top-0 z-[99] slide-up duration-300 md:hidden`}>
                     </div>
                 )
             }

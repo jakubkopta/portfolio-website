@@ -18,14 +18,14 @@ function App() {
     return (
         <>
             <div className={`${isDarkMode ? "bg-dark-mode text-slate-200" : "bg-slate-200 text-gray-800"}`}>
-                <Home toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
+                <Home toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
                 <Experience/>
                 <Projects/>
                 <Interests/>
             </div>
             <div>
                 <Contact/>
-                <NavBar/>
+                <NavBar isDarkMode={isDarkMode}/>
             </div>
         </>
     )
