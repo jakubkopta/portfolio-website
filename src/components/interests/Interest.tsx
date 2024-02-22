@@ -34,7 +34,8 @@ const Interest = ({name, imagePath, description, position}: Props) => {
                         <div className="md:hidden">
                             {textButton ? <p className="font-bold text-center text-white p-10 backdrop-blur-sm">{description}</p> : ""}
                             <button
-                                className="bg-gray-200 text-black rounded-bl-full p-2 pl-4 pb-4 absolute top-0 right-0 cursor-pointer hover:scale-125 ease-in duration-200"
+                                className="bg-gray-200 text-black rounded-bl-full p-2 pl-4 pb-4 absolute top-0 right-0 cursor-pointer
+                                active:bg-gray-400 hover:scale-125 ease-in duration-200"
                                 onClick={() => setTextButton(!textButton)}><TbFileDescription/></button>
                         </div>
                         <p className="font-bold text-center text-white p-10 hidden md:block">{description}</p>

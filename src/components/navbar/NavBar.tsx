@@ -14,7 +14,8 @@ const NavBar = () => {
 
     return (
         <div>
-            <a onClick={handleNav} className="bg-gray-200 shadow-lg rounded-lg p-2 m-2 fixed top-4 right-4 z-[100] cursor-pointer md:hidden hover:scale-125 ease-in duration-200">
+            <a onClick={handleNav} className="bg-gray-200 shadow-lg rounded-lg p-2 m-2 fixed top-4 right-4 z-[100] cursor-pointer md:hidden
+            active:bg-gray-400 active:duration-0 hover:scale-125 ease-in duration-200">
                 <AiOutlineUnorderedList/>
             </a>
             {
