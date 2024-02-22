@@ -2,6 +2,7 @@ import {contactData, footerNavBarData, socialsData} from "./ContactData.tsx";
 import SocialsItems from "./SocialsItems.tsx";
 import ContactItems from "./ContactItems.tsx";
 import FooterNavBar from "./FooterNavBar.tsx";
+import {FaCopy} from "react-icons/fa";
 
 const Contact = () => {
 
@@ -29,10 +30,23 @@ const Contact = () => {
                         </ol>
                     </div>
                 </div>
-                <div className="flex flex-col gap-10 md:flex-row-reverse">
-                    {contactData.map((item, idx) => (
-                        <ContactItems key={idx} name={item.name} link={item.link} icon={item.icon}/>
-                    ))}
+                <div className="flex items-end">
+                    <div
+                        className="flex flex-col-reverse gap-10 ml-12 md:flex-row-reverse">
+                        {contactData.map((item, idx) => (
+                            <ContactItems key={idx} name={item.name} link={item.link} icon={item.icon}/>
+                        ))}
+                    </div>
+                    <button
+                        className="flex justify-center items-center w-10 h-10 bg-gray-400 text-gray-200 p-5 ml-2 mb-14 rounded-xl
+                        hover:scale-110 duration-300 active:bg-gray-500 active:duration-0"
+                        onClick={() => {
+                            navigator.clipboard.writeText("jakubkopta@gmail.com");
+                            alert(`Copied e-mail to clipboard!`);
+                        }}
+                    >
+                        <span><FaCopy/></span>
+                    </button>
                 </div>
             </div>
         </div>

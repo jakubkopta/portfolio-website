@@ -9,7 +9,7 @@ const ContactItems = ({name, link, icon}: Props) => {
 
     return (
         <div className="h-52 w-52 bg-gray-800 shadow-xl rounded-tl-3xl rounded-br-3xl relative">
-            <a href={link}>
+            <a href={link} target="_blank" rel="noopener noreferrer">
                 <div
                     className="flex flex-col justify-center items-center h-52 w-52 text-gray-200 bg-gray-400
                     rounded-tl-3xl rounded-br-3xl cursor-pointer absolute -left-1 -top-1

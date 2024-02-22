@@ -7,7 +7,7 @@ interface Props {
 const SocialsItems = ({link, icon}: Props) => {
 
     return (
-        <a href={link}>
+        <a href={link} target="_blank" rel="noopener noreferrer">
             <li className="flex justify-center items-center text-white bg-gray-800 rounded-full p-4 cursor-pointer relative group
             hover:text-blue-200 active:text-blue-400">
                 <div
