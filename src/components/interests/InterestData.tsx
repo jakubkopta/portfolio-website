@@ -16,7 +16,7 @@ const interestData = [
     {
         name: "Snowboard",
         imagePath: "./images/snowboard.jpg",
-        description: "My dad learned me skiing when i was 3 years old. Since then every winter I am on the slopes shredding. " +
+        description: "My dad taught me skiing when i was 3 years old. Since then every winter I am on the slopes shredding. " +
             "At 10, I swapped skis for a snowboard and never looked back. Learning new tricks and going off-road," +
             " each winter is a thrilling adventure in the mountains.",
         position: "md:inset-x-0 md:top-[10%]"
