@@ -49,7 +49,8 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
                                 key={index}
                                 className={`w-52 h-52 md:w-64 md:h-64 md:top-4 rounded-3xl absolute left-[50%] -translate-x-1/2 object-cover duration-1000
                                 ${currentIndex === index ? 'z-[3] opacity-100 md:scale-110' : 'z-[1] opacity-20'}
-                                ${currentIndex === index ? 'md:left-[50%]' : (currentIndex === (index > totalImages-2 ? 0 : index+1) ? "md:left-[60%]" : "md:left-[40%]")}`}
+                                ${currentIndex === index ? 'md:left-[50%]' : (currentIndex === (index > totalImages-2 ? 0 : index+1) ? "md:left-[60%]" : "md:left-[40%]")}
+                                border-2 ${isDarkMode ? "border-dark-mode" : "border-gray-200"}`}
                                 src={path}
                                 alt="profile pic"
                             />
@@ -62,13 +63,13 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
                             <TypeAnimation
                                 sequence={[
                                     '<h1>Hello World<h1>',
-                                    1000,
+                                    2000,
                                     'console.log("Hello World");',
-                                    1000,
+                                    2000,
                                     'print("Hello World")',
-                                    1000,
+                                    2000,
                                     'System.out.println("Hello World");',
-                                    1000
+                                    2000
                                 ]}
                                 wrapper="span"
                                 speed={50}
