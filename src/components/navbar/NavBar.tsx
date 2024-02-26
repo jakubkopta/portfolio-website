@@ -4,8 +4,11 @@ import NavBarItems from "./NavBarItems.tsx";
 import SideBarItems from "./SideBarItems.tsx";
 import {navBarData} from "./NavBarData.tsx";
 
+interface Props {
+    isDarkMode: boolean;
+}
 
-const NavBar = () => {
+const NavBar = ({isDarkMode}:Props) => {
 
     const [nav, setNav] = useState(false);
     const handleNav = () => {
@@ -14,18 +17,19 @@ const NavBar = () => {
 
     return (
         <div>
-            <a onClick={handleNav} className="bg-gray-200 shadow-lg rounded-lg p-2 m-2 fixed top-4 right-4 z-[100] cursor-pointer md:hidden hover:scale-125 ease-in duration-200">
+            <a onClick={handleNav} className="bg-gray-200 shadow-lg rounded-lg p-2 m-2 fixed top-4 right-4 z-[100] cursor-pointer md:hidden
+            active:bg-gray-400 active:duration-0 hover:scale-125 ease-in duration-200">
                 <AiOutlineUnorderedList/>
             </a>
             {
                 nav ? (
-                    <div className="flex flex-col items-center w-full h-screen bg-white/90 fixed pt-14 top-0 z-[99] md:hidden slide-down duration-300">
+                    <div className={`flex flex-col items-center w-full h-screen ${isDarkMode ? "bg-dark-mode/90" : "bg-white/90"} fixed pt-14 top-0 z-[99] md:hidden slide-down duration-300`}>
                         {navBarData.map((item, idx) => (
                             <div onClick={handleNav} className="w-[75%]"><NavBarItems key={idx} name={item.name} icon={item.icon}/></div>
                         ))}
                     </div>
                 ) : (
-                    <div className="w-full h-screen bg-white/90 fixed top-0 z-[99] slide-up duration-300 md:hidden">
+                    <div className={`w-full h-screen ${isDarkMode ? "bg-dark-mode/90" : "bg-white/90"} fixed top-0 z-[99] slide-up duration-300 md:hidden`}>
                     </div>
                 )
             }
