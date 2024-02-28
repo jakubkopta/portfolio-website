@@ -3,14 +3,20 @@ import SocialsItems from "./SocialsItems.tsx";
 import ContactItems from "./ContactItems.tsx";
 import FooterNavBar from "./FooterNavBar.tsx";
 import {FaCopy} from "react-icons/fa";
+import {useState} from "react";
 
 const Contact = () => {
+
+    const [copied, setCopied] = useState(false);
 
     const copyToClipboard = async () => {
         try {
             const phoneNumber = "+48 888 446 325";
             await navigator.clipboard.writeText(phoneNumber);
-            alert(`Copied phone number to clipboard!`);
+            setCopied(true);
+            setTimeout(() => {
+                setCopied(false);
+            }, 3000);
         } catch (error) {
             console.error("Failed to copy:", error);
         }
@@ -32,17 +38,26 @@ const Contact = () => {
                     <p className="text-5xl text-gray-200 font-bold italic">
                         Get in Touch
                     </p>
-                    <div className="flex justify-center items-center m-5">
-                        <span className="text-xl text-gray-200 font-bold italic">
+                    <div className="flex justify-center items-center m-8 relative">
+                        <span className="text-xl md:text-2xl text-gray-200 font-bold italic">
                             +48 888 446 325
                         </span>
                         <button
                             className="flex justify-center items-center bg-gray-400 text-gray-200 rounded-xl
-                        hover:scale-110 duration-300 active:bg-gray-500 active:duration-0 ml-3 p-2"
+                            active:bg-gray-500 ml-3 p-2"
                             onClick={() => void copyToClipboard()}
                         >
                             <span><FaCopy size={15}/></span>
                         </button>
+                        <div
+                            className={`absolute -top-1 ${copied ? "right-2 opacity-100" : "right-4 opacity-0"} 
+                            transition-all ease-in-out duration-300`}>
+                            <div className="w-5 h-5 rotate-45 bg-gray-200 absolute -top-5 -right-4"></div>
+                            <div
+                                className="bg-gray-200 text-gray-400 text-xs rounded-full absolute -top-6 -right-10 p-1">
+                                Copied
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <ol className="flex gap-5 relative">
@@ -54,7 +69,7 @@ const Contact = () => {
                 </div>
                 <div
                     className="flex flex-col-reverse gap-10 md:flex-row-reverse">
-                    {contactData.map((item, idx) => (
+                {contactData.map((item, idx) => (
                         <ContactItems key={idx} name={item.name} link={item.link} icon={item.icon}/>
                     ))}
                 </div>
