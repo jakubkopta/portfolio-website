@@ -1,48 +1,55 @@
 
 interface Props {
     addGuessedLetter: (letter: string) => void
+    guessedLetters: string[];
 }
 
 const keys = [
-    "A",
-    "B",
-    "C",
-    "D",
+    "Q",
+    "W",
     "E",
+    "R",
+    "T",
+    "Y",
+    "U",
+    "I",
+    "O",
+    "P",
+    "A",
+    "S",
+    "D",
     "F",
     "G",
     "H",
-    "I",
     "J",
     "K",
     "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
+    "Z",
     "X",
-    "Y",
-    "Z"
-]
-
-const Keyboard = ({addGuessedLetter} : Props) => {
-
-    // const word = "test";
-    // const guessedLetter = ["t","e"]
+    "C",
+    "V",
+    "B",
+    "N",
+    "M"
+];
 
 
+const Keyboard = ({addGuessedLetter, guessedLetters} : Props) => {
 
     return (
         <div className="grid grid-cols-9">
             {keys.map((key, index) => {
-                return <button key={index} className=" bg-gray-200 rounded-2xl m-3 p-2" onClick={() => addGuessedLetter(key)}>{key}</button>
+                const isActive = guessedLetters.includes(key)
+                return (
+                    <button
+                        key={index}
+                        className={`${isActive ? "bg-gray-500" : "bg-gray-200 hover:bg-gray-400 active:bg-gray-500"} rounded-2xl m-3 p-2`}
+                        onClick={() => addGuessedLetter(key)}
+                        disabled = {isActive}
+                    >
+                        {key}
+                    </button>
+                )
             })}
         </div>
     )

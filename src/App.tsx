@@ -6,6 +6,7 @@ import Interests from "./components/interests/Interests.tsx";
 import Contact from "./components/contact/Contact.tsx";
 import Experience from "./components/experience/Experience.tsx";
 import {useState} from "react";
+import Hangman from "./components/games/hangman/Hangman.tsx";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <div>
                 <Contact/>
                 <NavBar isDarkMode={isDarkMode}/>
+                <Hangman/>
             </div>
         </>
     )
