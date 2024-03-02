@@ -4,8 +4,14 @@ import Keyboard from "./Keyboard.tsx";
 import {generate} from "random-words";
 import {useCallback, useEffect, useState} from "react";
 import {VscDebugRestart} from "react-icons/vsc";
+import {IoCloseSharp} from "react-icons/io5";
 
-const Hangman = () => {
+interface Props {
+    isPlayed: boolean;
+    handleClick1: () => void;
+}
+
+const Hangman = ({isPlayed, handleClick1} : Props) => {
 
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
     const [word, setWord] = useState(generate() as string);
@@ -24,11 +30,11 @@ const Hangman = () => {
 
     const addGuessedLetter = useCallback(
         (letter: string) => {
-            if (guessedLetters.includes(letter) || isLoser || isWinner) return
+            if (guessedLetters.includes(letter) || isLoser || isWinner || !isPlayed) return
 
             setGuessedLetters(currentLetters => [...currentLetters, letter])
         },
-        [guessedLetters, isLoser, isWinner]
+        [guessedLetters, isLoser, isWinner, isPlayed]
     )
 
     useEffect(() => {
@@ -50,20 +56,26 @@ const Hangman = () => {
         setWord(generate() as string);
         setGuessedLetters([]);
     }
-
-
     return (
-        <div className="relative">
-            <div className={`${isWinner || isLoser ? "block" : "hidden"} bg-white/90 flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
-                <div className="font-bold text-6xl mr-3">
-                    {isWinner && "Winner!"}
-                    {isLoser && "Game Over"}
+        <div className="relative group bg-gray-100 rounded-3xl m-28">
+            <div className={``}>
+                <div
+                    className={`${isWinner || isLoser ? "block" : "hidden"} bg-white/90 flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
+                    <div className="font-bold text-6xl mr-3">
+                        {isWinner && "Winner!"}
+                        {isLoser && "Game Over"}
+                    </div>
+                    <button onClick={handleClick} className="m-5"><VscDebugRestart size={30}/></button>
                 </div>
-                <button onClick={handleClick} className="m-5"><VscDebugRestart size={30}/></button>
+                <a className="flex justify-center items-center">
+                    <p onClick={handleClick1} className="cursor-pointer absolute top-0 right-0">
+                        <IoCloseSharp size={30}/>
+                    </p>
+                </a>
+                <HangmanDrawing numberOfGuesses={incorrectLetters.length}/>
+                <HangmanWord word={word.toUpperCase()} guessedLetters={guessedLetters}/>
+                <Keyboard addGuessedLetter={addGuessedLetter} guessedLetters={guessedLetters}/>
             </div>
-            <HangmanDrawing numberOfGuesses={incorrectLetters.length}/>
-            <HangmanWord word={word.toUpperCase()} guessedLetters={guessedLetters}/>
-            <Keyboard addGuessedLetter={addGuessedLetter} guessedLetters={guessedLetters}/>
         </div>
     )
 }

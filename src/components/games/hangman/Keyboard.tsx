@@ -37,7 +37,7 @@ const keys = [
 const Keyboard = ({addGuessedLetter, guessedLetters} : Props) => {
 
     return (
-        <div className="grid grid-cols-9">
+        <div className="grid grid-cols-10">
             {keys.map((key, index) => {
                 const isActive = guessedLetters.includes(key)
                 return (

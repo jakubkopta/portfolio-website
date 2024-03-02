@@ -5,7 +5,7 @@ interface Props {
 const HangmanDrawing = ({numberOfGuesses} : Props) => {
 
     return (
-        <div className="flex justify-center items-center m-28">
+        <div className="flex justify-center items-center mt-10">
             <div className="relative h-96 w-96 bg-gray-200">
                 <div className={`${numberOfGuesses > 0 ? "block" : "hidden"} bg-black absolute bottom-0 h-3 w-64`}></div>
                 <div className={`${numberOfGuesses > 1 ? "block" : "hidden"} bg-black absolute bottom-0 left-32 h-96 w-3`}></div>
