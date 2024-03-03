@@ -52,7 +52,7 @@ const Contact = () => {
                         <div
                             className={`absolute -top-1 ${copied ? "right-2 opacity-100" : "right-4 opacity-0"} 
                             transition-all ease-in-out duration-300`}>
-                            <div className="w-5 h-5 rotate-45 bg-gray-200 absolute -top-5 -right-4"></div>
+                            <div className="w-5 h-5 rotate-[60deg] bg-gray-200 absolute -top-5 -right-5"></div>
                             <div
                                 className="bg-gray-200 text-gray-400 text-xs rounded-full absolute -top-6 -right-10 p-1">
                                 Copied
