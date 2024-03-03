@@ -60,15 +60,18 @@ const Hangman = ({isPlayed, handleClick1} : Props) => {
         <div className="relative group bg-gray-100 rounded-3xl m-28">
             <div className={``}>
                 <div
-                    className={`${isWinner || isLoser ? "block" : "hidden"} bg-white/90 flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
-                    <div className="font-bold text-6xl mr-3">
+                    className={`${isWinner || isLoser ? "block slide-down" : "hidden"} bg-white/90 flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
+                    <div className="font-bold text-6xl">
                         {isWinner && "Winner!"}
                         {isLoser && "Game Over"}
                     </div>
-                    <button onClick={handleClick} className="m-5"><VscDebugRestart size={30}/></button>
+                    <div className="flex justify-center items-center">
+                        <button onClick={handleClick} className="m-5 bg-gray-400 rounded-lg p-2"><VscDebugRestart size={30}/></button>
+                        <button onClick={handleClick1} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">Exit</button>
+                    </div>
                 </div>
                 <a className="flex justify-center items-center">
-                    <p onClick={handleClick1} className="cursor-pointer absolute top-0 right-0">
+                    <p onClick={handleClick1} className="cursor-pointer absolute top-2 right-2">
                         <IoCloseSharp size={30}/>
                     </p>
                 </a>

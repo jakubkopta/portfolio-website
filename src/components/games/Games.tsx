@@ -1,6 +1,6 @@
 import {useState} from "react";
 import Hangman from "./hangman/Hangman.tsx";
-import {gameData} from "./hangman/GamesData.tsx";
+import {gameData} from "./GamesData.tsx";
 import Game from "./Game.tsx";
 
 
@@ -12,7 +12,8 @@ const Games = () => {
     }
 
     return (
-        <div className="transition-all duration-300">
+        <div className="min-h-screen">
+            <h1 className="text-6xl text-center font-bold p-10">Mini Games</h1>
             {isPlayed ? (
                 <Hangman isPlayed={isPlayed} handleClick1={handleClick1}/>
             ) : (
