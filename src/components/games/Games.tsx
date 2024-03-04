@@ -21,7 +21,7 @@ const Games = () => {
                     <Game key={index} name={item.name} imagePath={item.imagePath} handleClick1={handleClick1} setGamePlayed={setGamePlayed}/>
                 ))}
             </div>
-            <div className={`absolute -top-[27rem] ${isPlayed ? "scale-100" : "scale-0"} duration-300 w-full `}>
+            <div className={`fixed top-10 md:top-0 ${isPlayed ? "scale-100" : "scale-0"} duration-300 w-full z-[100]`}>
                 {gamePlayed === "Hangman" && <Hangman isPlayed={isPlayed} handleClick1={handleClick1}/>}
                 {gamePlayed === "Tic-Tac-Toe" && <TicTacToe handleClick1={handleClick1}/>}
                 {gamePlayed === "Puzzle" && <Puzzle handleClick1={handleClick1}/>}
