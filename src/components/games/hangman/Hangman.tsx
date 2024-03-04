@@ -16,8 +16,6 @@ const Hangman = ({isPlayed, handleClick1} : Props) => {
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
     const [word, setWord] = useState(generate() as string);
 
-    console.log(word)
-    console.log(guessedLetters)
     const incorrectLetters = guessedLetters.filter(
         letter => !word.toUpperCase().includes(letter)
     )
@@ -50,34 +48,42 @@ const Hangman = ({isPlayed, handleClick1} : Props) => {
         return () => {
             document.removeEventListener("keypress", handler)
         }
-    }, [addGuessedLetter])
+    }, [addGuessedLetter]);
 
     const handleClick = () => {
         setWord(generate() as string);
         setGuessedLetters([]);
     }
     return (
-        <div className="relative group bg-gray-100 rounded-3xl m-28">
-            <div className={``}>
+        <div className="">
+            <div className="bg-gray-200 shadow-2xl rounded-3xl m-5 md:m-28 relative group">
                 <div
-                    className={`${isWinner || isLoser ? "block slide-down" : "hidden"} bg-white/90 flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
+                    className={`${isWinner || isLoser ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
                     <div className="font-bold text-6xl">
                         {isWinner && "Winner!"}
                         {isLoser && "Game Over"}
+                    </div>
+                    <div className="text-xl mt-3">
+                        The word was: <span className="font-bold">{word.toUpperCase()}</span>
                     </div>
                     <div className="flex justify-center items-center">
                         <button onClick={handleClick} className="m-5 bg-gray-400 rounded-lg p-2"><VscDebugRestart size={30}/></button>
                         <button onClick={handleClick1} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">Exit</button>
                     </div>
                 </div>
-                <a className="flex justify-center items-center">
-                    <p onClick={handleClick1} className="cursor-pointer absolute top-2 right-2">
-                        <IoCloseSharp size={30}/>
-                    </p>
-                </a>
-                <HangmanDrawing numberOfGuesses={incorrectLetters.length}/>
-                <HangmanWord word={word.toUpperCase()} guessedLetters={guessedLetters}/>
-                <Keyboard addGuessedLetter={addGuessedLetter} guessedLetters={guessedLetters}/>
+                <div className="h-2/3">
+                    <a className="flex justify-center items-center">
+                        <p onClick={handleClick} className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
+                            <VscDebugRestart size={23}/>
+                        </p>
+                        <p onClick={handleClick1} className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
+                            <IoCloseSharp size={30}/>
+                        </p>
+                    </a>
+                    <HangmanDrawing numberOfGuesses={incorrectLetters.length}/>
+                    <HangmanWord word={word.toUpperCase()} guessedLetters={guessedLetters}/>
+                    <Keyboard addGuessedLetter={addGuessedLetter} guessedLetters={guessedLetters}/>
+                </div>
             </div>
         </div>
     )

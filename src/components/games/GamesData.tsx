@@ -5,11 +5,11 @@ const gameData = [
     },
     {
         name: "Tic-Tac-Toe",
-        imagePath: "./images/tic-tac-toe.png"
+        imagePath: "./images/tic-tac-toe.jpg"
     },
     {
-        name: "Snake",
-        imagePath: "./images/hangman.jpg"
+        name: "Puzzle",
+        imagePath: "./images/puzzle.jpg"
     }
 ]
 
