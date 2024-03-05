@@ -51,7 +51,7 @@ const TicTacToe = ({handleClick1} : Props) => {
 
     return (
         <div className="h-screen">
-            <div className="h-2/3 bg-gray-200 shadow-2xl rounded-3xl m-5 md:m-28 relative group">
+            <div className="bg-gray-200 shadow-2xl rounded-3xl m-5 md:m-28 relative group">
                 <div
                     className={`${checkWinner() || moveNumber > 8 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
                     {moveNumber > 8 ? (
@@ -76,21 +76,21 @@ const TicTacToe = ({handleClick1} : Props) => {
                     </p>
                 </a>
                 <h1 className="text-3xl font-bold text-center m-5">Tic Tac Toe</h1>
-                <div className="flex justify-evenly items-center">
-                    <span className={`text-3xl font-bold ${moveNumber % 2 === 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 1</span>
-                    <div className="grid grid-cols-3 gap-2">
+                <div className="flex flex-col lg:flex-row justify-evenly items-center">
+                    <span className={`text-3xl font-bold m-5 ${moveNumber % 2 === 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 1</span>
+                    <div className="grid grid-cols-3 gap-2 lg:m-5">
                         {data.map((value, index) => {
                             return (
                                 <div
                                     key={index}
                                     onClick={() => handleClick(index)}
-                                    className="bg-gray-400 h-32 w-32 rounded-xl cursor-pointer flex justify-center items-center">
+                                    className="bg-gray-400 h-28 md:h-32 w-28 md:w-32 rounded-xl cursor-pointer flex justify-center items-center">
                                     {value === 'X' ? <IoCloseSharp size={130}/> : (value === 'O' ? <FaRegCircle size={100}/> : "")}
                                 </div>
                             )
                         })}
                     </div>
-                    <span className={`text-3xl font-bold ${moveNumber % 2 !== 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 2</span>
+                    <span className={`text-3xl font-bold m-5 ${moveNumber % 2 !== 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 2</span>
                 </div>
             </div>
         </div>

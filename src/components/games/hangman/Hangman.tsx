@@ -55,8 +55,7 @@ const Hangman = ({isPlayed, handleClick1} : Props) => {
         setGuessedLetters([]);
     }
     return (
-        <div className="">
-            <div className="bg-gray-200 shadow-2xl rounded-3xl m-5 md:m-28 p-3 relative group">
+            <div className="bg-gray-200 shadow-2xl rounded-3xl m-5 md:ml-28 md:mr-28 p-3 relative group">
                 <div
                     className={`${isWinner || isLoser ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
                     <div className="font-bold text-6xl">
@@ -85,7 +84,6 @@ const Hangman = ({isPlayed, handleClick1} : Props) => {
                     <Keyboard addGuessedLetter={addGuessedLetter} guessedLetters={guessedLetters}/>
                 </div>
             </div>
-        </div>
     )
 }
 
