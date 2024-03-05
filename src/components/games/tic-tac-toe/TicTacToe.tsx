@@ -1,5 +1,5 @@
 import {IoCloseSharp} from "react-icons/io5";
-import {useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {FaRegCircle} from "react-icons/fa";
 import {VscDebugRestart} from "react-icons/vsc";
 
@@ -10,21 +10,29 @@ const TicTacToe = ({handleClick1} : Props) => {
 
     const [moveNumber, setMoveNumber] = useState(0);
     const [data, setData] = useState(["", "", "", "", "", "", "", "", ""]);
-    const handleClick = (index: number = -1) => {
+    const [player1Score, setPlayer1Score] = useState(0);
+    const [player2Score, setPlayer2Score] = useState(0);
+
+    const handleClick = (index: number) => {
         if (!data[index]) {
             const newData = [...data];
             newData[index] = moveNumber % 2 === 0 ? 'O' : 'X';
             setData(newData);
             setMoveNumber(moveNumber+1);
         }
-        if (checkWinner() || moveNumber > 8) {
-            const newData = ["", "", "", "", "", "", "", "", ""];
-            setData(newData);
-            setMoveNumber(0);
-        }
     }
-    
-    const checkWinner = () => {
+
+    const restart = () => {
+        const newData = ["", "", "", "", "", "", "", "", ""];
+        setData(newData);
+        setMoveNumber(0);
+    }
+    const restartScore = () => {
+        setPlayer1Score(0);
+        setPlayer2Score(0);
+    }
+
+    const checkWinner = useCallback(() => {
         const winningCombos = [
             // Rows
             [0, 1, 2],
@@ -47,11 +55,21 @@ const TicTacToe = ({handleClick1} : Props) => {
         }
 
         return null;
-    };
+    }, [data]);
+
+    useEffect(() => {
+        const winner = checkWinner();
+        if (winner) {
+            if (winner === 'O') {
+                setPlayer1Score(prevScore => prevScore + 1);
+            } else {
+                setPlayer2Score(prevScore => prevScore + 1);
+            }
+        }
+    }, [checkWinner, data]);
 
     return (
-        <div className="h-screen">
-            <div className="bg-gray-200 shadow-2xl rounded-3xl m-5 md:m-28 relative group">
+            <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 relative group">
                 <div
                     className={`${checkWinner() || moveNumber > 8 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
                     {moveNumber > 8 ? (
@@ -61,7 +79,7 @@ const TicTacToe = ({handleClick1} : Props) => {
                     )}
 
                     <div className="flex justify-center items-center">
-                        <button onClick={() => handleClick()} className="m-5 bg-gray-400 rounded-lg p-2">
+                        <button onClick={restart} className="m-5 bg-gray-400 rounded-lg p-2">
                             <VscDebugRestart size={30}/>
                         </button>
                         <button onClick={handleClick1} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">
@@ -70,14 +88,22 @@ const TicTacToe = ({handleClick1} : Props) => {
                     </div>
                 </div>
                 <a className="flex justify-center items-center">
+                    <p onClick={() => {
+                        restart();
+                        restartScore();
+                    }}
+                       className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
+                        <VscDebugRestart size={23}/>
+                    </p>
                     <p onClick={handleClick1}
                        className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
                         <IoCloseSharp size={30}/>
                     </p>
                 </a>
                 <h1 className="text-3xl font-bold text-center m-5">Tic Tac Toe</h1>
+                <h2 className="text-xl font-bold text-center">Score: {player1Score} : {player2Score}</h2>
                 <div className="flex flex-col lg:flex-row justify-evenly items-center">
-                    <span className={`text-3xl font-bold m-5 ${moveNumber % 2 === 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 1</span>
+                <span className={`text-3xl font-bold m-5 ${moveNumber % 2 === 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 1</span>
                     <div className="grid grid-cols-3 gap-2 lg:m-5">
                         {data.map((value, index) => {
                             return (
@@ -93,7 +119,6 @@ const TicTacToe = ({handleClick1} : Props) => {
                     <span className={`text-3xl font-bold m-5 ${moveNumber % 2 !== 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 2</span>
                 </div>
             </div>
-        </div>
     )
 }
 

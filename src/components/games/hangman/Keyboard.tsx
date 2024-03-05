@@ -43,7 +43,7 @@ const Keyboard = ({addGuessedLetter, guessedLetters} : Props) => {
                 return (
                     <button
                         key={index}
-                        className={`${isActive ? "bg-gray-500" : "bg-gray-300 hover:bg-gray-400 active:bg-gray-500"} rounded-2xl m-1 p-1 md:m-3 md:p-2`}
+                        className={`${isActive ? "bg-gray-500" : "bg-gray-300 hover:bg-gray-400 active:bg-gray-500"} rounded-xl m-[1px] p-1 lg:m-3 lg:p-2`}
                         onClick={() => addGuessedLetter(key)}
                         disabled = {isActive}
                     >
