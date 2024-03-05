@@ -1,7 +1,6 @@
 import {IoCloseSharp} from "react-icons/io5";
 import {VscDebugRestart} from "react-icons/vsc";
-import {FaRegCircle} from "react-icons/fa";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 interface Props {
     handleClick1: () => void;
@@ -9,17 +8,67 @@ interface Props {
 
 const Puzzle = ({handleClick1} : Props) => {
 
-    const [data, setData] = useState(["", "", "", "", "", "", "", "", ""]);
-    setData(["", "", "", "", "", "", "", "", ""])
+    const [data, setData] = useState(shuffleArray(["", "1", "2", "3", "4", "5", "6", "7", "8"]));
+    const [rerender, setRerender] = useState(false);
 
+
+    const swapElements = (index1: number, index2: number) => {
+        const newArray = [...data]; // Create a shallow copy of the original array
+        [newArray[index1], newArray[index2]] = [newArray[index2], newArray[index1]];
+        return newArray; // Return the new array with swapped elements
+    };
+
+    function shuffleArray(array: string[]) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    const handleShuffle = () => {
+        const shuffledData = shuffleArray(data);
+        setData(shuffledData);
+        setRerender(!rerender);
+    };
+    const switchPossibilities = [
+        [1, 3],
+        [0, 2, 4],
+        [1, 5],
+
+        [0, 4, 6],
+        [1, 3, 5, 7],
+        [2, 4, 8],
+
+        [3, 7],
+        [4, 6, 8],
+        [5, 7]
+    ];
+
+    const handleSwitch = (index: number) => {
+        for (const switchPossibilityElement of switchPossibilities[index]) {
+            if (data[switchPossibilityElement] === "") {
+                setData(swapElements(index, switchPossibilityElement));
+            }
+        }
+    };
+
+    const checkWinner = () => {
+        if (data.every((value, index) => value === ["", "1", "2", "3", "4", "5", "6", "7", "8"][index])) {
+            return true;
+        }
+    }
+
+    useEffect(() => {
+    }, [data, rerender]);
 
     return (
         <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 relative group">
             <div
-                className={`hidden duration-500 bg-white/90 rounded-3xl flex-col justify-center items-center absolute inset-0 z-[100]`}>
-
+                className={`${checkWinner() ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
+                <span className="text-6xl font-bold">Winner</span>
                 <div className="flex justify-center items-center">
-                    <button className="m-5 bg-gray-400 rounded-lg p-2">
+                    <button onClick={handleShuffle} className="m-5 bg-gray-400 rounded-lg p-2">
                         <VscDebugRestart size={30}/>
                     </button>
                     <button onClick={handleClick1} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">
@@ -28,7 +77,7 @@ const Puzzle = ({handleClick1} : Props) => {
                 </div>
             </div>
             <a className="flex justify-center items-center">
-                <p
+                <p onClick={handleShuffle}
                    className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
                     <VscDebugRestart size={23}/>
                 </p>
@@ -44,9 +93,9 @@ const Puzzle = ({handleClick1} : Props) => {
                         return (
                             <div
                                 key={index}
+                                onClick={() => handleSwitch(index)}
                                 className="bg-gray-400 border-2 border-black h-28 md:h-32 w-28 md:w-32 rounded-xl cursor-pointer flex justify-center items-center">
-                                {value === 'X' ? <IoCloseSharp size={130}/> : (value === 'O' ? <FaRegCircle size={100}/> : "")}
-                                {index !== 0 && index}
+                                <span className={`transform ${value ? "opacity-100" : "opacity-0"} bg-gray-300 rounded-xl p-10 duration-300`}>{value}</span>
                             </div>
                         )
                     })}
