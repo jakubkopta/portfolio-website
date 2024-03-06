@@ -19,12 +19,10 @@ const Puzzle = ({handleClick1} : Props) => {
     };
 
     function shuffleArray(array: string[]) {
+
         for (let i = array.length - 1; i > 0; i--) {
-            let j;
-            do {
-                j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            } while (i !== j);
+            const j = Math.floor(Math.random() * i);
+            [array[i], array[j]] = [array[j], array[i]];
         }
 
         return array;
