@@ -70,15 +70,18 @@ const Hangman = ({isPlayed, handleClick1} : Props) => {
                         <button onClick={handleClick1} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">Exit</button>
                     </div>
                 </div>
-                <div className="h-2/3">
+                <div>
                     <a className="flex justify-center items-center">
-                        <p onClick={handleClick} className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
+                        <p onClick={handleClick}
+                           className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
                             <VscDebugRestart size={23}/>
                         </p>
-                        <p onClick={handleClick1} className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
+                        <p onClick={handleClick1}
+                           className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
                             <IoCloseSharp size={30}/>
                         </p>
                     </a>
+                    <h1 className="text-4xl font-bold text-center m-5">Hangman</h1>
                     <HangmanDrawing numberOfGuesses={incorrectLetters.length}/>
                     <HangmanWord word={word.toUpperCase()} guessedLetters={guessedLetters}/>
                     <Keyboard addGuessedLetter={addGuessedLetter} guessedLetters={guessedLetters}/>

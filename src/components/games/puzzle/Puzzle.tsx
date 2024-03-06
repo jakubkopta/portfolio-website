@@ -78,15 +78,15 @@ const Puzzle = ({handleClick1} : Props) => {
             </div>
             <a className="flex justify-center items-center">
                 <p onClick={handleShuffle}
-                   className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
-                    <VscDebugRestart size={23}/>
+                   className="cursor-pointer absolute top-3 right-10 hover:scale-110 duration-300">
+                    <span className="bg-gray-400 rounded-2xl p-2">Shuffle</span>
                 </p>
                 <p onClick={handleClick1}
                    className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
                     <IoCloseSharp size={30}/>
                 </p>
             </a>
-            <h1 className="text-3xl font-bold text-center m-5">Puzzle</h1>
+            <h1 className="text-4xl font-bold text-center m-5">Puzzle</h1>
             <div className="flex flex-col lg:flex-row justify-evenly items-center">
                 <div className="grid grid-cols-3 lg:m-5">
                     {data.map((value, index) => {
@@ -95,7 +95,10 @@ const Puzzle = ({handleClick1} : Props) => {
                                 key={index}
                                 onClick={() => handleSwitch(index)}
                                 className="bg-gray-400 border-2 border-black h-28 md:h-32 w-28 md:w-32 rounded-xl cursor-pointer flex justify-center items-center">
-                                <span className={`transform ${value ? "opacity-100" : "opacity-0"} bg-gray-300 rounded-xl p-10 duration-300`}>{value}</span>
+                                <span className={`transform ${value ? "opacity-100" : "opacity-0"} flex justify-center items-center
+                                bg-gray-300 rounded-xl h-[90%] w-[90%] duration-300 text-2xl font-bold`}>{
+                                    value}
+                                </span>
                             </div>
                         )
                     })}
