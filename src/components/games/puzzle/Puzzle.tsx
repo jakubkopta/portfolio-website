@@ -11,18 +11,22 @@ const Puzzle = ({handleClick1} : Props) => {
     const [data, setData] = useState(shuffleArray(["", "1", "2", "3", "4", "5", "6", "7", "8"]));
     const [rerender, setRerender] = useState(false);
 
-
     const swapElements = (index1: number, index2: number) => {
-        const newArray = [...data]; // Create a shallow copy of the original array
+        const newArray = [...data];
         [newArray[index1], newArray[index2]] = [newArray[index2], newArray[index1]];
-        return newArray; // Return the new array with swapped elements
+
+        return newArray;
     };
 
     function shuffleArray(array: string[]) {
         for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+            let j;
+            do {
+                j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            } while (i !== j);
         }
+
         return array;
     }
 
