@@ -6,6 +6,7 @@ import Interests from "./components/interests/Interests.tsx";
 import Contact from "./components/contact/Contact.tsx";
 import Experience from "./components/experience/Experience.tsx";
 import {useState} from "react";
+import Games from "./components/games/Games.tsx";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
                 <Home toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
                 <Experience/>
                 <Projects/>
+                <Games/>
                 <Interests/>
             </div>
             <div>

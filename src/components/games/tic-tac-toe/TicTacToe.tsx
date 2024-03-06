@@ -12,6 +12,7 @@ const TicTacToe = ({handleClick1} : Props) => {
     const [data, setData] = useState(["", "", "", "", "", "", "", "", ""]);
     const [player1Score, setPlayer1Score] = useState(0);
     const [player2Score, setPlayer2Score] = useState(0);
+    const[winnerLine, setWinnerLine] = useState(-1);
 
     const handleClick = (index: number) => {
         if (!data[index]) {
@@ -26,6 +27,7 @@ const TicTacToe = ({handleClick1} : Props) => {
         const newData = ["", "", "", "", "", "", "", "", ""];
         setData(newData);
         setMoveNumber(0);
+        setWinnerLine(-1);
     }
     const restartScore = () => {
         setPlayer1Score(0);
@@ -47,10 +49,11 @@ const TicTacToe = ({handleClick1} : Props) => {
             [2, 4, 6]
         ];
 
-        for (const combo of winningCombos) {
+        for (let i = 0; i < winningCombos.length; i++) {
+            const combo = winningCombos[i];
             const [a, b, c] = combo;
             if (data[a] && data[a] === data[b] && data[a] === data[c]) {
-                return data[a];
+                return { winner: data[a], index: i };
             }
         }
 
@@ -58,8 +61,11 @@ const TicTacToe = ({handleClick1} : Props) => {
     }, [data]);
 
     useEffect(() => {
-        const winner = checkWinner();
-        if (winner) {
+        const winner = checkWinner()?.winner;
+        const index = checkWinner()?.index;
+
+        if (winner && index !== undefined) {
+            setWinnerLine(index);
             if (winner === 'O') {
                 setPlayer1Score(prevScore => prevScore + 1);
             } else {
@@ -71,11 +77,14 @@ const TicTacToe = ({handleClick1} : Props) => {
     return (
             <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 relative group">
                 <div
-                    className={`${checkWinner() || moveNumber > 8 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
+                    className={`${checkWinner()?.winner || moveNumber > 8 ? "scale-100 opacity-100 delay-500" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
                     {moveNumber > 8 ? (
                         <span className="text-6xl font-bold">Draw</span>
                     ) : (
-                        <span className="text-6xl font-bold">Winner is {checkWinner()}</span>
+                        <div className="flex flex-col justify-center items-center">
+                            <span className="text-6xl font-bold text-pink-500 animate-bounce">{checkWinner()?.winner === "X" ? <IoCloseSharp size={130} className="text-pink-500"/> : <FaRegCircle size={100} className="text-blue-500"/>}</span>
+                            <span className="text-6xl font-bold">{checkWinner()?.winner === "O" ? "Player 1" : "Player 2"} Win!</span>
+                        </div>
                     )}
 
                     <div className="flex justify-center items-center">
@@ -100,23 +109,35 @@ const TicTacToe = ({handleClick1} : Props) => {
                         <IoCloseSharp size={30}/>
                     </p>
                 </a>
-                <h1 className="text-3xl font-bold text-center m-5">Tic Tac Toe</h1>
+                <h1 className="text-4xl font-bold text-center m-5">Tic Tac Toe</h1>
                 <h2 className="text-xl font-bold text-center">Score: {player1Score} : {player2Score}</h2>
                 <div className="flex flex-col lg:flex-row justify-evenly items-center">
-                <span className={`text-3xl font-bold m-5 ${moveNumber % 2 === 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 1</span>
-                    <div className="grid grid-cols-3 gap-2 lg:m-5">
+                    <span className={`text-3xl font-bold m-5 ${moveNumber % 2 === 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 1</span>
+                    <div className="grid grid-cols-3 gap-2 lg:m-5 relative">
+                        <div className={`${winnerLine === 0 ? "w-full" : "w-0"} absolute top-[52px] md:top-[60px] h-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 1 ? "w-full" : "w-0"} absolute top-[172px] md:top-[196px] h-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 2 ? "w-full" : "w-0"} absolute bottom-[52px] md:bottom-[60px] h-[8px] bg-gray-950 duration-500`}></div>
+
+                        <div className={`${winnerLine === 3 ? "h-full" : "h-0"} absolute left-[52px] w-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 4 ? "h-full" : "h-0"} absolute left-[172px] md:left-[196px] w-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 5 ? "h-full" : "h-0"} absolute right-[52px] md:right-[60px] w-[8px] bg-gray-950 duration-500`}></div>
+
+                        <div className={`${winnerLine === 6 ? "w-[489px]" : "w-0"} absolute top-0 left-[6px] h-[8px] bg-gray-950 rotate-45 origin-top-left rounded-2xl duration-500`}></div>
+                        <div className={`${winnerLine === 7 ? "w-[489px]" : "w-0"} absolute top-0 right-[6px] h-[8px] bg-gray-950 -rotate-45 origin-top-right rounded-2xl duration-500`}></div>
+
                         {data.map((value, index) => {
                             return (
                                 <div
                                     key={index}
                                     onClick={() => handleClick(index)}
                                     className="bg-gray-400 h-28 md:h-32 w-28 md:w-32 rounded-xl cursor-pointer flex justify-center items-center">
-                                    {value === 'X' ? <IoCloseSharp size={130}/> : (value === 'O' ? <FaRegCircle size={100}/> : "")}
+                                    {value === 'X' ? <IoCloseSharp size={130} className="text-pink-500"/> : (value === 'O' ? <FaRegCircle size={100} className="text-blue-500"/> : "")}
                                 </div>
                             )
                         })}
                     </div>
-                    <span className={`text-3xl font-bold m-5 ${moveNumber % 2 !== 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 2</span>
+                    <span
+                        className={`text-3xl font-bold m-5 ${moveNumber % 2 !== 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 2</span>
                 </div>
             </div>
     )
