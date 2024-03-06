@@ -15,10 +15,15 @@ const Games = () => {
     }
 
     return (
-        <div className="min-h-screen relative">
-            <div className="grid gap-12 ml-10 mr-10 md:ml-28 md:mr-28 lg:grid-cols-3 slide-left">
+        <div id="Games" className="relative min-h-screen">
+            <h1 className="text-6xl text-center font-bold p-10">Games</h1>
+            <p className="text-center text-2xl m-10 md:mt-10 md:m-28 md:mb-0">
+                In my spare time, I also love to develop mini-games for fun. Let's play some of them!
+            </p>
+            <div className="grid gap-12 m-10 md:m-28 md:mt-10 lg:grid-cols-3 slide-left">
                 {gameData.map((item, index) => (
-                    <Game key={index} name={item.name} imagePath={item.imagePath} handleClick1={handleClick1} setGamePlayed={setGamePlayed}/>
+                    <Game key={index} name={item.name} imagePath={item.imagePath} handleClick1={handleClick1}
+                          setGamePlayed={setGamePlayed}/>
                 ))}
             </div>
             <div className={`fixed top-10 md:top-0 ${isPlayed ? "scale-100" : "scale-0"} duration-300 w-full z-[100]`}>

@@ -5,6 +5,7 @@ import {
     AiOutlineHome,
     AiOutlineMail
 } from "react-icons/ai";
+import {IoGameControllerOutline} from "react-icons/io5";
 
 const navBarData = [
     {
@@ -18,6 +19,10 @@ const navBarData = [
     {
         name: "Projects",
         icon: <AiOutlineFundProjectionScreen/>
+    },
+    {
+        name: "Games",
+        icon: <IoGameControllerOutline />
     },
     {
         name: "Interests",
