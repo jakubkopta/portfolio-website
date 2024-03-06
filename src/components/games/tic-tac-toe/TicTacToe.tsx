@@ -114,16 +114,16 @@ const TicTacToe = ({handleClick1} : Props) => {
                 <div className="flex flex-col lg:flex-row justify-evenly items-center">
                     <span className={`text-3xl font-bold m-5 ${moveNumber % 2 === 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 1</span>
                     <div className="grid grid-cols-3 gap-2 lg:m-5 relative">
-                        <div className={`${winnerLine === 0 ? "w-full" : "w-0"} absolute top-[60px] h-[8px] bg-gray-950 duration-500`}></div>
-                        <div className={`${winnerLine === 1 ? "w-full" : "w-0"} absolute top-[196px] h-[8px] bg-gray-950 duration-500`}></div>
-                        <div className={`${winnerLine === 2 ? "w-full" : "w-0"} absolute bottom-[60px] h-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 0 ? "w-full" : "w-0"} absolute top-[52px] md:top-[60px] h-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 1 ? "w-full" : "w-0"} absolute top-[172px] md:top-[196px] h-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 2 ? "w-full" : "w-0"} absolute bottom-[52px] md:bottom-[60px] h-[8px] bg-gray-950 duration-500`}></div>
 
-                        <div className={`${winnerLine === 3 ? "h-full" : "h-0"} absolute left-[60px] w-[8px] bg-gray-950 duration-500`}></div>
-                        <div className={`${winnerLine === 4 ? "h-full" : "h-0"} absolute left-[196px] w-[8px] bg-gray-950 duration-500`}></div>
-                        <div className={`${winnerLine === 5 ? "h-full" : "h-0"} absolute right-[60px] w-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 3 ? "h-full" : "h-0"} absolute left-[52px] w-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 4 ? "h-full" : "h-0"} absolute left-[172px] md:left-[196px] w-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 5 ? "h-full" : "h-0"} absolute right-[52px] md:right-[60px] w-[8px] bg-gray-950 duration-500`}></div>
 
-                        <div className={`${winnerLine === 6 ? "w-[556px]" : "w-0"} absolute top-0 left-[6px] h-[8px] bg-gray-950 rotate-45 origin-top-left rounded-2xl duration-500`}></div>
-                        <div className={`${winnerLine === 7 ? "w-[556px]" : "w-0"} absolute top-0 right-[6px] h-[8px] bg-gray-950 -rotate-45 origin-top-right rounded-2xl duration-500`}></div>
+                        <div className={`${winnerLine === 6 ? "w-[489px]" : "w-0"} absolute top-0 left-[6px] h-[8px] bg-gray-950 rotate-45 origin-top-left rounded-2xl duration-500`}></div>
+                        <div className={`${winnerLine === 7 ? "w-[489px]" : "w-0"} absolute top-0 right-[6px] h-[8px] bg-gray-950 -rotate-45 origin-top-right rounded-2xl duration-500`}></div>
 
                         {data.map((value, index) => {
                             return (

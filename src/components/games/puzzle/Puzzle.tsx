@@ -63,7 +63,7 @@ const Puzzle = ({handleClick1} : Props) => {
     }, [data, rerender]);
 
     return (
-        <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 relative group">
+        <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 pb-10 relative group">
             <div
                 className={`${checkWinner() ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
                 <span className="text-6xl font-bold">Winner</span>
