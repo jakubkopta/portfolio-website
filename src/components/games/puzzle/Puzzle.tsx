@@ -39,6 +39,15 @@ const Puzzle = ({handleClick1} : Props) => {
         return array.filter((num, index) => num !== '' && parseInt(num) !== index).length;
     }
 
+    function hasIncreasingOrder(array: string[]) {
+        for (let i = 0; i < array.length - 1; i++) {
+            if (parseInt(array[i]) + 1 === parseInt(array[i + 1])) {
+                return true; // Returns true if increasing order is found
+            }
+        }
+        return false; // Returns false if no increasing order is found
+    }
+
     function shuffleArray(array: string[]) {
 
         const oldArray = [...array];
@@ -50,7 +59,10 @@ const Puzzle = ({handleClick1} : Props) => {
                 const randomNeighbour = neighbours[Math.floor(Math.random() * neighbours.length)];
                 [array[emptyIndex], array[randomNeighbour]] = [array[randomNeighbour], array[emptyIndex]];
             }
-        } while (array.join() === ["", "1", "2", "3", "4", "5", "6", "7", "8"].join() || array.join() === oldArray.join() || countMisplacedNumbers(array) < array.length/2);
+        } while (array.join() === ["", "1", "2", "3", "4", "5", "6", "7", "8"].join() ||
+        array.join() === oldArray.join() ||
+        countMisplacedNumbers(array) < array.length/2 ||
+        hasIncreasingOrder(array));
 
         return array;
     }
