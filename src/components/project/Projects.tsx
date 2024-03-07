@@ -14,7 +14,7 @@ const Projects = () => {
                 From building dynamic web applications with React to crafting robust backend systems with Java, I enjoy every aspect of the development process.
                 <br/>Feel free to explore the projects below.
             </p>
-            <div className="grid gap-12 m-10 md:m-28 md:mt-10 lg:grid-cols-3 slide-right">
+            <div className="grid gap-12 m-10 md:m-28 md:mt-10 lg:grid-cols-3">
                 {projectData.map((item, idx) => (
                     <Project key={idx} name={item.name} imagePath={item.imagePath} language={item.language} icon={item.icon} githubName={item.githubName}/>
                 ))}

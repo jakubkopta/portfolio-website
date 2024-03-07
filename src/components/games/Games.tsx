@@ -20,7 +20,7 @@ const Games = () => {
             <p className="text-center text-2xl m-10 md:mt-10 md:m-28 md:mb-0">
                 In my spare time, I also love to develop mini-games for fun. Let's play some of them!
             </p>
-            <div className="grid gap-12 m-10 md:m-28 md:mt-10 lg:grid-cols-3 slide-left">
+            <div className="grid gap-12 m-10 md:m-28 md:mt-10 lg:grid-cols-3">
                 {gameData.map((item, index) => (
                     <Game key={index} name={item.name} imagePath={item.imagePath} handleClick1={handleClick1}
                           setGamePlayed={setGamePlayed}/>

@@ -1,6 +1,7 @@
 import {IoCloseSharp, IoPlayOutline} from "react-icons/io5";
 import {VscDebugRestart} from "react-icons/vsc";
 import {useEffect, useState} from "react";
+import Timer from "./Timer.tsx";
 
 interface Props {
     handleClick1: () => void;
@@ -8,9 +9,10 @@ interface Props {
 
 const Puzzle = ({handleClick1} : Props) => {
 
-    const [data, setData] = useState(["", "1", "2",
-                                                                                    "3", "4", "5",
-                                                                                    "6", "7", "8"]);
+    const [data, setData] = useState(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+    const [stoppedTime, setStoppedTime] = useState("0");
+    const [highestScore, setHighestScore] = useState(stoppedTime);
+
     const [rerender, setRerender] = useState(false);
     const [isStarted, setIsStarted] = useState(false);
 
@@ -42,10 +44,10 @@ const Puzzle = ({handleClick1} : Props) => {
     function hasIncreasingOrder(array: string[]) {
         for (let i = 0; i < array.length - 1; i++) {
             if (parseInt(array[i]) + 1 === parseInt(array[i + 1])) {
-                return true; // Returns true if increasing order is found
+                return true;
             }
         }
-        return false; // Returns false if no increasing order is found
+        return false;
     }
 
     function shuffleArray(array: string[]) {
@@ -70,7 +72,7 @@ const Puzzle = ({handleClick1} : Props) => {
     const handleShuffle = () => {
         const shuffledData = shuffleArray(data);
         setData(shuffledData);
-        setIsStarted(true);
+        setIsStarted(false);
         setRerender(!rerender);
     };
 
@@ -92,37 +94,15 @@ const Puzzle = ({handleClick1} : Props) => {
     }, [data, rerender]);
 
     return (
-        <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 pb-10 relative group">
-            <div
-                className={`${checkWinner() && isStarted ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
-                <span className="text-6xl font-bold">Winner</span>
-                <div className="flex justify-center items-center">
-                    <button onClick={handleShuffle} className="m-5 bg-gray-400 rounded-lg p-2">
-                        <VscDebugRestart size={30}/>
-                    </button>
-                    <button onClick={handleClick1} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">
-                        Exit
-                    </button>
-                </div>
+        <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 pb-10 relative">
+            <div className="flex flex-col justify-center items-center">
+                <h1 className="text-4xl font-bold text-center m-5">Puzzle</h1>
+                <Timer isStarted={isStarted} checkWinner={checkWinner()} stoppedTime={stoppedTime} setStoppedTime={setStoppedTime} highestScore={highestScore} setHighestScore={setHighestScore}/>
             </div>
-            <a className="flex justify-center items-center">
-                <p onClick={handleShuffle}
-                   className={`${isStarted ? "top-3 right-10" : "flex justify-start items-start h-96 w-96 bg-white/60 top-[100px] right-1/2 translate-x-1/2 z-[100]"} 
-                   cursor-pointer absolute`}>
-                    <span className={`${isStarted ? "bg-gray-400 p-2" : "border-4 border-black p-6"} hover:scale-110 duration-300 rounded-xl m-[1px]`}>{isStarted ? "Shuffle" : <IoPlayOutline size={70}/>}</span>
-                </p>
-                <p onClick={() => {
-                    handleClick1();
-                    setIsStarted(false);
-                    setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
-                }}
-                   className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
-                    <IoCloseSharp size={30}/>
-                </p>
-            </a>
-            <h1 className="text-4xl font-bold text-center m-5">Puzzle</h1>
-            <div className="flex flex-col lg:flex-row justify-evenly items-center">
-                <div className="grid grid-cols-3 lg:m-5">
+                <h2 className="absolute top-3 left-3 text-center">Highest Score:<br/>{highestScore}</h2>
+
+            <div className="flex justify-evenly items-center">
+                <div className="grid grid-cols-3 m-5">
                     {data.map((value, index) => {
                         return (
                             <div
@@ -137,6 +117,55 @@ const Puzzle = ({handleClick1} : Props) => {
                         )
                     })}
                 </div>
+            </div>
+
+            <div
+                className={`${checkWinner() && isStarted ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center text-center absolute inset-0 z-[100]`}>
+                <span className="text-6xl font-bold p-3">Winner</span>
+                Your Time: {stoppedTime}
+                <br/>Highest Score: {highestScore}
+                <div className="flex justify-center items-center">
+                    <button onClick={() => {
+                        setIsStarted(false);
+                        setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+                    }} className="m-5 bg-gray-400 rounded-lg p-2">
+                        <VscDebugRestart size={30}/>
+                    </button>
+                    <button onClick={() => {
+                        handleClick1();
+                        setIsStarted(false);
+                        setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+                    }} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">
+                        Exit
+                    </button>
+                </div>
+            </div>
+            <div className="flex justify-center items-center">
+                <div className={`${isStarted ? "scale-0 opacity-0" : "scale-100 opacity-100"} duration-300 
+                   flex justify-start items-start size-[21rem] md:size-96 bg-white/60 top-[124px] right-1/2 translate-x-1/2 rounded-xl cursor-pointer absolute`}>
+                    <div onClick={() => {
+                        handleShuffle();
+                        setIsStarted(true);
+                    }}
+                         className={`flex justify-center items-center border-4 border-black size-28 md:size-32 duration-300 rounded-xl group`}>
+                        <p className="group-hover:scale-110"><IoPlayOutline size={70}/></p>
+                    </div>
+                </div>
+                <p onClick={() => {
+                    setIsStarted(false);
+                    setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+                }}
+                   className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
+                    <VscDebugRestart size={23}/>
+                </p>
+                <p onClick={() => {
+                    handleClick1();
+                    setIsStarted(false);
+                    setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+                }}
+                   className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
+                    <IoCloseSharp size={30}/>
+                </p>
             </div>
         </div>
     )
