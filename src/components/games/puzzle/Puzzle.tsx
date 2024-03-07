@@ -5,9 +5,10 @@ import Timer from "./Timer.tsx";
 
 interface Props {
     handleClick1: () => void;
+    isDarkMode: boolean;
 }
 
-const Puzzle = ({handleClick1} : Props) => {
+const Puzzle = ({handleClick1, isDarkMode} : Props) => {
 
     const [data, setData] = useState(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
     const [stoppedTime, setStoppedTime] = useState("0");
@@ -94,7 +95,7 @@ const Puzzle = ({handleClick1} : Props) => {
     }, [data, rerender]);
 
     return (
-        <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 pb-10 relative">
+        <div className={`${isDarkMode ? "bg-dark-mode" : "bg-gray-200"} shadow-2xl rounded-3xl m-1 mt-5 md:m-28 pb-10 relative`}>
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-4xl font-bold text-center m-5">Puzzle</h1>
                 <Timer isStarted={isStarted} checkWinner={checkWinner()} stoppedTime={stoppedTime} setStoppedTime={setStoppedTime} highestScore={highestScore} setHighestScore={setHighestScore}/>
@@ -109,9 +110,10 @@ const Puzzle = ({handleClick1} : Props) => {
                                 key={index}
                                 onClick={() => handleSwitch(index)}
                                 className="bg-gray-400 border-2 border-black h-28 md:h-32 w-28 md:w-32 rounded-xl cursor-pointer flex justify-center items-center">
-                                <span className={`transform ${value ? "opacity-100" : "opacity-0"} flex justify-center items-center
-                                bg-gray-300 rounded-xl h-[90%] w-[90%] duration-300 text-2xl font-bold`}>{
-                                    value}
+                                <span className={`transform ${value ? "opacity-100" : "opacity-0"} 
+                                text-dark-mode
+                                flex justify-center items-center
+                                bg-gray-300 rounded-xl h-[90%] w-[90%] duration-300 text-2xl font-bold`}>{value}
                                 </span>
                             </div>
                         )
@@ -120,7 +122,7 @@ const Puzzle = ({handleClick1} : Props) => {
             </div>
 
             <div
-                className={`${checkWinner() && isStarted ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center text-center absolute inset-0 z-[100]`}>
+                className={`${checkWinner() && isStarted ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 ${isDarkMode ? "bg-dark-mode/90" : "bg-gray-200/90"} rounded-3xl flex flex-col justify-center items-center text-center absolute inset-0 z-[100]`}>
                 <span className="text-6xl font-bold p-3">Winner</span>
                 Your Time: {stoppedTime}
                 <br/>Highest Score: {highestScore}
@@ -148,7 +150,7 @@ const Puzzle = ({handleClick1} : Props) => {
                         setIsStarted(true);
                     }}
                          className={`flex justify-center items-center border-4 border-black size-28 md:size-32 duration-300 rounded-xl group`}>
-                        <p className="group-hover:scale-110"><IoPlayOutline size={70}/></p>
+                        <p className="group-hover:scale-110 text-black"><IoPlayOutline size={70}/></p>
                     </div>
                 </div>
                 <p onClick={() => {

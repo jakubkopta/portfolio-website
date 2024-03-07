@@ -22,7 +22,7 @@ function App() {
                 <Home toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
                 <Experience/>
                 <Projects/>
-                <Games/>
+                <Games isDarkMode={isDarkMode}/>
                 <Interests/>
             </div>
             <div>

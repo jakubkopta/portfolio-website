@@ -5,8 +5,9 @@ import {VscDebugRestart} from "react-icons/vsc";
 
 interface Props {
     handleClick1: () => void;
+    isDarkMode: boolean;
 }
-const TicTacToe = ({handleClick1} : Props) => {
+const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
 
     const [moveNumber, setMoveNumber] = useState(0);
     const [data, setData] = useState(["", "", "", "", "", "", "", "", ""]);
@@ -75,9 +76,9 @@ const TicTacToe = ({handleClick1} : Props) => {
     }, [checkWinner, data]);
 
     return (
-            <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 relative group">
+            <div className={`${isDarkMode ? "bg-dark-mode" : "bg-gray-200"} shadow-2xl rounded-3xl m-1 mt-5 md:m-28 relative group`}>
                 <div
-                    className={`${checkWinner()?.winner || moveNumber > 8 ? "scale-100 opacity-100 delay-500" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
+                    className={`${checkWinner()?.winner || moveNumber > 8 ? "scale-100 opacity-100 delay-500" : "scale-0 opacity-0"} duration-500 ${isDarkMode ? "bg-dark-mode/90" : "bg-gray-200/90"} rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
                     {moveNumber > 8 ? (
                         <span className="text-6xl font-bold">Draw</span>
                     ) : (

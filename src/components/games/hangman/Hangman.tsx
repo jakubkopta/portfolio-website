@@ -9,9 +9,10 @@ import {IoCloseSharp} from "react-icons/io5";
 interface Props {
     isPlayed: boolean;
     handleClick1: () => void;
+    isDarkMode: boolean;
 }
 
-const Hangman = ({isPlayed, handleClick1} : Props) => {
+const Hangman = ({isPlayed, handleClick1, isDarkMode} : Props) => {
 
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
     const [word, setWord] = useState(generate() as string);
@@ -55,9 +56,9 @@ const Hangman = ({isPlayed, handleClick1} : Props) => {
         setGuessedLetters([]);
     }
     return (
-            <div className="bg-gray-200 shadow-2xl rounded-3xl m-5 md:ml-28 md:mr-28 p-3 relative group">
+            <div className={`${isDarkMode ? "bg-dark-mode" : "bg-gray-200"} shadow-2xl rounded-3xl m-5 md:ml-28 md:mr-28 p-3 relative group`}>
                 <div
-                    className={`${isWinner || isLoser ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
+                    className={`${isWinner || isLoser ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 ${isDarkMode ? "bg-dark-mode/90" : "bg-gray-200/90"} rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
                     <div className="font-bold text-6xl">
                         {isWinner && "Winner!"}
                         {isLoser && "Game Over"}
