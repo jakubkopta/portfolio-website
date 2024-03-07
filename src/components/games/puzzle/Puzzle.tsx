@@ -1,4 +1,4 @@
-import {IoCloseSharp} from "react-icons/io5";
+import {IoCloseSharp, IoPlayOutline} from "react-icons/io5";
 import {VscDebugRestart} from "react-icons/vsc";
 import {useEffect, useState} from "react";
 
@@ -8,8 +8,9 @@ interface Props {
 
 const Puzzle = ({handleClick1} : Props) => {
 
-    const [data, setData] = useState(shuffleArray(["", "1", "2", "3", "4", "5", "6", "7", "8"]));
+    const [data, setData] = useState(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
     const [rerender, setRerender] = useState(false);
+    const [isStarted, setIsStarted] = useState(false);
 
     const swapElements = (index1: number, index2: number) => {
         const newArray = [...data];
@@ -31,6 +32,7 @@ const Puzzle = ({handleClick1} : Props) => {
     const handleShuffle = () => {
         const shuffledData = shuffleArray(data);
         setData(shuffledData);
+        setIsStarted(true);
         setRerender(!rerender);
     };
     const switchPossibilities = [
@@ -67,7 +69,7 @@ const Puzzle = ({handleClick1} : Props) => {
     return (
         <div className="bg-gray-200 shadow-2xl rounded-3xl m-1 mt-5 md:m-28 pb-10 relative group">
             <div
-                className={`${checkWinner() ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
+                className={`${checkWinner() && isStarted ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-white/90 rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
                 <span className="text-6xl font-bold">Winner</span>
                 <div className="flex justify-center items-center">
                     <button onClick={handleShuffle} className="m-5 bg-gray-400 rounded-lg p-2">
@@ -80,10 +82,15 @@ const Puzzle = ({handleClick1} : Props) => {
             </div>
             <a className="flex justify-center items-center">
                 <p onClick={handleShuffle}
-                   className="cursor-pointer absolute top-3 right-10 hover:scale-110 duration-300">
-                    <span className="bg-gray-400 rounded-2xl p-2">Shuffle</span>
+                   className={`${isStarted ? "top-3 right-10" : "flex justify-start items-start h-96 w-96 bg-white/60 top-[100px] right-1/2 translate-x-1/2 z-[100]"} 
+                   cursor-pointer absolute`}>
+                    <span className={`${isStarted ? "bg-gray-400 p-2" : "border-4 border-black p-6"} hover:scale-110 duration-300 rounded-xl m-[1px]`}>{isStarted ? "Shuffle" : <IoPlayOutline size={70}/>}</span>
                 </p>
-                <p onClick={handleClick1}
+                <p onClick={() => {
+                    handleClick1();
+                    setIsStarted(false);
+                    setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+                }}
                    className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
                     <IoCloseSharp size={30}/>
                 </p>
