@@ -8,33 +8,12 @@ interface Props {
 
 const Puzzle = ({handleClick1} : Props) => {
 
-    const [data, setData] = useState(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+    const [data, setData] = useState(["", "1", "2",
+                                                                                    "3", "4", "5",
+                                                                                    "6", "7", "8"]);
     const [rerender, setRerender] = useState(false);
     const [isStarted, setIsStarted] = useState(false);
 
-    const swapElements = (index1: number, index2: number) => {
-        const newArray = [...data];
-        [newArray[index1], newArray[index2]] = [newArray[index2], newArray[index1]];
-
-        return newArray;
-    };
-
-    function shuffleArray(array: string[]) {
-
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * i);
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-
-        return array;
-    }
-
-    const handleShuffle = () => {
-        const shuffledData = shuffleArray(data);
-        setData(shuffledData);
-        setIsStarted(true);
-        setRerender(!rerender);
-    };
     const switchPossibilities = [
         [1, 3],
         [0, 2, 4],
@@ -48,6 +27,40 @@ const Puzzle = ({handleClick1} : Props) => {
         [4, 6, 8],
         [5, 7]
     ];
+
+    const swapElements = (index1: number, index2: number) => {
+        const newArray = [...data];
+        [newArray[index1], newArray[index2]] = [newArray[index2], newArray[index1]];
+
+        return newArray;
+    };
+
+    function countMisplacedNumbers(array: string[]) {
+        return array.filter((num, index) => num !== '' && parseInt(num) !== index).length;
+    }
+
+    function shuffleArray(array: string[]) {
+
+        const oldArray = [...array];
+
+        do {
+            for (let i = 0; i < array.length; i++) {
+                const emptyIndex = array.indexOf('');
+                const neighbours = switchPossibilities[emptyIndex];
+                const randomNeighbour = neighbours[Math.floor(Math.random() * neighbours.length)];
+                [array[emptyIndex], array[randomNeighbour]] = [array[randomNeighbour], array[emptyIndex]];
+            }
+        } while (array.join() === ["", "1", "2", "3", "4", "5", "6", "7", "8"].join() || array.join() === oldArray.join() || countMisplacedNumbers(array) < array.length/2);
+
+        return array;
+    }
+
+    const handleShuffle = () => {
+        const shuffledData = shuffleArray(data);
+        setData(shuffledData);
+        setIsStarted(true);
+        setRerender(!rerender);
+    };
 
     const handleSwitch = (index: number) => {
         for (const switchPossibilityElement of switchPossibilities[index]) {
