@@ -119,12 +119,12 @@ const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
                         <div className={`${winnerLine === 1 ? "w-full" : "w-0"} absolute top-[172px] md:top-[196px] h-[8px] bg-gray-950 duration-500`}></div>
                         <div className={`${winnerLine === 2 ? "w-full" : "w-0"} absolute bottom-[52px] md:bottom-[60px] h-[8px] bg-gray-950 duration-500`}></div>
 
-                        <div className={`${winnerLine === 3 ? "h-full" : "h-0"} absolute left-[52px] w-[8px] bg-gray-950 duration-500`}></div>
+                        <div className={`${winnerLine === 3 ? "h-full" : "h-0"} absolute left-[52px] md:left-[60px] w-[8px] bg-gray-950 duration-500`}></div>
                         <div className={`${winnerLine === 4 ? "h-full" : "h-0"} absolute left-[172px] md:left-[196px] w-[8px] bg-gray-950 duration-500`}></div>
                         <div className={`${winnerLine === 5 ? "h-full" : "h-0"} absolute right-[52px] md:right-[60px] w-[8px] bg-gray-950 duration-500`}></div>
 
-                        <div className={`${winnerLine === 6 ? "w-[489px]" : "w-0"} absolute top-0 left-[6px] h-[8px] bg-gray-950 rotate-45 origin-top-left rounded-2xl duration-500`}></div>
-                        <div className={`${winnerLine === 7 ? "w-[489px]" : "w-0"} absolute top-0 right-[6px] h-[8px] bg-gray-950 -rotate-45 origin-top-right rounded-2xl duration-500`}></div>
+                        <div className={`${winnerLine === 6 ? "w-[489px] md:w-[557px]" : "w-0"} absolute top-0 left-[6px] h-[8px] bg-gray-950 rotate-45 origin-top-left rounded-2xl duration-500`}></div>
+                        <div className={`${winnerLine === 7 ? "w-[489px] md:w-[557px]" : "w-0"} absolute top-0 right-[6px] h-[8px] bg-gray-950 -rotate-45 origin-top-right rounded-2xl duration-500`}></div>
 
                         {data.map((value, index) => {
                             return (
