@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {EChartsOption} from "echarts";
 import Chart from "./Chart.tsx";
+import {FaArrowDown, FaArrowUp} from "react-icons/fa";
 
 type LanguageData = {
     [key: string]: number;
@@ -9,34 +10,57 @@ type LanguageData = {
 const UsedLanguages = () => {
 
     const [languagesData, setLanguagesData] = useState<LanguageData | null>(null);
+    const [isClicked, setIsClicked] = useState(false);
     const [option, setOption] = useState<EChartsOption>({
-        xAxis: {
-            type: 'category',
-            data: []
+        title: {
+            text: 'Languages I use',
+            subtext: 'Data from GitHub',
+            left: 'center',
+            top: '5%'
         },
-        yAxis: {
-            type: 'value'
+        legend: {
+            top: '5%',
+            orient: 'vertical',
+            left: 'left'
         },
         series: [
             {
-                data: [],
-                type: 'bar'
+                data: []
             }
         ]
     });
 
     useEffect(() => {
         if (languagesData) {
+            const newData = Object.entries(languagesData).map(([name, value]) => ({
+                value,
+                name
+            }));
+
             setOption(prevOption => ({
                 ...prevOption,
-                xAxis: {
-                    ...prevOption.xAxis,
-                    data: Object.keys(languagesData)
-                },
                 series: [
                     {
-                        data: Object.values(languagesData),
-                        type: 'bar'
+                        type: 'pie',
+                        left: 'center',
+                        radius: ['80%', '150%'],
+                        avoidLabelOverlap: false,
+                        padAngle: 3,
+                        itemStyle: {
+                            borderRadius: 10
+                        },
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                fontSize: 40,
+                                fontWeight: 'bold'
+                            }
+                        },
+                        data: [...newData]
                     }
                 ]
             }));
@@ -64,17 +88,15 @@ const UsedLanguages = () => {
                         `https://api.github.com/repos/jakubkopta/${projectName}/languages`,
                         {
                             headers: {
-                                Authorization: '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',
+                                Authorization: import.meta.env.REACT_APP_GITHUB_TOKEN
                             },
                         }
                     );
                     const data = await response.json();
                     Object.keys(data).forEach(language => {
-                        // If the language exists in the aggregated data, add the count
                         if (aggregatedData[language]) {
                             aggregatedData[language] += data[language];
                         } else {
-                            // Otherwise, initialize the count
                             aggregatedData[language] = data[language];
                         }
                     });
@@ -91,10 +113,23 @@ const UsedLanguages = () => {
         });
     }, []);
 
+    const handleClick = () => {
+        setIsClicked(!isClicked);
+    }
 
     return (
-        <div className="flex justify-center items-center">
-            <Chart option={option}/>
+        <div>
+            <div className="relative h-10">
+                <div onClick={handleClick} className="flex justify-center items-center cursor-pointer mt-5 group">
+                    <div className="bg-gray-400 p-3 m-5 rounded-2xl absolute -top-4 z-[99]">Languages chart</div>
+                    <div className="h-6 w-10 bg-gray-400 rounded-b-2xl absolute top-10 z-[99] flex justify-center items-center group-hover:scale-110">
+                        {isClicked ? <FaArrowUp size={20}/> : <FaArrowDown size={20}/>}
+                    </div>
+                </div>
+            </div>
+            <div className={`flex justify-center items-center ${isClicked ? "h-[700px]" : "h-0"} ease-in-out duration-500`}>
+                {isClicked && <Chart option={option}/>}
+            </div>
         </div>
     )
 }
