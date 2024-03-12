@@ -9,6 +9,7 @@ interface Props {
 }
 const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
 
+    const [player1Started, setPlayer1Started] = useState(true);
     const [moveNumber, setMoveNumber] = useState(0);
     const [data, setData] = useState(["", "", "", "", "", "", "", "", ""]);
     const [player1Score, setPlayer1Score] = useState(0);
@@ -16,7 +17,7 @@ const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
     const[winnerLine, setWinnerLine] = useState(-1);
 
     const handleClick = (index: number) => {
-        if (!data[index]) {
+        if (!data[index] && !checkWinner()?.winner) {
             const newData = [...data];
             newData[index] = moveNumber % 2 === 0 ? 'O' : 'X';
             setData(newData);
@@ -28,6 +29,7 @@ const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
         const newData = ["", "", "", "", "", "", "", "", ""];
         setData(newData);
         setMoveNumber(0);
+        setPlayer1Started(!player1Started);
         setWinnerLine(-1);
     }
     const restartScore = () => {
@@ -67,24 +69,24 @@ const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
 
         if (winner && index !== undefined) {
             setWinnerLine(index);
-            if (winner === 'O') {
+            if ((winner === 'O' && player1Started) || (winner === 'X' && !player1Started)) {
                 setPlayer1Score(prevScore => prevScore + 1);
             } else {
                 setPlayer2Score(prevScore => prevScore + 1);
             }
         }
-    }, [checkWinner, data]);
+    }, [checkWinner, data, player1Started]);
 
     return (
             <div className={`${isDarkMode ? "bg-dark-mode" : "bg-gray-200"} shadow-2xl rounded-3xl m-1 mt-5 md:m-28 relative group`}>
                 <div
                     className={`${checkWinner()?.winner || moveNumber > 8 ? "scale-100 opacity-100 delay-500" : "scale-0 opacity-0"} duration-500 ${isDarkMode ? "bg-dark-mode/90" : "bg-gray-200/90"} rounded-3xl flex flex-col justify-center items-center absolute inset-0 z-[100]`}>
-                    {moveNumber > 8 ? (
+                    {moveNumber > 8 && !checkWinner()?.winner ? (
                         <span className="text-6xl font-bold">Draw</span>
                     ) : (
                         <div className="flex flex-col justify-center items-center">
                             <span className="text-6xl font-bold text-pink-500 animate-bounce">{checkWinner()?.winner === "X" ? <IoCloseSharp size={130} className="text-pink-500"/> : <FaRegCircle size={100} className="text-blue-500"/>}</span>
-                            <span className="text-6xl font-bold">{checkWinner()?.winner === "O" ? "Player 1" : "Player 2"} Win!</span>
+                            <span className="text-6xl font-bold">{(checkWinner()?.winner === 'O' && player1Started) || (checkWinner()?.winner === 'X' && !player1Started) ? "Player 1" : "Player 2"} Win!</span>
                         </div>
                     )}
 
@@ -111,9 +113,14 @@ const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
                     </p>
                 </a>
                 <h1 className="text-4xl font-bold text-center m-5">Tic Tac Toe</h1>
-                <h2 className="text-xl font-bold text-center">Score: {player1Score} : {player2Score}</h2>
+                <h2 className="flex justify-center gap-16 md:gap-20 text-xl font-bold text-center">Player 1<span className="font-extrabold text-2xl">{player1Score} : {player2Score}</span>   Player 2</h2>
                 <div className="flex flex-col lg:flex-row justify-evenly items-center">
-                    <span className={`text-3xl font-bold m-5 ${moveNumber % 2 === 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 1</span>
+                    <div className={`flex lg:flex-col justify-center items-center 
+                        ${!player1Started ? (moveNumber % 2 !== 0 && !checkWinner()?.winner ? "scale-100 opacity-100" : "scale-0 opacity-0") 
+                        : (moveNumber % 2 === 0 && !checkWinner()?.winner ? "scale-100 opacity-100" : "scale-0 opacity-0")} duration-300`}>
+                        {!player1Started ? <IoCloseSharp size={100} className="text-pink-500"/> : <FaRegCircle size={100} className="p-4 text-blue-500"/>}
+                        <span className="text-3xl font-bold">Player 1</span>
+                    </div>
                     <div className="grid grid-cols-3 gap-2 lg:m-5 relative">
                         <div className={`${winnerLine === 0 ? "w-full" : "w-0"} absolute top-[52px] md:top-[60px] h-[8px] bg-gray-950 duration-500`}></div>
                         <div className={`${winnerLine === 1 ? "w-full" : "w-0"} absolute top-[172px] md:top-[196px] h-[8px] bg-gray-950 duration-500`}></div>
@@ -132,13 +139,17 @@ const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
                                     key={index}
                                     onClick={() => handleClick(index)}
                                     className="bg-gray-400 h-28 md:h-32 w-28 md:w-32 rounded-xl cursor-pointer flex justify-center items-center">
-                                    {value === 'X' ? <IoCloseSharp size={130} className="text-pink-500"/> : (value === 'O' ? <FaRegCircle size={100} className="text-blue-500"/> : "")}
+                                    {value === 'X' ? <IoCloseSharp size={130} className="text-pink-500"/> : (value === 'O' ? <FaRegCircle size={130} className="p-4 text-blue-500"/> : "")}
                                 </div>
                             )
                         })}
                     </div>
-                    <span
-                        className={`text-3xl font-bold m-5 ${moveNumber % 2 !== 0 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-300`}>Player 2</span>
+                    <div className={`flex lg:flex-col justify-center items-center 
+                        ${player1Started ? (moveNumber % 2 !== 0 && !checkWinner()?.winner ? "scale-100 opacity-100" : "scale-0 opacity-0") 
+                        : (moveNumber % 2 === 0 && !checkWinner()?.winner ? "scale-100 opacity-100" : "scale-0 opacity-0")} duration-300`}>
+                        {player1Started ? <IoCloseSharp size={100} className="text-pink-500"/> : <FaRegCircle size={100} className="p-4 text-blue-500"/>}
+                        <span className="text-3xl font-bold">Player 2</span>
+                    </div>
                 </div>
             </div>
     )
