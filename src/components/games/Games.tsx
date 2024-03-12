@@ -4,6 +4,7 @@ import {gameData} from "./GamesData.tsx";
 import Game from "./Game.tsx";
 import TicTacToe from "./tic-tac-toe/TicTacToe.tsx";
 import Puzzle from "./puzzle/Puzzle.tsx";
+import Memory from "./memory/Memory.tsx";
 
 interface Props {
     isDarkMode: boolean;
@@ -33,6 +34,7 @@ const Games = ({isDarkMode}:Props) => {
                 {gamePlayed === "Hangman" && <Hangman isDarkMode={isDarkMode} isPlayed={isPlayed} handleClick1={handleClick1}/>}
                 {gamePlayed === "Tic-Tac-Toe" && <TicTacToe isDarkMode={isDarkMode} handleClick1={handleClick1}/>}
                 {gamePlayed === "Puzzle" && <Puzzle isDarkMode={isDarkMode} handleClick1={handleClick1}/>}
+                {gamePlayed === "Memory" && <Memory isDarkMode={isDarkMode} handleClick1={handleClick1}/>}
             </div>
         </div>
     )
