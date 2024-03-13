@@ -75,7 +75,7 @@ const Memory = ({handlePlayClose, isDarkMode} : Props) => {
             className={`${isDarkMode ? "bg-dark-mode" : "bg-gray-200"} shadow-2xl rounded-3xl md:mt-10 md:ml-28 md:mr-28 relative group`}>
             <h1 className="text-4xl font-bold text-center p-5 m-5">Memory</h1>
             <div className="flex flex-col lg:flex-row justify-evenly items-center">
-                <div className={`grid ${difficultyLevel > 8 ? "grid-cols-4 md:grid-cols-6" : "grid-cols-4"} gap-2 m-10 relative`}>
+                <div className={`grid ${difficultyLevel > 8 ? "grid-cols-4 md:grid-cols-6" : "grid-cols-4"} gap-2 mb-10 relative`}>
                     {data.map((value, index) => {
                         return (
                             <div
