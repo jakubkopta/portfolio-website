@@ -1,14 +1,15 @@
-import {useState} from "react";
-import Hangman from "./hangman/Hangman.tsx";
+import React, {Suspense, useState} from "react";
 import {gameData} from "./GamesData.tsx";
 import Game from "./Game.tsx";
-import TicTacToe from "./tic-tac-toe/TicTacToe.tsx";
-import Puzzle from "./puzzle/Puzzle.tsx";
-import Memory from "./memory/Memory.tsx";
 
 interface Props {
     isDarkMode: boolean;
 }
+
+const Hangman = React.lazy(() => import("./hangman/Hangman.tsx"));
+const TicTacToe = React.lazy(() => import("./tic-tac-toe/TicTacToe.tsx"));
+const Puzzle = React.lazy(() => import("./puzzle/Puzzle.tsx"));
+const Memory = React.lazy(() => import("./memory/Memory.tsx"));
 
 const Games = ({isDarkMode}:Props) => {
 
@@ -30,12 +31,14 @@ const Games = ({isDarkMode}:Props) => {
                           setGamePlayed={setGamePlayed}/>
                 ))}
             </div>
-            <div className={`fixed top-10 md:top-0 ${isPlayed ? "scale-100" : "scale-0"} duration-300 w-full z-[100]`}>
-                {gamePlayed === "Hangman" && <Hangman isDarkMode={isDarkMode} isPlayed={isPlayed} handlePlayClose={handlePlayClose}/>}
-                {gamePlayed === "Tic-Tac-Toe" && <TicTacToe isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
-                {gamePlayed === "Puzzle" && <Puzzle isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
-                {gamePlayed === "Memory" && <Memory isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
-            </div>
+            <Suspense fallback={<div>Loading...</div>}>
+                <div className={`fixed top-10 md:top-0 ${isPlayed ? "scale-100" : "scale-0"} duration-300 w-full z-[100]`}>
+                    {gamePlayed === "Hangman" && <Hangman isDarkMode={isDarkMode} isPlayed={isPlayed} handlePlayClose={handlePlayClose}/>}
+                    {gamePlayed === "Tic-Tac-Toe" && <TicTacToe isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
+                    {gamePlayed === "Puzzle" && <Puzzle isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
+                    {gamePlayed === "Memory" && <Memory isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
+                </div>
+            </Suspense>
         </div>
     )
 }

@@ -49,6 +49,10 @@ const footerNavBarData = [
         link: "#Projects"
     },
     {
+        name: "Games",
+        link: "#Games"
+    },
+    {
         name: "Interests",
         link: "#Interests"
     }
