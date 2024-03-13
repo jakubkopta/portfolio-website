@@ -3,10 +3,10 @@ import {IoCloseSharp} from "react-icons/io5";
 import {VscDebugRestart} from "react-icons/vsc";
 
 interface Props {
-    handleClick1: () => void;
+    handlePlayClose: () => void;
     isDarkMode: boolean;
 }
-const Memory = ({handleClick1, isDarkMode} : Props) => {
+const Memory = ({handlePlayClose, isDarkMode} : Props) => {
 
     const [data, setData] = useState(["1", "1", "2", "2", "3", "3", "4", "4", "5", "5", "6", "6", "7", "7", "8", "8"]);
     const [isClicked, setIsClicked] = useState([false, false, false, false, false, false, false, false, false, false, false, false]);
@@ -77,7 +77,7 @@ const Memory = ({handleClick1, isDarkMode} : Props) => {
                    className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
                     <VscDebugRestart size={23}/>
                 </p>
-                <p onClick={handleClick1}
+                <p onClick={handlePlayClose}
                    className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
                     <IoCloseSharp size={30}/>
                 </p>

@@ -4,10 +4,10 @@ import {FaRegCircle} from "react-icons/fa";
 import {VscDebugRestart} from "react-icons/vsc";
 
 interface Props {
-    handleClick1: () => void;
+    handlePlayClose: () => void;
     isDarkMode: boolean;
 }
-const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
+const TicTacToe = ({handlePlayClose, isDarkMode} : Props) => {
 
     const [player1Started, setPlayer1Started] = useState(true);
     const [moveNumber, setMoveNumber] = useState(0);
@@ -94,7 +94,7 @@ const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
                         <button onClick={restart} className="m-5 bg-gray-400 rounded-lg p-2">
                             <VscDebugRestart size={30}/>
                         </button>
-                        <button onClick={handleClick1} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">
+                        <button onClick={handlePlayClose} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">
                             Exit
                         </button>
                     </div>
@@ -107,7 +107,7 @@ const TicTacToe = ({handleClick1, isDarkMode} : Props) => {
                        className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
                         <VscDebugRestart size={23}/>
                     </p>
-                    <p onClick={handleClick1}
+                    <p onClick={handlePlayClose}
                        className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
                         <IoCloseSharp size={30}/>
                     </p>

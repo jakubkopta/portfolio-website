@@ -4,11 +4,11 @@ import {useEffect, useState} from "react";
 import Timer from "./Timer.tsx";
 
 interface Props {
-    handleClick1: () => void;
+    handlePlayClose: () => void;
     isDarkMode: boolean;
 }
 
-const Puzzle = ({handleClick1, isDarkMode} : Props) => {
+const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
 
     const [data, setData] = useState(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
     const [stoppedTime, setStoppedTime] = useState("0");
@@ -134,7 +134,7 @@ const Puzzle = ({handleClick1, isDarkMode} : Props) => {
                         <VscDebugRestart size={30}/>
                     </button>
                     <button onClick={() => {
-                        handleClick1();
+                        handlePlayClose();
                         setIsStarted(false);
                         setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
                     }} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">
@@ -161,7 +161,7 @@ const Puzzle = ({handleClick1, isDarkMode} : Props) => {
                     <VscDebugRestart size={23}/>
                 </p>
                 <p onClick={() => {
-                    handleClick1();
+                    handlePlayClose();
                     setIsStarted(false);
                     setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
                 }}

@@ -3,16 +3,16 @@ import {CiPlay1} from "react-icons/ci";
 interface Props {
     name: string;
     imagePath: string;
-    handleClick1: () => void;
+    handlePlayClose: () => void;
     setGamePlayed: (name: string) => void;
 }
 
 
-const Game = ({name, imagePath, handleClick1, setGamePlayed} : Props) => {
+const Game = ({name, imagePath, handlePlayClose, setGamePlayed} : Props) => {
 
     const handleClick = () => {
         setGamePlayed(name);
-        handleClick1();
+        handlePlayClose();
     }
 
     return (
