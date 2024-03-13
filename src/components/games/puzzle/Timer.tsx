@@ -27,7 +27,7 @@ const Timer = ({isStarted, checkWinner,stoppedTime, setStoppedTime, highestScore
         const start = () => {
             if (!isRunning) {
                 const startTime = Date.now() - time;
-                intervalRef.current = setInterval(() => {
+                intervalRef.current = window.setInterval(() => {
                     setTime(Date.now() - startTime);
                 }, 10);
                 setIsRunning(true);
