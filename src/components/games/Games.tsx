@@ -31,14 +31,14 @@ const Games = ({isDarkMode}:Props) => {
                           setGamePlayed={setGamePlayed}/>
                 ))}
             </div>
-            <Suspense fallback={<div>Loading...</div>}>
-                <div className={`fixed top-10 md:top-0 ${isPlayed ? "scale-100" : "scale-0"} duration-300 w-full z-[100]`}>
+            <div className={`fixed top-10 md:top-0 ${isPlayed ? "scale-100" : "scale-0"} duration-300 w-full z-[100]`}>
+                <Suspense fallback={<div>Loading...</div>}>
                     {gamePlayed === "Hangman" && <Hangman isDarkMode={isDarkMode} isPlayed={isPlayed} handlePlayClose={handlePlayClose}/>}
                     {gamePlayed === "Tic-Tac-Toe" && <TicTacToe isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
                     {gamePlayed === "Puzzle" && <Puzzle isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
                     {gamePlayed === "Memory" && <Memory isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
-                </div>
-            </Suspense>
+                </Suspense>
+            </div>
         </div>
     )
 }
