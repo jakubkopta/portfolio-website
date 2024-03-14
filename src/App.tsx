@@ -22,7 +22,7 @@ function App() {
         <>
             <div className={`${isDarkMode ? "bg-dark-mode text-slate-200" : "bg-slate-200 text-gray-800"}`}>
                 <Home toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode}/>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div className="flex justify-center">Loading...</div>}>
                     <Experience/>
                     <Projects/>
                     <Games isDarkMode={isDarkMode}/>
@@ -30,10 +30,10 @@ function App() {
                 </Suspense>
             </div>
             <div>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div className="flex justify-center">Loading...</div>}>
                     <Contact/>
-                    <NavBar isDarkMode={isDarkMode}/>
                 </Suspense>
+                <NavBar isDarkMode={isDarkMode}/>
             </div>
         </>
     )
