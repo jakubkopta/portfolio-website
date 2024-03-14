@@ -1,6 +1,7 @@
 import React, {Suspense, useState} from "react";
 import {gameData} from "./GamesData.tsx";
 import Game from "./Game.tsx";
+import {PacmanLoader} from "react-spinners";
 
 interface Props {
     isDarkMode: boolean;
@@ -32,7 +33,7 @@ const Games = ({isDarkMode}:Props) => {
                 ))}
             </div>
             <div className={`fixed top-10 md:top-0 ${isPlayed ? "scale-100" : "scale-0"} duration-300 w-full z-[100]`}>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div className="flex justify-center items-center h-screen"><PacmanLoader size={50} color="#8A00FF" /></div>}>
                     {gamePlayed === "Hangman" && <Hangman isDarkMode={isDarkMode} isPlayed={isPlayed} handlePlayClose={handlePlayClose}/>}
                     {gamePlayed === "Tic-Tac-Toe" && <TicTacToe isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
                     {gamePlayed === "Puzzle" && <Puzzle isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
