@@ -1,6 +1,20 @@
-import {useEffect, useState} from "react";
+import {ReactElement, useEffect, useState} from "react";
 import {IoCloseSharp} from "react-icons/io5";
 import {VscDebugRestart} from "react-icons/vsc";
+import {
+    FcAlarmClock,
+    FcFilmReel,
+    FcHome,
+    FcIdea,
+    FcKey,
+    FcLibrary,
+    FcLike,
+    FcLikePlaceholder,
+    FcOldTimeCamera,
+    FcPuzzle,
+    FcSearch,
+    FcVlc
+} from "react-icons/fc";
 
 interface Props {
     handlePlayClose: () => void;
@@ -8,23 +22,42 @@ interface Props {
 }
 const Memory = ({handlePlayClose, isDarkMode} : Props) => {
 
-    const [data, setData] = useState<string[]>([]);
-    const [isClicked, setIsClicked] = useState([false, false, false, false, false, false, false, false, false, false, false, false]);
+    const [data, setData] = useState<ReactElement[]>([]);
+    const [isClicked, setIsClicked] = useState<boolean[]>([]);
     const [checkMatch, setCheckMatch] = useState(false);
     const [isReady, setIsReady] = useState(true);
-    const [prevCard, setPrevCard] = useState("");
+    const [prevCard, setPrevCard] = useState<ReactElement>();
     const [prevCardIndex, setPrevCardIndex] = useState(0);
     const [isStarted, setIsStarted] = useState(false);
     const [difficultyLevel, setDifficultyLevel] = useState(6);
+    const [icons, setIcons] = useState([
+        <FcFilmReel size={50}/>,
+        <FcVlc size={50}/>,
+        <FcLike size={50}/>,
+        <FcHome size={50}/>,
+        <FcIdea size={50}/>,
+        <FcKey size={50}/>,
+        <FcLikePlaceholder size={50}/>,
+        <FcSearch size={50}/>,
+        <FcAlarmClock size={50}/>,
+        <FcPuzzle size={50}/>,
+        <FcLibrary size={50}/>,
+        <FcOldTimeCamera size={50}/>
+    ]);
 
     useEffect(() => {
+
         const newData = [];
-        for (let i = 1; i <= difficultyLevel; i++) {
-            newData.push(i.toString());
-            newData.push(i.toString());
+        const newIsClicked = [];
+        for (let i = 0; i < difficultyLevel; i++) {
+            newData.push(icons[i]);
+            newData.push(icons[i]);
+            newIsClicked.push(false);
+            newIsClicked.push(false);
         }
         setData(newData);
-    }, [difficultyLevel]);
+        setIsClicked(newIsClicked);
+    }, [difficultyLevel, icons]);
 
     const handleClick = (index: number) => {
         if (isReady && !isClicked[index]) {
@@ -52,7 +85,7 @@ const Memory = ({handlePlayClose, isDarkMode} : Props) => {
         }
     }
 
-    const shuffleArray = (array: string[]) => {
+    const shuffleArray = (array: ReactElement[]) => {
         const newArray = [...array];
         for (let i = newArray.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -89,7 +122,7 @@ const Memory = ({handlePlayClose, isDarkMode} : Props) => {
                 </div>
             </div>
             <div className={`${isStarted ? "scale-0 opacity-0" : "scale-100 opacity-100"} duration-300 
-                   flex flex-col justify-center items-center size-full bg-white/60 absolute top-0 rounded-3xl`}>
+                   flex flex-col justify-center items-center size-full ${isDarkMode ? "bg-dark-mode/60" : "bg-gray-200/60"} absolute top-0 rounded-3xl`}>
                 <button onClick={() => {
                     handleShuffle();
                     setIsStarted(true);
@@ -98,14 +131,17 @@ const Memory = ({handlePlayClose, isDarkMode} : Props) => {
                 <div className="flex justify-center items-center m-3 gap-2">
                     <button onClick={() => {
                         setDifficultyLevel(6);
+                        setIcons(shuffleArray(icons));
                     }} className="bg-yellow-300 p-2 rounded-xl hover:scale-110 duration-300">Easy
                     </button>
                     <button onClick={() => {
                         setDifficultyLevel(8);
+                        setIcons(shuffleArray(icons));
                     }} className="bg-orange-300 p-2 rounded-xl hover:scale-110 duration-300">Medium
                     </button>
                     <button onClick={() => {
                         setDifficultyLevel(12);
+                        setIcons(shuffleArray(icons));
                     }} className="bg-red-400 p-2 rounded-xl hover:scale-110 duration-300">Hard
                     </button>
                 </div>
@@ -118,6 +154,7 @@ const Memory = ({handlePlayClose, isDarkMode} : Props) => {
                         setIsStarted(false);
                         setIsClicked([false, false, false, false, false, false, false, false, false, false, false, false]);
                         handleShuffle();
+                        setIcons(shuffleArray(icons));
                     }} className="m-5 bg-gray-400 rounded-lg p-2">
                         <VscDebugRestart size={30}/>
                     </button>
@@ -132,6 +169,7 @@ const Memory = ({handlePlayClose, isDarkMode} : Props) => {
             <a className="flex justify-center items-center">
                 <p onClick={() => {
                     handleShuffle();
+                    setIcons(shuffleArray(icons));
                     setIsStarted(false);
                 }}
                    className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
