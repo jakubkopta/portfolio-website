@@ -10,7 +10,16 @@ interface Props {
 
 const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
 
-    const [data, setData] = useState(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+    const [data, setData] = useState([
+        "",
+        "./images/puzzle/image_part_001.png",
+        "./images/puzzle/image_part_002.png",
+        "./images/puzzle/image_part_003.png",
+        "./images/puzzle/image_part_004.png",
+        "./images/puzzle/image_part_005.png",
+        "./images/puzzle/image_part_006.png",
+        "./images/puzzle/image_part_007.png",
+        "./images/puzzle/image_part_008.png"]);
     const [stoppedTime, setStoppedTime] = useState("0");
     const [highestScore, setHighestScore] = useState(stoppedTime);
 
@@ -38,13 +47,20 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
         return newArray;
     };
 
+    function extractNumberFromPath(path: string): number {
+        const parts = path.split('/');
+        const fileName = parts[parts.length - 1];
+        const numStr = fileName.replace(/\D/g, '');
+        return parseInt(numStr);
+    }
+
     function countMisplacedNumbers(array: string[]) {
-        return array.filter((num, index) => num !== '' && parseInt(num) !== index).length;
+        return array.filter((num, index) => num !== '' && extractNumberFromPath(num) !== index).length;
     }
 
     function hasIncreasingOrder(array: string[]) {
         for (let i = 0; i < array.length - 1; i++) {
-            if (parseInt(array[i]) + 1 === parseInt(array[i + 1])) {
+            if (extractNumberFromPath(array[i]) + 1 === extractNumberFromPath(array[i + 1])) {
                 return true;
             }
         }
@@ -62,7 +78,16 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                 const randomNeighbour = neighbours[Math.floor(Math.random() * neighbours.length)];
                 [array[emptyIndex], array[randomNeighbour]] = [array[randomNeighbour], array[emptyIndex]];
             }
-        } while (array.join() === ["", "1", "2", "3", "4", "5", "6", "7", "8"].join() ||
+        } while (array.join() === [
+            "",
+            "./images/puzzle/image_part_001.png",
+            "./images/puzzle/image_part_002.png",
+            "./images/puzzle/image_part_003.png",
+            "./images/puzzle/image_part_004.png",
+            "./images/puzzle/image_part_005.png",
+            "./images/puzzle/image_part_006.png",
+            "./images/puzzle/image_part_007.png",
+            "./images/puzzle/image_part_008.png"].join() ||
         array.join() === oldArray.join() ||
         countMisplacedNumbers(array) < array.length/2 ||
         hasIncreasingOrder(array));
@@ -86,7 +111,16 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
     };
 
     const checkWinner = () => {
-        if (data.every((value, index) => value === ["", "1", "2", "3", "4", "5", "6", "7", "8"][index])) {
+        if (data.every((value, index) => value === [
+            "",
+            "./images/puzzle/image_part_001.png",
+            "./images/puzzle/image_part_002.png",
+            "./images/puzzle/image_part_003.png",
+            "./images/puzzle/image_part_004.png",
+            "./images/puzzle/image_part_005.png",
+            "./images/puzzle/image_part_006.png",
+            "./images/puzzle/image_part_007.png",
+            "./images/puzzle/image_part_008.png"][index])) {
             return true;
         }
     }
@@ -109,12 +143,10 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                             <div
                                 key={index}
                                 onClick={() => handleSwitch(index)}
-                                className="bg-gray-400 border-2 border-black h-28 md:h-32 w-28 md:w-32 rounded-xl cursor-pointer flex justify-center items-center">
-                                <span className={`transform ${value ? "opacity-100" : "opacity-0"} 
-                                text-dark-mode
-                                flex justify-center items-center
-                                bg-gray-300 rounded-xl h-[90%] w-[90%] duration-300 text-2xl font-bold`}>{value}
-                                </span>
+                                className="bg-gray-400 border-2 border-black h-28 md:h-32 w-28 md:w-32 rounded-xl cursor-pointer flex justify-center items-center overflow-hidden">
+                                <div className={`transform ${value ? "opacity-100" : "opacity-0"} duration-300`}>
+                                    <img src={value} alt="puzzle piece"/>
+                                </div>
                             </div>
                         )
                     })}
@@ -129,14 +161,32 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                 <div className="flex justify-center items-center">
                     <button onClick={() => {
                         setIsStarted(false);
-                        setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+                        setData([
+                            "",
+                            "./images/puzzle/image_part_001.png",
+                            "./images/puzzle/image_part_002.png",
+                            "./images/puzzle/image_part_003.png",
+                            "./images/puzzle/image_part_004.png",
+                            "./images/puzzle/image_part_005.png",
+                            "./images/puzzle/image_part_006.png",
+                            "./images/puzzle/image_part_007.png",
+                            "./images/puzzle/image_part_008.png"]);
                     }} className="m-5 bg-gray-400 rounded-lg p-2">
                         <VscDebugRestart size={30}/>
                     </button>
                     <button onClick={() => {
                         handlePlayClose();
                         setIsStarted(false);
-                        setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+                        setData([
+                            "",
+                            "./images/puzzle/image_part_001.png",
+                            "./images/puzzle/image_part_002.png",
+                            "./images/puzzle/image_part_003.png",
+                            "./images/puzzle/image_part_004.png",
+                            "./images/puzzle/image_part_005.png",
+                            "./images/puzzle/image_part_006.png",
+                            "./images/puzzle/image_part_007.png",
+                            "./images/puzzle/image_part_008.png"]);
                     }} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">
                         Exit
                     </button>
@@ -155,7 +205,16 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                 </div>
                 <p onClick={() => {
                     setIsStarted(false);
-                    setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+                    setData([
+                        "",
+                        "./images/puzzle/image_part_001.png",
+                        "./images/puzzle/image_part_002.png",
+                        "./images/puzzle/image_part_003.png",
+                        "./images/puzzle/image_part_004.png",
+                        "./images/puzzle/image_part_005.png",
+                        "./images/puzzle/image_part_006.png",
+                        "./images/puzzle/image_part_007.png",
+                        "./images/puzzle/image_part_008.png"]);
                 }}
                    className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
                     <VscDebugRestart size={23}/>
@@ -163,7 +222,16 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                 <p onClick={() => {
                     handlePlayClose();
                     setIsStarted(false);
-                    setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
+                    setData([
+                        "",
+                        "./images/puzzle/image_part_001.png",
+                        "./images/puzzle/image_part_002.png",
+                        "./images/puzzle/image_part_003.png",
+                        "./images/puzzle/image_part_004.png",
+                        "./images/puzzle/image_part_005.png",
+                        "./images/puzzle/image_part_006.png",
+                        "./images/puzzle/image_part_007.png",
+                        "./images/puzzle/image_part_008.png"]);
                 }}
                    className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
                     <IoCloseSharp size={30}/>
