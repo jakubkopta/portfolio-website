@@ -10,19 +10,9 @@ interface Props {
 
 const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
 
-    const [data, setData] = useState([
-        "",
-        "./images/puzzle/image_part_001.png",
-        "./images/puzzle/image_part_002.png",
-        "./images/puzzle/image_part_003.png",
-        "./images/puzzle/image_part_004.png",
-        "./images/puzzle/image_part_005.png",
-        "./images/puzzle/image_part_006.png",
-        "./images/puzzle/image_part_007.png",
-        "./images/puzzle/image_part_008.png"]);
+    const [data, setData] = useState(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
     const [stoppedTime, setStoppedTime] = useState("0");
     const [highestScore, setHighestScore] = useState(stoppedTime);
-
     const [rerender, setRerender] = useState(false);
     const [isStarted, setIsStarted] = useState(false);
 
@@ -47,20 +37,13 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
         return newArray;
     };
 
-    function extractNumberFromPath(path: string): number {
-        const parts = path.split('/');
-        const fileName = parts[parts.length - 1];
-        const numStr = fileName.replace(/\D/g, '');
-        return parseInt(numStr);
-    }
-
     function countMisplacedNumbers(array: string[]) {
-        return array.filter((num, index) => num !== '' && extractNumberFromPath(num) !== index).length;
+        return array.filter((num, index) => num !== '' && parseInt(num) !== index).length;
     }
 
     function hasIncreasingOrder(array: string[]) {
         for (let i = 0; i < array.length - 1; i++) {
-            if (extractNumberFromPath(array[i]) + 1 === extractNumberFromPath(array[i + 1])) {
+            if (parseInt(array[i]) + 1 === parseInt(array[i + 1])) {
                 return true;
             }
         }
@@ -78,16 +61,7 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                 const randomNeighbour = neighbours[Math.floor(Math.random() * neighbours.length)];
                 [array[emptyIndex], array[randomNeighbour]] = [array[randomNeighbour], array[emptyIndex]];
             }
-        } while (array.join() === [
-            "",
-            "./images/puzzle/image_part_001.png",
-            "./images/puzzle/image_part_002.png",
-            "./images/puzzle/image_part_003.png",
-            "./images/puzzle/image_part_004.png",
-            "./images/puzzle/image_part_005.png",
-            "./images/puzzle/image_part_006.png",
-            "./images/puzzle/image_part_007.png",
-            "./images/puzzle/image_part_008.png"].join() ||
+        } while (array.join() === ["", "1", "2", "3", "4", "5", "6", "7", "8"].join() ||
         array.join() === oldArray.join() ||
         countMisplacedNumbers(array) < array.length/2 ||
         hasIncreasingOrder(array));
@@ -111,16 +85,7 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
     };
 
     const checkWinner = () => {
-        if (data.every((value, index) => value === [
-            "",
-            "./images/puzzle/image_part_001.png",
-            "./images/puzzle/image_part_002.png",
-            "./images/puzzle/image_part_003.png",
-            "./images/puzzle/image_part_004.png",
-            "./images/puzzle/image_part_005.png",
-            "./images/puzzle/image_part_006.png",
-            "./images/puzzle/image_part_007.png",
-            "./images/puzzle/image_part_008.png"][index])) {
+        if (data.every((value, index) => value === ["", "1", "2", "3", "4", "5", "6", "7", "8"][index])) {
             return true;
         }
     }
@@ -132,24 +97,23 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
         <div className={`${isDarkMode ? "bg-dark-mode" : "bg-gray-200"} shadow-2xl rounded-3xl m-1 mt-5 md:m-28 pb-10 relative`}>
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-4xl font-bold text-center m-5">Puzzle</h1>
-                <Timer isStarted={isStarted} checkWinner={checkWinner()} stoppedTime={stoppedTime} setStoppedTime={setStoppedTime} highestScore={highestScore} setHighestScore={setHighestScore}/>
+                <Timer isStarted={isStarted} checkWinner={checkWinner()} stoppedTime={stoppedTime}
+                       setStoppedTime={setStoppedTime} highestScore={highestScore} setHighestScore={setHighestScore}/>
             </div>
-                <h2 className="absolute top-3 left-3 text-center">Highest Score:<br/>{highestScore}</h2>
+            <h2 className="absolute top-3 left-3 text-center">Highest Score:<br/>{highestScore}</h2>
 
             <div className="flex justify-evenly items-center">
                 <div className="grid grid-cols-3 m-5">
-                    {data.map((value, index) => {
+                {data.map((value, index) => {
                         return (
                             <div
                                 key={index}
-                                onClick={() => handleSwitch(index)}
-                                className="bg-gray-400 border-2 border-black h-28 md:h-32 w-28 md:w-32 rounded-xl cursor-pointer flex justify-center items-center overflow-hidden">
-                                <div className={`transform ${value ? "opacity-100" : "opacity-0"} duration-300`}>
-                                    <img src={value} alt="puzzle piece"/>
-                                </div>
+                                onClick={() => {handleSwitch(index); console.log(index)}}
+                                className="bg-gray-400 h-28 md:h-32 w-28 md:w-32 rounded-lg cursor-pointer flex justify-center items-center overflow-hidden">
+                                <div className={`puzzle-piece puzzle-piece-${value} ${value === "" && "hidden"} duration-300`}></div>
                             </div>
                         )
-                    })}
+                })}
                 </div>
             </div>
 
@@ -161,32 +125,14 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                 <div className="flex justify-center items-center">
                     <button onClick={() => {
                         setIsStarted(false);
-                        setData([
-                            "",
-                            "./images/puzzle/image_part_001.png",
-                            "./images/puzzle/image_part_002.png",
-                            "./images/puzzle/image_part_003.png",
-                            "./images/puzzle/image_part_004.png",
-                            "./images/puzzle/image_part_005.png",
-                            "./images/puzzle/image_part_006.png",
-                            "./images/puzzle/image_part_007.png",
-                            "./images/puzzle/image_part_008.png"]);
+                        setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
                     }} className="m-5 bg-gray-400 rounded-lg p-2">
                         <VscDebugRestart size={30}/>
                     </button>
                     <button onClick={() => {
                         handlePlayClose();
                         setIsStarted(false);
-                        setData([
-                            "",
-                            "./images/puzzle/image_part_001.png",
-                            "./images/puzzle/image_part_002.png",
-                            "./images/puzzle/image_part_003.png",
-                            "./images/puzzle/image_part_004.png",
-                            "./images/puzzle/image_part_005.png",
-                            "./images/puzzle/image_part_006.png",
-                            "./images/puzzle/image_part_007.png",
-                            "./images/puzzle/image_part_008.png"]);
+                        setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
                     }} className="font-bold text-3xl bg-gray-400 rounded-lg p-2">
                         Exit
                     </button>
@@ -194,27 +140,18 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
             </div>
             <div className="flex justify-center items-center">
                 <div className={`${isStarted ? "scale-0 opacity-0" : "scale-100 opacity-100"} duration-300 
-                   flex justify-start items-start size-[21rem] md:size-96 bg-white/60 top-[124px] right-1/2 translate-x-1/2 rounded-xl cursor-pointer absolute`}>
+                   flex justify-start items-start size-[21rem] md:size-96 bg-white/60 top-[124px] right-1/2 translate-x-1/2 rounded-lg cursor-pointer absolute`}>
                     <div onClick={() => {
                         handleShuffle();
                         setIsStarted(true);
                     }}
-                         className={`flex justify-center items-center border-4 border-black size-28 md:size-32 duration-300 rounded-xl group`}>
+                         className={`flex justify-center items-center border-4 border-black size-28 md:size-32 duration-300 rounded-lg group`}>
                         <p className="group-hover:scale-110 text-black"><IoPlayOutline size={70}/></p>
                     </div>
                 </div>
                 <p onClick={() => {
                     setIsStarted(false);
-                    setData([
-                        "",
-                        "./images/puzzle/image_part_001.png",
-                        "./images/puzzle/image_part_002.png",
-                        "./images/puzzle/image_part_003.png",
-                        "./images/puzzle/image_part_004.png",
-                        "./images/puzzle/image_part_005.png",
-                        "./images/puzzle/image_part_006.png",
-                        "./images/puzzle/image_part_007.png",
-                        "./images/puzzle/image_part_008.png"]);
+                    setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
                 }}
                    className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
                     <VscDebugRestart size={23}/>
@@ -222,16 +159,7 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                 <p onClick={() => {
                     handlePlayClose();
                     setIsStarted(false);
-                    setData([
-                        "",
-                        "./images/puzzle/image_part_001.png",
-                        "./images/puzzle/image_part_002.png",
-                        "./images/puzzle/image_part_003.png",
-                        "./images/puzzle/image_part_004.png",
-                        "./images/puzzle/image_part_005.png",
-                        "./images/puzzle/image_part_006.png",
-                        "./images/puzzle/image_part_007.png",
-                        "./images/puzzle/image_part_008.png"]);
+                    setData(["", "1", "2", "3", "4", "5", "6", "7", "8"]);
                 }}
                    className="cursor-pointer absolute top-2 right-2 hover:rotate-90 duration-300">
                     <IoCloseSharp size={30}/>

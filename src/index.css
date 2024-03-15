@@ -35,3 +35,92 @@
         transform: translateY(-100%);
     }
 }
+
+.puzzle-piece {
+    background-image: url('./images/puzzle.png');
+}
+
+@media only screen and (min-width: 769px) {
+    .puzzle-piece {
+        width: 128px;
+        height: 128px;
+    }
+
+    .puzzle-piece-0 {
+        background-position: 0 0;
+    }
+
+    .puzzle-piece-1 {
+        background-position: -128px 0;
+    }
+
+    .puzzle-piece-2 {
+        background-position: -256px 0;
+    }
+
+    .puzzle-piece-3 {
+        background-position: 0 -128px;
+    }
+
+    .puzzle-piece-4 {
+        background-position: -128px -128px;
+    }
+
+    .puzzle-piece-5 {
+        background-position: -256px -128px;
+    }
+
+    .puzzle-piece-6 {
+        background-position: 0 -256px;
+    }
+
+    .puzzle-piece-7 {
+        background-position: -128px -256px;
+    }
+
+    .puzzle-piece-8 {
+        background-position: -256px -256px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .puzzle-piece {
+        width: 112px;
+        height: 112px;
+    }
+
+    .puzzle-piece-0 {
+        background-position: 0 0;
+    }
+
+    .puzzle-piece-1 {
+        background-position: -112px 0;
+    }
+
+    .puzzle-piece-2 {
+        background-position: -224px 0;
+    }
+
+    .puzzle-piece-3 {
+        background-position: 0 -112px;
+    }
+
+    .puzzle-piece-4 {
+        background-position: -112px -112px;
+    }
+
+    .puzzle-piece-5 {
+        background-position: -224px -112px;
+    }
+
+    .puzzle-piece-6 {
+        background-position: 0 -224px;
+    }
+
+    .puzzle-piece-7 {
+        background-position: -112px -224px;
+    }
+
+    .puzzle-piece-8 {
+        background-position: -224px -224px;
+    }
+}
