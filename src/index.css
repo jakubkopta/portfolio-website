@@ -37,7 +37,7 @@
 }
 
 .puzzle-piece {
-    background-image: url('./images/puzzle.png');
+    background-image: url('/images/puzzle.png');
 }
 
 @media only screen and (min-width: 769px) {
