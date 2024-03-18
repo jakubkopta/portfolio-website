@@ -129,7 +129,7 @@ const UsedLanguages = () => {
             <div className="relative h-10">
                 <div onClick={handleClick} className="flex justify-center items-center cursor-pointer mt-5 group">
                     <div className="bg-gray-400 p-3 m-5 rounded-3xl absolute -top-4 z-[99]">Languages chart</div>
-                    <div className="h-6 w-10 bg-gray-400 rounded-b-2xl absolute top-10 z-[99] flex justify-center items-center group-hover:scale-110">
+                    <div className="h-6 w-10 bg-gray-400 rounded-b-2xl absolute top-10 z-[99] flex justify-center items-center group-hover:scale-110 duration-300">
                         {isClicked ? <FaArrowUp size={20}/> : <FaArrowDown size={20}/>}
                     </div>
                 </div>

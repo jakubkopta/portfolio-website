@@ -145,8 +145,8 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                         handleShuffle();
                         setIsStarted(true);
                     }}
-                         className={`flex justify-center items-center border-4 border-black size-28 md:size-32 duration-300 rounded-lg group`}>
-                        <p className="group-hover:scale-110 text-black"><IoPlayOutline size={70}/></p>
+                         className={`flex justify-center items-center border-4 border-black size-28 md:size-32 rounded-lg group`}>
+                        <p className="group-hover:scale-110 duration-300 text-black"><IoPlayOutline size={70}/></p>
                     </div>
                 </div>
                 <p onClick={() => {
