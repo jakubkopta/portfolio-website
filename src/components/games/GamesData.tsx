@@ -13,7 +13,7 @@ const gameData = [
     },
     {
         name: "Memory",
-        imagePath: "./images/puzzle.jpg"
+        imagePath: "./images/memory.jpg"
     }
 ]
 
