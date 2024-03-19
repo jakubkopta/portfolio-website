@@ -2,6 +2,7 @@ import React, {Suspense, useState} from "react";
 import {gameData} from "./GamesData.tsx";
 import Game from "./Game.tsx";
 import {PacmanLoader} from "react-spinners";
+import Wordle from "./wordle/Wordle.tsx";
 
 interface Props {
     isDarkMode: boolean;
@@ -38,6 +39,7 @@ const Games = ({isDarkMode}:Props) => {
                     {gamePlayed === "Tic-Tac-Toe" && <TicTacToe isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
                     {gamePlayed === "Puzzle" && <Puzzle isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
                     {gamePlayed === "Memory" && <Memory isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
+                    {gamePlayed === "Wordle" && <Wordle isDarkMode={isDarkMode} handlePlayClose={handlePlayClose}/>}
                 </Suspense>
             </div>
         </div>
