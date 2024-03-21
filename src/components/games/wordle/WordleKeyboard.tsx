@@ -1,4 +1,6 @@
 import React from "react";
+import {AiOutlineEnter} from "react-icons/ai";
+import {IoBackspaceOutline} from "react-icons/io5";
 
 interface Props {
     wrongLetters: string[];
@@ -42,7 +44,7 @@ const keys = [
 const Keyboard = ({wrongLetters, correctLetters, rightPlace, handleKeyboardButtonClick} : Props) => {
 
     return (
-        <div className="md:m-5 text-center">
+        <div className="grid grid-cols-10 mt-3">
             {keys.map((key, index) => {
                 const gray = wrongLetters.includes(key)
                 const yellow = correctLetters.includes(key)
@@ -52,12 +54,18 @@ const Keyboard = ({wrongLetters, correctLetters, rightPlace, handleKeyboardButto
                         <button
                             onClick={() => handleKeyboardButtonClick(key)}
                             key={index}
-                            className={`${gray ? "bg-gray-700" : (yellow ? "bg-yellow-600" : (green ? "bg-green-600" : "bg-gray-500 hover:bg-gray-600 active:bg-gray-700"))} ${(key === "Backspace") && "md:w-24"}
-                            text-white rounded-lg m-[1px] p-2 size-8 md:size-14`}
+                            className={`${gray ? "bg-gray-700" : (yellow ? "bg-yellow-600" : (green ? "bg-green-600" : "bg-gray-500 hover:bg-gray-600 active:bg-gray-700"))}
+                            text-white rounded-lg m-[1px] p-2 ${key === "Backspace" && 'col-span-2'}`}
                         >
-                            {key}
+                            {
+                                key === "Enter" || key === "Backspace" ?
+                                (key === "Enter" ?
+                                    <span className="flex justify-center items-center gap-2 "><span className="hidden md:block">{key}</span> <AiOutlineEnter/></span> :
+                                    <span className="flex justify-center items-center gap-2"><span className="hidden md:block">{key}</span><IoBackspaceOutline size={23}/></span>)
+                                : key
+                            }
                         </button>
-                        {key === "P" || key === "L" ? <br /> : null}
+                        {key === "P" || key === "L" && <br />}
                     </React.Fragment>
                 )
             })}

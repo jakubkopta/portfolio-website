@@ -1,3 +1,4 @@
+import React from "react";
 
 interface Props {
     addGuessedLetter: (letter: string) => void
@@ -41,14 +42,17 @@ const Keyboard = ({addGuessedLetter, guessedLetters} : Props) => {
             {keys.map((key, index) => {
                 const isActive = guessedLetters.includes(key)
                 return (
-                    <button
-                        key={index}
-                        className={`${isActive ? "bg-gray-700" : "bg-gray-500 hover:bg-gray-600 active:bg-gray-700"} text-white rounded-xl m-[1px] p-1 lg:m-1 lg:p-2`}
-                        onClick={() => addGuessedLetter(key)}
-                        disabled = {isActive}
-                    >
-                        {key}
-                    </button>
+                    <React.Fragment key={index}>
+                        <button
+                            key={index}
+                            className={`${isActive ? "bg-gray-700" : "bg-gray-500 hover:bg-gray-600 active:bg-gray-700"} text-white rounded-lg m-[1px] p-2`}
+                            onClick={() => addGuessedLetter(key)}
+                            disabled = {isActive}
+                        >
+                            {key}
+                        </button>
+                        {key === "P" || key === "L" && <br/>}
+                    </React.Fragment>
                 )
             })}
         </div>
