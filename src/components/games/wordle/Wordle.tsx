@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {IoCloseSharp} from "react-icons/io5";
 import {generate} from "random-words";
 import {VscDebugRestart} from "react-icons/vsc";
@@ -30,6 +30,10 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
 
 
     const {wordExists} = useWordChecker("en");
+
+    const checkWinner = useCallback((index: number) => {
+        return (data[index].join('') === word.toUpperCase());
+    }, [data, word]);
 
     useEffect(() => {
         if (!isWon) {
@@ -99,11 +103,7 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
                 document.removeEventListener('keydown', backspaceHandler);
             }
         }
-    }, [count, data, rowNumber, rows, wordExists]);
-
-    const checkWinner = (index: number) => {
-        return (data[index].join('') === word.toUpperCase());
-    }
+    }, [checkWinner, correctLetters, count, data, guessedWords, isWon, rightPlace, rowNumber, rows, word, wordExists]);
 
     const restart = () => {
         setData([["", "", "", "", ""],
@@ -160,7 +160,7 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
 
     return (
         <div
-            className={`${isDarkMode ? "bg-dark-mode" : "bg-gray-200"} shadow-2xl rounded-3xl md:m-5 md:ml-28 md:mr-28 p-3 relative group`}>
+            className={`${isDarkMode ? "bg-dark-mode" : "bg-gray-200"} shadow-2xl rounded-3xl m-1 mt-5 md:ml-28 md:mr-28 p-3 relative group`}>
             <a className="flex justify-center items-center">
                 <p onClick={restart}
                    className="cursor-pointer absolute top-3 right-10 hover:-rotate-90 duration-300">
@@ -180,7 +180,7 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
                                  className={`${word.toUpperCase().split("").includes(value) && rows[outerIndex] ?
                                      (word.toUpperCase().split("")[innerIndex] === data[outerIndex][innerIndex] ?
                                          "bg-green-600" : "bg-yellow-600") : (rows[outerIndex] && "bg-gray-600")} 
-                                 bg-gray-400 border-2 border-black h-20 w-20 rounded-xl cursor-pointer flex justify-center items-center md:m-1`}>
+                                 bg-gray-400 border-2 border-black size-20 md:size-24 rounded-xl cursor-pointer flex justify-center items-center m-[1px]`}>
                                 <span className="text-3xl font-bold text-black">{value}</span>
                             </div>
                         ))}

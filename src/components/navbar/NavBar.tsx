@@ -17,13 +17,13 @@ const NavBar = ({isDarkMode}:Props) => {
 
     return (
         <div>
-            <a onClick={handleNav} className="bg-gray-200 shadow-lg rounded-lg p-2 m-2 fixed top-4 right-4 z-[100] cursor-pointer md:hidden
+            <a onClick={handleNav} className="bg-gray-200 shadow-lg rounded-lg p-2 m-2 fixed top-4 right-4 z-[99] cursor-pointer md:hidden
             active:bg-gray-400 active:duration-0 hover:scale-125 ease-in duration-200">
                 <AiOutlineUnorderedList/>
             </a>
             {
                 nav ? (
-                    <div className={`flex flex-col items-center w-full h-screen ${isDarkMode ? "bg-dark-mode/90" : "bg-white/90"} fixed pt-14 top-0 z-[99] md:hidden slide-down duration-300`}>
+                    <div className={`flex flex-col items-center w-full h-screen ${isDarkMode ? "bg-dark-mode/90" : "bg-white/90"} fixed pt-14 top-0 z-[98] md:hidden slide-down duration-300`}>
                         {navBarData.map((item, idx) => (
                             <div key={idx} onClick={handleNav} className="w-[75%]">
                                 <NavBarItems name={item.name} icon={item.icon}/>
