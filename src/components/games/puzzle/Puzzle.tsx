@@ -108,7 +108,7 @@ const Puzzle = ({handlePlayClose, isDarkMode} : Props) => {
                         return (
                             <div
                                 key={index}
-                                onClick={() => {handleSwitch(index); console.log(index)}}
+                                onClick={() => handleSwitch(index)}
                                 className="bg-gray-400 h-28 md:h-32 w-28 md:w-32 rounded-lg cursor-pointer flex justify-center items-center overflow-hidden">
                                 <div className={`puzzle-piece puzzle-piece-${value} ${value === "" && "hidden"} duration-300`}></div>
                             </div>
