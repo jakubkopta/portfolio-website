@@ -17,7 +17,7 @@ const gameData = [
     },
     {
         name: "Wordle",
-        imagePath: "./images/memory.jpg"
+        imagePath: "./images/wordle.jpg"
     }
 ]
 
