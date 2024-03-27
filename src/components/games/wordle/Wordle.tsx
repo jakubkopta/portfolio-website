@@ -27,6 +27,7 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
     const [wrongLetters, setWrongLetters] = useState<string[]>([]);
     const [correctLetters, setCorrectLetters] = useState<string[]>([]);
     const [rightPlace, setRightPlace] = useState<string[]>([]);
+    const [alert, setAlert] = useState(false);
 
 
     const {wordExists} = useWordChecker("en");
@@ -50,8 +51,8 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
             }
 
             const enterHandler = (e: KeyboardEvent) => {
-                if (e.key === 'Enter' && rowNumber < 5) {
-                    if (!data[rowNumber].includes("") && wordExists(data[rowNumber].join('')) && !guessedWords.includes(data[rowNumber].join(''))) {
+                if (e.key === 'Enter' && rowNumber < 5 && !data[rowNumber].includes("") && !alert) {
+                    if (wordExists(data[rowNumber].join('')) && !guessedWords.includes(data[rowNumber].join(''))) {
                         setGuessedWords(currentWords => [...currentWords, data[rowNumber].join('')]);
 
                         for (let i = 0; i < data[rowNumber].length; i++) {
@@ -78,6 +79,11 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
 
                         setRows(newRows);
                         setCount(0);
+                    } else {
+                        setAlert(true);
+                        setTimeout(() => {
+                            setAlert(false);
+                        }, 1000);
                     }
                 }
             };
@@ -103,7 +109,7 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
                 document.removeEventListener('keydown', backspaceHandler);
             }
         }
-    }, [checkWinner, correctLetters, count, data, guessedWords, isWon, rightPlace, rowNumber, rows, word, wordExists]);
+    }, [alert, checkWinner, correctLetters, count, data, guessedWords, isWon, rightPlace, rowNumber, rows, word, wordExists]);
 
     const restart = () => {
         setData([["", "", "", "", ""],
@@ -128,28 +134,40 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
             newData[rowNumber][count-1] = "";
             setData(newData);
             setCount(count-1);
-        } else if (letter === "Enter" && !data[rowNumber].includes("") && wordExists(data[rowNumber].join('')) && !guessedWords.includes(data[rowNumber].join(''))) {
-            setGuessedWords(currentWords => [...currentWords, data[rowNumber].join('')]);
+        } else if (letter === "Enter" && rowNumber < 5 && !data[rowNumber].includes("") && !alert) {
+            if (wordExists(data[rowNumber].join('')) && !guessedWords.includes(data[rowNumber].join(''))) {
+                setGuessedWords(currentWords => [...currentWords, data[rowNumber].join('')]);
 
-            for (let i = 0; i < data[rowNumber].length; i++) {
-                if (!word.toUpperCase().split("").includes(data[rowNumber][i])) {
-                    setWrongLetters(currentLetters => [...currentLetters, data[rowNumber][i]]);
-                } else if (word.toUpperCase().split("")[i] === data[rowNumber][i]) {
-                    setRightPlace(currentLetters => [...currentLetters, data[rowNumber][i]]);
-                } else {
-                    setCorrectLetters(currentLetters => [...currentLetters, data[rowNumber][i]]);
+                for (let i = 0; i < data[rowNumber].length; i++) {
+                    if (!word.toUpperCase().split("").includes(data[rowNumber][i])) {
+                        setWrongLetters(currentLetters => [...currentLetters, data[rowNumber][i]]);
+                    } else if (word.toUpperCase().split("")[i] === data[rowNumber][i]) {
+                        if (correctLetters.includes(data[rowNumber][i])) {
+                            setCorrectLetters(correctLetters.filter(letter => letter !== data[rowNumber][i]));
+                        }
+                        setRightPlace(currentLetters => [...currentLetters, data[rowNumber][i]]);
+                    } else {
+                        if (!rightPlace.includes(data[rowNumber][i])) {
+                            setCorrectLetters(currentLetters => [...currentLetters, data[rowNumber][i]]);
+                        }
+                    }
                 }
-            }
 
-            if (checkWinner(rowNumber)) {
-                setIsWon(true);
-            }
-            setRowNumber(prevRowNumber => prevRowNumber + 1);
-            const newRows = [...rows];
-            newRows[rowNumber] = true;
+                if (checkWinner(rowNumber)) {
+                    setIsWon(true);
+                }
+                setRowNumber(prevRowNumber => prevRowNumber + 1);
+                const newRows = [...rows];
+                newRows[rowNumber] = true;
 
-            setRows(newRows);
-            setCount(0);
+                setRows(newRows);
+                setCount(0);
+            } else {
+                setAlert(true);
+                setTimeout(() => {
+                    setAlert(false);
+                }, 1000);
+            }
         } else if (count < 5 && rowNumber < 5 && letter !== "Enter" && letter !== "Backspace") {
             const newData = [...data];
             newData[rowNumber][count] = letter.toUpperCase();
@@ -181,7 +199,7 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
                                      (word.toUpperCase().split("")[innerIndex] === data[outerIndex][innerIndex] ?
                                          "bg-green-600" : "bg-yellow-600") : (rows[outerIndex] && "bg-gray-600")} 
                                  bg-gray-400 border-2 border-black size-20 md:size-24 rounded-xl cursor-pointer flex justify-center items-center m-[1px]`}>
-                                <span className="text-3xl font-bold text-black">{value}</span>
+                                <span className={`text-3xl font-bold text-black ${alert && outerIndex===rowNumber && "horizontal-shake"}`}>{value}</span>
                             </div>
                         ))}
                     </div>
@@ -189,6 +207,9 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
             </div>
             <WordleKeyboard correctLetters={correctLetters} rightPlace={rightPlace} wrongLetters={wrongLetters} handleKeyboardButtonClick={handleKeyboardButtonClick}/>
 
+            <div  className={`${alert ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-gray-500 rounded-3xl flex flex-col justify-center items-center text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] p-5`}>
+                {!wordExists(data[rowNumber].join('')) ? "Not such a word" : "Already tried this word"}
+            </div>
             <div className={`${isWon || rowNumber === 5 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 ${isDarkMode ? "bg-dark-mode/90" : "bg-gray-200/90"} rounded-3xl flex flex-col justify-center items-center text-center absolute inset-0 z-[100]`}>
                 <span className="text-6xl font-bold p-3">{isWon ? "Winner" : "Game Over"}</span>
                 <span>Word was: {word.toUpperCase()}</span>
