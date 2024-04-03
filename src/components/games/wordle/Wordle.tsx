@@ -208,7 +208,7 @@ const Wordle = ({handlePlayClose, isDarkMode} : Props) => {
             <WordleKeyboard correctLetters={correctLetters} rightPlace={rightPlace} wrongLetters={wrongLetters} handleKeyboardButtonClick={handleKeyboardButtonClick}/>
 
             <div  className={`${alert ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 bg-gray-500 rounded-3xl flex flex-col justify-center items-center text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] p-5`}>
-                {!wordExists(data[rowNumber].join('')) ? "Not such a word" : "Already tried this word"}
+                {(rowNumber < 5 && !wordExists(data[rowNumber].join('')) ? "Not such a word" : "Already tried this word")}
             </div>
             <div className={`${isWon || rowNumber === 5 ? "scale-100 opacity-100" : "scale-0 opacity-0"} duration-500 ${isDarkMode ? "bg-dark-mode/90" : "bg-gray-200/90"} rounded-3xl flex flex-col justify-center items-center text-center absolute inset-0 z-[100]`}>
                 <span className="text-6xl font-bold p-3">{isWon ? "Winner" : "Game Over"}</span>
