@@ -80,11 +80,8 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
                     </div>
                     <div className="m-10 md:absolute md:bottom-3">
                         <p className="text-center font-bold border-2 border-gray-200 rounded-lg shadow-2xl p-5 lg:text-xl">
-                            I am a third-year student of Automatics and Robotics at AGH University of Science and
-                            Technology
-                            in Cracow. I am open to new experience and enjoy learning new things. As someone taking
-                            their
-                            first steps in the IT industry, I would like to develop my skills in this area.
+                            I am in my third year of studies towards a Bachelor’s degree in Automatics and Robotics at the AGH University of Science and Technology in Krakow.
+                            I am interested in improving my skills in programming and I am open to new career opportunities that will help me to grow in this field.
                         </p>
                     </div>
                 </div>
