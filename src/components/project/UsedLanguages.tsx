@@ -77,45 +77,44 @@ const UsedLanguages = () => {
 
     useEffect(() => {
 
-        const projectsNames = [
-            "portfolio-website",
-            "valentines",
-            "CalculatorJavaFX",
-            "fleet-manager-springboot",
-            "InStoreFulfillment",
-            "Snake",
-            "toDo"
-        ];
-
         const fetchData = async () => {
-            const aggregatedData: LanguageData = {};
-            for (const projectName of projectsNames) {
                 try {
-                    const response = await fetch(
-                        `https://api.github.com/repos/jakubkopta/${projectName}/languages`,
+                    const repoResponse = await fetch(
+                        'https://api.github.com/users/jakubkopta/repos',
                         {
                             headers: {
                                 Authorization: import.meta.env.REACT_APP_GITHUB_TOKEN
-                            },
+                            }
                         }
                     );
-                    const data = await response.json();
-                    Object.keys(data).forEach(language => {
-                        if (aggregatedData[language]) {
-                            aggregatedData[language] += data[language];
-                        } else {
-                            aggregatedData[language] = data[language];
-                        }
-                    });
+                    const repos = await repoResponse.json();
+                    const aggregatedData: LanguageData = {};
+
+                    for (const repo of repos) {
+                        const response = await fetch(
+                            `https://api.github.com/repos/jakubkopta/${repo.name}/languages`,
+                            {
+                                headers: {
+                                    Authorization: import.meta.env.REACT_APP_GITHUB_TOKEN
+                                },
+                            }
+                        );
+                        const data = await response.json();
+                        Object.keys(data).forEach(language => {
+                            if (aggregatedData[language]) {
+                                aggregatedData[language] += data[language];
+                            } else {
+                                aggregatedData[language] = data[language];
+                            }
+                        });
+                    }
+                    setLanguagesData(aggregatedData)
                 } catch (error) {
                     console.error('Error fetching data:', error);
                 }
-            }
-            setLanguagesData(aggregatedData)
         };
 
-        fetchData().then(() => {
-        }).catch(error => {
+        fetchData().then(() => {}).catch(error => {
             console.error(error);
         });
     }, []);
