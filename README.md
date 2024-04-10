@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+# Portfolio Website
+Welcome to my portfolio website! This website showcases my skills, projects, and experiences. Whether you're a potential employer, collaborator, or just curious about my work, I hope you find what you're looking for here.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Usage](#usage)
 
-Currently, two official plugins are available:
+## Introduction
+This portfolio website serves as a hub for displaying my professional profile. It includes sections for my bio, experience, projects, skills and contact information.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- **Home**: A brief introduction to who I am and my background.
+- **Experience**:  Explore my journey through studies, training programs, and professional work experiences.
+- **Projects**: Showcase of my projects, including technologies used and links to GitHub repositories.
+- **Games**: Enjoy some interactive fun with mini-games I've designed. These games not only entertain but also demonstrate my programming skills.
+- **Interests**: Discover more about my passions and hobbies outside of work. Learn what keeps me inspired and engaged in my free time.
+- **Contact**: Ways to reach out to me, such as email or social media links. Additionally, you can download my CV to learn more about my qualifications and experiences.
+- **Responsive Design**: The website is designed to be responsive and accessible across various devices and screen sizes.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: JavaScript library for building user interfaces, utilized with TypeScript (TSX) for enhanced type safety and development experience.
+- **HTML**: Markup language for structuring the content of the website.
+- **CSS**: Stylesheet language for designing the layout and visual presentation.
+- **Tailwind CSS**: Utility-first CSS framework for creating custom designs quickly and efficiently, enhancing the styling of the website.
+- **GitHub Pages**: Hosting service used to deploy the website.
 
-- Configure the top-level `parserOptions` property like this:
+## Usage
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+To view the website, simply visit https://jakubkopta.github.io/portfolio-website/.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+If you'd like to run the website locally:
+
+1. Clone this repository: `git clone https://github.com/jakubkopta/portfolio-website.git`
+2. Navigate to the project directory: `cd portfolio-website`
+3. Open the `index.html` file in your preferred web browser.
