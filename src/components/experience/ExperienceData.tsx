@@ -1,4 +1,13 @@
-const workData = null;
+const workData = [
+    {
+        company: "EPAM",
+        title: "Java Stack",
+        duration: "08.2024 - current",
+        details: "In EPAM's Java Stack training, I'm advancing my Java skills with topics like OOP, Design Patterns, Unit Testing, and Clean Code. " +
+            "I'm also working with Spring technologies such as Spring Boot, Java Persistence, and Restful API development. " +
+            "This training equips me with practical experience in both backend and web development."
+    }
+]
 
 const coursesData = [
     {
@@ -37,6 +46,13 @@ const coursesData = [
 
 const educationData = [
     {
+        company: "Cracow University of Technology",
+        title: "Computer Science",
+        duration: "10.2024 - current",
+        details: "I recently started studying Computer Science at Cracow University of Technology. " +
+            "This step marks a key moment in my career as I continue to pursue my passion for software development. " +
+            "With a stronger focus on computer science principles, I aim to deepen my understanding of programming, algorithms, and software engineering."
+    },{
         company: "AGH University of Science and Technology",
         title: "Automatics and Robotics",
         duration: "10.2020 - current",

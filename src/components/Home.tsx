@@ -80,7 +80,7 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
                     </div>
                     <div className="m-10 md:absolute md:bottom-3">
                         <p className="text-center font-bold border-2 border-gray-200 rounded-lg shadow-2xl p-5 lg:text-xl">
-                            I am in my third year of studies towards a Bachelor’s degree in Automatics and Robotics at the AGH University of Science and Technology in Krakow.
+                            I'm currently studying Computer Science at Cracow University of Technology and finishing Automatics and Robotics at the AGH University in Krakow.
                             I am interested in improving my skills in programming and I am open to new career opportunities that will help me to grow in this field.
                         </p>
                     </div>

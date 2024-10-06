@@ -1,6 +1,21 @@
 import {FaJava, FaReact} from "react-icons/fa";
+import {TbBrandKotlin} from "react-icons/tb";
 
 const projectData = [
+    {
+        name: "Cat Facts App",
+        imagePath: "./images/cat.gif",
+        language: "Kotlin + React",
+        icon: <TbBrandKotlin className="icon"/>,
+        githubName: "cat-facts-webapp"
+    },
+    {
+        name: "Weather App",
+        imagePath: "./images/weather.gif",
+        language: "Kotlin + React",
+        icon: <TbBrandKotlin className="icon"/>,
+        githubName: "nubiweather"
+    },
     {
         name: "Calculator",
         imagePath: "./images/calculator.gif",
