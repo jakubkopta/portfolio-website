@@ -10,11 +10,11 @@ const ExperienceSite = ({toggleState}: Props) => {
 
     let data;
     if (toggleState === 0) {
-        data = coursesData;
+        data = workData;
     } else if (toggleState === 1) {
         data = educationData;
     } else {
-        data = workData;
+        data = coursesData;
     }
 
     return (

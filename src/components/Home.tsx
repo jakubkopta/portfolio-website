@@ -80,8 +80,11 @@ const Home = ({toggleDarkMode, isDarkMode}:Props) => {
                     </div>
                     <div className="m-10 md:absolute md:bottom-3">
                         <p className="text-center font-bold border-2 border-gray-200 rounded-lg shadow-2xl p-5 lg:text-xl">
-                            I'm currently studying Computer Science at Cracow University of Technology and finishing Automatics and Robotics at the AGH University in Krakow.
-                            I am interested in improving my skills in programming and I am open to new career opportunities that will help me to grow in this field.
+                            I am a Python developer and part-time student of Computer Science at
+                            Cracow University of Technology. Passionate about backend
+                            development, I am eager to apply and expand my skills in Python and
+                            Django through real-world projects. As a fast learner taking solid steps
+                            in the IT industry, I am committed to continuous growth.
                         </p>
                     </div>
                 </div>

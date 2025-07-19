@@ -1,11 +1,17 @@
 const workData = [
     {
+        company: "MusicTech Lab",
+        title: "Python Developer",
+        duration: "12.2024 - current",
+        details: "In my current role as a Python Developer, I develop back-end features and RESTful APIs using Python, Django, and Django REST Framework. I collaborate with front-end and DevOps teams, following Agile practices and using GitHub for version control, to ensure smooth delivery and integration of new features."
+    },
+    {
         company: "EPAM",
         title: "Java Stack",
-        duration: "08.2024 - current",
-        details: "In EPAM's Java Stack training, I'm advancing my Java skills with topics like OOP, Design Patterns, Unit Testing, and Clean Code. " +
-            "I'm also working with Spring technologies such as Spring Boot, Java Persistence, and Restful API development. " +
-            "This training equips me with practical experience in both backend and web development."
+        duration: "08.2024 - 12.2024",
+        details: "During EPAM’s Java Stack training, I advanced my Java skills through topics such as OOP, Design Patterns, Unit Testing, and Clean Code. " +
+            "I also worked with Spring technologies, including Spring Boot, Java Persistence, and RESTful API development. " +
+            "This training equipped me with practical experience in both backend and web development."
     }
 ]
 
@@ -17,7 +23,8 @@ const coursesData = [
         details: "During this course I gained solid foundations and well-grounded knowledge of programming. " +
             "In addition to Java, I have become familiar with tools and frameworks such as IntelliJ IDE, MySQL, Git, Spring and Hibernate. " +
             "I also used knowledge that I gained to create several applications. One aspect I particularly value from this course is a habit for writing clean code."
-    },{
+    },
+    {
         company: "Coders Lab",
         title: "Scrum Lab",
         duration: "11.2022 - 12.2022",
@@ -52,15 +59,17 @@ const educationData = [
         details: "I recently started studying Computer Science at Cracow University of Technology. " +
             "This step marks a key moment in my career as I continue to pursue my passion for software development. " +
             "With a stronger focus on computer science principles, I aim to deepen my understanding of programming, algorithms, and software engineering."
-    },{
+    },
+    {
         company: "AGH University of Science and Technology",
         title: "Automatics and Robotics",
-        duration: "10.2020 - current",
+        duration: "10.2020 - 10.2024",
         details: "In university, studying Automatics and Robotics, I discovered my passion for software development. " +
             "I realized my true interest lay in programming. This realization inspired me to pursue a path towards becoming a programmer. " +
             "During this time I began teaching myself programming and taking courses alongside my studies. " +
             "That leaded me to knowledge that I have today."
-    },{
+    },
+    {
         company: "4TH General High School",
         title: "Mathematics, Physics, Computer Science, English",
         duration: "09.2016 - 06.2019",
